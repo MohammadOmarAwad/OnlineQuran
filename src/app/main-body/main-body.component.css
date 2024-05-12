@@ -1,0 +1,24 @@
+.DivBox {
+  width: 200px;
+  height: 100px;
+  margin: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  color: white;
+  border: 3px solid #0000;
+  background: linear-gradient(#a78140 0 0) padding-box, repeating-conic-gradient(#5d513c 0 25%, #0000 0 50%) border-box;
+  font-size: x-large;
+  font-weight: bold;
+  cursor:pointer;
+}
+
+.DivContanier {
+  white-space: nowrap;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Droid Arabic Kufi';
+}

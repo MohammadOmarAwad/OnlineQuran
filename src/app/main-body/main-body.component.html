@@ -1,0 +1,27 @@
+<div style="min-height:82vh;margin:2px;">
+
+  <nav style="margin-top: 5px;">
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <button style="color: black;cursor: pointer;width: 100px;" class="nav-link active" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="true">السور</button>
+      <button style="color: black;cursor: pointer;width: 100px;" class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">الأجزاء</button>
+    </div>
+  </nav>
+
+  <div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+      <div class="DivContanier">
+        <div *ngFor="let surah of surahs">
+          <div (click)="gotoQuranPageBySurah(surah.startpage)" class="DivBox"><span>سورة {{ surah.name }}</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+      <div class="DivContanier">
+        <div *ngFor="let _ of [].constructor(30); let number = index">
+          <div (click)="gotoQuranPageByJuz(number+1)" class="DivBox">الجزء {{ number+1 }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

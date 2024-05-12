@@ -1,0 +1,63 @@
+<div style="margin-top: 5px;min-height: 82vh;">
+
+  <div class="DivContanier">
+    <div class="DivBox">
+
+      <!--Surah Infos-->
+      <div>
+        <table>
+          <tr style="white-space: nowrap; background-color: transparent;">
+            <td><span>{{quranPage.Ayas[0].juz}} الجزء</span></td>
+            <td style="width:100%;"><span></span></td>
+            <td><span>{{quranPage.Ayas[0].surah_Infos?.name}} </span></td>
+          </tr>
+        </table>
+      </div>
+
+      <hr>
+
+      <!--Surah Text-->
+      <div style="white-space: nowrap;display: flex;flex-direction: column;">
+        <div *ngFor="let item of quranPage.Ayas">
+
+          <br *ngIf="item.aya=='1'" />
+          <div *ngIf="item.aya=='1'">
+            <table>
+              <tr style="white-space: nowrap; background-color: transparent;">
+                <td><span class="SurahInfos">{{item?.sura}} ترتيبها</span></td>
+                <td style="width:100%;">
+                  <div class="Surah-Seperator"><div>{{item?.surah_Infos?.name}}</div></div>
+                </td>
+                <td><span class="SurahInfos">{{item?.sura}} عدد أياتها</span></td>
+              </tr>
+            </table>
+          </div>
+          <br *ngIf="item.aya=='1'" />
+
+          <div style="white-space: break-spaces;width: 90%;">
+            <span>{{item?.text}}</span>
+            <span class="AyaNumClass">{{item?.aya}}</span>
+          </div>
+        </div>
+      </div>
+
+      <hr>
+
+      <!--Pages Number-->
+      <div style="text-align: center;">
+        <table>
+          <tr style="white-space: nowrap; background-color: transparent;">
+            <td colspan="3"><span>{{quranPage.Ayas[0].page}} الصفحة</span></td>
+          </tr>
+          <tr style="white-space: nowrap; background-color: transparent;">
+            <td><span class="Btn" (click)="GoToNextPage(quranPage.Ayas[0].page)">الصفحة التالية</span></td>
+            <td style="width:100%;"><span></span></td>
+            <td><span class="Btn" (click)="GoToPriviousePage(quranPage.Ayas[0].page)">الصفحة السابقة</span></td>
+          </tr>
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+</div>

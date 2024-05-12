@@ -1,0 +1,35 @@
+<header>
+  <div class="container" style="min-width:99%;padding:0;">
+    <div class="row">
+      <div class="col-md-3 col-sm-3 col-3">
+        <div class="logo">
+          <img src="../../assets/hano_logo.png" class="logo">
+          <div>
+            <table style="color:white;">
+              <tbody>
+                <tr style="background-color: transparent;">
+                  <td><span>{{ date }}</span></td>
+                </tr>
+                <tr style="background-color: transparent; white-space: nowrap;">
+                  <td><span>{{ hijridate }}</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-9 col-sm-9 col-9 text-end">
+        <div class="menu-icon" (click)="openMenu()">
+          <i class="{{menu_icon}}"></i>
+        </div>
+        <div class="desktop_menu" [class.mobile_menu]="menuValue">
+          <ul>
+            <li (click)="gotoHomePage()">الصفحة الرئيسية</li>
+            <li (click)="gotoQuranPage()">القرآن الكريم</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
