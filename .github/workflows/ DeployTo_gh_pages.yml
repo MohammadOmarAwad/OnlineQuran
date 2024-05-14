@@ -4,33 +4,16 @@ on:
   push:
     branches: [ "main" ]
 
-jobs:
+obs:
   build:
 
+    # using Ubuntu
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [16.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
     steps:
-    - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
+    - uses: actions/checkout@v1
+    - uses: actions/setup-node@v1 
       with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: npm ci
-    - run: npm run build --if-present
-    - run: npm test -- --watch=false --browsers=ChromeHeadless
-    - run: ls
-    - name: Copy to another repo
-      uses: andstor/copycat-action@v3
-      with:
-        personal_token: 'my token'
-        src_path: dist
-        dst_path: /.
-        dst_owner: Fomenko-developer
-        dst_repo_name: fomenko-landing
-        dst_branch: deploy            
+        node-version: '10.x'
+
+    - uses: actions/cache@v1 
