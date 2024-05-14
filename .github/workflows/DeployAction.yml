@@ -6,27 +6,38 @@ name: DeployTo_gh-pages
 on:
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
 
 jobs:
-  build:
-
+  build-and-deploy:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [20.x]
         
     steps:
     - uses: actions/checkout@v4
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: npm ci
-    - run: npm run build
+        node-version: 20
+        
+    - name: Prepare
+      run: |
+       cd src
+       npm install
+       npm run build
+       npm run test
+       cd dist
+       npm link
+       cd ..
+       cd ..
+       npm install -g @angular/cli
+       ng new your-angular-project --defaults
+       cd your-angular-project
+       npm link angular-cli-ghpages
+       ng add angular-cli-ghpages
+
+    - name: Deploy
+      run: |
+       cd your-angular-project
+       ng deploy --name="The Buildbot" --email="buildbot@angular2buch.de" --cname=angular-cli-ghpages.angular.schule
 
     - name: Copy dist folder content to remote
     - run: npx angular-cli-ghpages --dir=dist/browser
