@@ -1,37 +1,31 @@
-name: DeployTo_gh-pages
+name: Build and Deploy Script
 
 on:
   push:
-    branches: [ "main" ]
-
+    branches:
+      - main
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
-        
-    steps:
-    - uses: actions/checkout@v4
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: 20
-        
-    - name: Prepare
-      run: |
-       cd src
-       npm install
-       npm run build
-       npm run test
-       cd dist
-       npm link
-       cd ..
-       cd ..
-       npm install -g @angular/cli
-       ng new your-angular-project --defaults
-       cd your-angular-project
-       npm link angular-cli-ghpages
-       ng add angular-cli-ghpages
 
-    - name: Deploy
-      run: |
-       cd your-angular-project
-       ng deploy --name="The Buildbot" --email="buildbot@angular2buch.de" --cname=angular-cli-ghpages.angular.schule
+    steps:
+    
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+  
+      - name: Adding Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 20
+  
+      - name: Install Dependencies
+        run: npm install
+  
+      - name: Build Angular App
+        run: npm run build
+        
+      - name: Deploy to gh pages
+        run: |
+          npx angular-cli-ghpages --dir=dist/browser    
+        env:
+          CI: true
