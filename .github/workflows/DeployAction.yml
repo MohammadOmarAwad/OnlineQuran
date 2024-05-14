@@ -26,6 +26,4 @@ jobs:
         
       - name: Deploy to gh pages
         run: |
-          npx angular-cli-ghpages --dir=dist/browser    
-        env:
-          CI: true
+          npx angular-cli-ghpages --dir=dist/browser
