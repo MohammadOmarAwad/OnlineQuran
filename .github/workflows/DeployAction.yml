@@ -27,3 +27,6 @@ jobs:
         cache: 'npm'
     - run: npm ci
     - run: npm run build
+
+    - name: Copy dist folder content to remote
+    - run: npx angular-cli-ghpages --dir=dist/browser
