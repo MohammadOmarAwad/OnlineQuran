@@ -29,5 +29,5 @@ jobs:
           npx angular-cli-ghpages --dir=dist/browser
         env:
           CI: true
-          GITHUB_TOKEN: ${{ secrets.NEW_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
           
