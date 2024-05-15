@@ -6,7 +6,7 @@
 }
 
 .Surah-Seperator {
-  background: transparent url('../Mid/sura-frame.png') no-repeat scroll 50% 0;
+  background: transparent url('../Mid/sura-frame.png') no-repeat scroll 50% 50%;
   margin: 5px;
   padding: 10px;
 }
@@ -15,8 +15,16 @@
   border: 2px solid black;
   border-radius: 7px;
   font-size: 70%;
-  padding: 1%;
-  margin: 7px;
+  padding: 5px;
+}
+
+.NameClass{
+  width: 100%;
+}
+
+.LineClass{
+  text-align: center;
+  text-align-last: justify;
 }
 
 .DivBox {

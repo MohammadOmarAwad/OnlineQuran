@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import AyaListData from '../Mid/AyaList.json';
 import SurahListData from '../Mid/SurahList.json';
@@ -10,13 +10,17 @@ import { Aya, Surah, QuranPage } from '../Models/QuranPageModle';
   imports: [CommonModule],
   standalone: true,
   templateUrl: './quran-page.component.html',
-  styleUrl: './quran-page.component.css'
+  styleUrl: './quran-page.component.css',
+  encapsulation: ViewEncapsulation.None
 })
 export class QuranPageComponent {
   public ayas: Aya[] = [];
   public surahs: Surah[] = [];
   public quranPage: QuranPage;
   PageNumber: string;
+  PageBody: String="";
+  PlaceHolder: String="";
+  
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -35,22 +39,59 @@ export class QuranPageComponent {
 
     this.quranPage.SurahNames = AyasPage[0].sura;
     this.quranPage.Ayas = AyasPage;
+
+
+
+    this.PageBody="";
+    this.PlaceHolder="";   
+
+    AyasPage.forEach(aya => {
+      if (aya.aya == "1") {
+
+        if (this.PlaceHolder != "") {
+          this.PageBody += `<div class="LineClass">${this.PlaceHolder}</div>`
+          this.PlaceHolder = "";
+        }
+
+        this.PageBody += `<br/>
+                          <div> 
+                            <table class="NameClass">
+                              <tr style="white-space: nowrap; background-color: transparent;">
+                                <td><span class="SurahInfos">${aya?.sura} ترتيبها</span></td>
+                                <td style="width:100%;">
+                                  <div class="Surah-Seperator"><div>${aya?.surah_Infos?.name}</div></div>
+                                </td>
+                                <td><span class="SurahInfos">${aya?.sura} عدد أياتها</span></td>
+                              </tr>
+                            </table>
+                          </div>
+                        <br/>`;
+      }
+
+      this.PlaceHolder += `<Span>
+                            <span>${aya?.text}</span>
+                            <span class="AyaNumClass">${aya?.aya}</span>
+                          </Span>`;
+
+    });
+
+    if (this.PlaceHolder != "") {
+      this.PageBody += `<div class="LineClass">${this.PlaceHolder}</div>`
+    }
   }
 
-  GoToNextPage(pageNumer: string)
-  {
+  GoToNextPage(pageNumer: string) {
     let newValue = Number(pageNumer) + 1;
-    if (newValue==604) {
+    if (newValue == 604) {
       newValue = 1;
     }
 
     this.getData(String(newValue));
   }
 
-  GoToPriviousePage(pageNumer: string)
-  {
+  GoToPriviousePage(pageNumer: string) {
     let newValue = Number(pageNumer) - 1;
-    if (newValue==0) {
+    if (newValue == 0) {
       newValue = 604;
     }
 
