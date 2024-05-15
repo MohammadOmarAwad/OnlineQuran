@@ -18,9 +18,9 @@ export class QuranPageComponent {
   public surahs: Surah[] = [];
   public quranPage: QuranPage;
   PageNumber: string;
-  PageBody: String="";
-  PlaceHolder: String="";
-  
+  PageBody: String = "";
+  PlaceHolder: String = "";
+
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -40,10 +40,8 @@ export class QuranPageComponent {
     this.quranPage.SurahNames = AyasPage[0].sura;
     this.quranPage.Ayas = AyasPage;
 
-
-
-    this.PageBody="";
-    this.PlaceHolder="";   
+    this.PageBody = "";
+    this.PlaceHolder = "";
 
     AyasPage.forEach(aya => {
       if (aya.aya == "1") {
@@ -64,8 +62,11 @@ export class QuranPageComponent {
                                 <td><span class="SurahInfos">${aya?.sura} عدد أياتها</span></td>
                               </tr>
                             </table>
-                          </div>
-                        <br/>`;
+                          </div>`;
+
+        if (aya.page != "187" && aya.page != "1") {
+          this.PageBody += `<div> بِسْــــــمِ اللَّــــــهِ الرَّحْمَـٰــنِ الرَّحِيــــم</div>`;
+        }
       }
 
       this.PlaceHolder += `<Span>
