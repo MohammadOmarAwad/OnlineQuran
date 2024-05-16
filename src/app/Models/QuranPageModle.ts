@@ -14,8 +14,7 @@ export interface Aya {
   hizb: string
   page: string
   word: string
-  sajdah: string
-  sajdah_number: string
+  text_uthmani: string
   rub: string
   verse_key: string
   theletter: number
@@ -41,6 +40,3 @@ export interface Surah {
   memorized: number
   date: number
 }
-
-
-

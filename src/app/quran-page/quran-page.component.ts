@@ -70,7 +70,7 @@ export class QuranPageComponent {
       }
 
       this.PlaceHolder += `<Span>
-                            <span>${aya?.text}</span>
+                            <span>${aya?.text_uthmani}</span>
                             <span class="AyaNumClass">${aya?.aya}</span>
                           </Span>`;
 
