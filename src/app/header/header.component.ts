@@ -45,6 +45,6 @@ export class HeaderComponent implements OnInit {
 
   getDates() {
     this.date = new Date().toJSON().slice(0, 10).replace(/-/g, '/');
-    this.hijridate = new Intl.DateTimeFormat('en-u-ca-islamic').format(new Date());
+    this.hijridate = new Intl.DateTimeFormat('ar-SA-islamic-umalqura',{dateStyle:'long'}).format(new Date());
   }
 }
