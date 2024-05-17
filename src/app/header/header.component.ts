@@ -34,6 +34,11 @@ export class HeaderComponent implements OnInit {
     this.closeMenu();
   }
 
+  gotoAboutPage(): void {
+    this.router.navigate(['/about']);
+    this.closeMenu();
+  }
+
   closeMenu() {
     this.menuValue = false;
     this.menu_icon = 'bi bi-list';
