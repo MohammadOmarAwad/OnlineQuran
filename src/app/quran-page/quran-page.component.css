@@ -18,11 +18,11 @@
   padding: 5px;
 }
 
-.NameClass{
+.NameClass {
   width: 100%;
 }
 
-.LineClass{
+.LineClass {
   text-align: center;
   text-align-last: justify;
 }
@@ -45,6 +45,8 @@
   align-items: center;
   justify-content: center;
   font-family: 'Droid Arabic Kufi';
+  margin-left: 10%;
+  margin-right: 10%;
 }
 
 .Btn {
