@@ -49,6 +49,13 @@
   margin-right: 10%;
 }
 
+@media screen and (min-width: 128px) and (max-width: 900px) {
+  .DivContanier {
+    margin-left: 0%;
+    margin-right: 0%;
+  }
+}
+
 .Btn {
   cursor: pointer
 }
