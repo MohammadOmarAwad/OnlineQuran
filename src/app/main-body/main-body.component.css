@@ -1,5 +1,5 @@
 .DivBox {
-  width: 200px;
+  width: 150px;
   height: 100px;
   margin: 5px;
   display: flex;
@@ -8,7 +8,7 @@
   color: white;
   border: 3px solid #0000;
   background: linear-gradient(#a78140 0 0) padding-box, repeating-conic-gradient(#5d513c 0 25%, #0000 0 50%) border-box;
-  font-size: x-large;
+  font-size: 21px;
   font-weight: bold;
   cursor:pointer;
 }
