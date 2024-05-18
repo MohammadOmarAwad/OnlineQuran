@@ -8,8 +8,8 @@
   color: white;
   border: 3px solid #0000;
   background: linear-gradient(#a78140 0 0) padding-box, repeating-conic-gradient(#5d513c 0 25%, #0000 0 50%) border-box;
-  font-size: 21px;
-  font-weight: bold;
+  font-size: 18px;
+  font-weight: bolder;
   cursor:pointer;
 }
 
