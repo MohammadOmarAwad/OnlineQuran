@@ -83,7 +83,7 @@ export class QuranPageComponent {
 
   GoToNextPage(pageNumer: string) {
     let newValue = Number(pageNumer) + 1;
-    if (newValue == 604) {
+    if (newValue == 605) {
       newValue = 1;
     }
 
