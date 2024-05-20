@@ -12,10 +12,9 @@
 }
 
 .AyaNumClass {
-  border: 2px solid black;
-  border-radius: 7px;
-  font-size: 70%;
+  font-size: 25px;
   padding: 5px;
+  color: lightyellow;
 }
 
 .NameClass {
@@ -25,6 +24,7 @@
 .LineClass {
   text-align: center;
   text-align-last: center;
+  direction: rtl;
 }
 
 .DivBox {
