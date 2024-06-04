@@ -59,7 +59,7 @@ export class QuranPageComponent {
                                 <td style="width:100%;">
                                   <div class="Surah-Seperator"><div>${aya?.surah_Infos?.name}</div></div>
                                 </td>
-                                <td><span class="SurahInfos">${aya?.sura} عدد أياتها</span></td>
+                                <td><span class="SurahInfos">${aya?.surah_Infos?.ayas} عدد أياتها</span></td>
                               </tr>
                             </table>
                           </div>`;
