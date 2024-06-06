@@ -21,6 +21,14 @@
   width: 100%;
 }
 
+.Btn {
+  cursor: pointer
+}
+
+hr {
+  opacity: 1;
+}
+
 .LineClass {
   text-align: center;
   text-align-last: center;
@@ -35,7 +43,6 @@
   color: white;
   border: 3px solid #0000;
   background: linear-gradient(#a78140 0 0) padding-box, repeating-conic-gradient(#5d513c 0 25%, #0000 0 50%) border-box;
-  font-weight: bold;
   padding: 15px;
   font-size: 40px;
 }
@@ -45,10 +52,9 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  font-family: 'Droid Arabic Kufi';
   margin-left: 10%;
   margin-right: 10%;
-  font-family:'monospace';
+  font-family:monospace;
 }
 
 @media screen and (min-width: 128px) and (max-width: 900px) {
@@ -64,10 +70,3 @@
   }
 }
 
-.Btn {
-  cursor: pointer
-}
-
-hr {
-  opacity: 1;
-}
