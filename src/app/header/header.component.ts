@@ -39,6 +39,11 @@ export class HeaderComponent implements OnInit {
     this.closeMenu();
   }
 
+  gotostreamsPage(): void {
+    this.router.navigate(['/streams']);
+    this.closeMenu();
+  }
+
   closeMenu() {
     this.menuValue = false;
     this.menu_icon = 'bi bi-list';
