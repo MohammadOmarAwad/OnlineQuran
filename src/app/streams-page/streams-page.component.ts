@@ -21,7 +21,7 @@ export class StreamsPageComponent {
      this.Radios=data;
 
      this.Radios.radios.forEach(radio => {
-      this.PlaceHolder += `<div class="DivBoxRadio"><div>${radio?.name}</div><audio controls src="${radio?.url}">/audio></div>`;
+      this.PlaceHolder += `<div class="DivBoxRadio"><div>${radio?.name}</div><audio controls src="${radio?.url}"></audio></div>`;
       });
     });
   }
