@@ -11,17 +11,16 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
   encapsulation: ViewEncapsulation.None
 })
 export class StreamsPageComponent {
-  HttpClient=inject(HttpClient);
+  HttpClient = inject(HttpClient);
   Radios: RadioModel;
   PlaceHolder: String = "";
 
   ngOnInit() {
-    this.HttpClient.get<RadioModel>("https://mp3quran.net/api/v3/radios?language=ar").subscribe((data:RadioModel)=>
-    {
-     this.Radios=data;
+    this.HttpClient.get<RadioModel>("https://mp3quran.net/api/v3/radios?language=ar").subscribe((data: RadioModel) => {
+      this.Radios = data;
 
-     this.Radios.radios.forEach(radio => {
-      this.PlaceHolder += `<div class="DivBoxRadio"><div>${radio?.name}</div><audio controls src="${radio?.url}"></audio></div>`;
+      this.Radios.radios.forEach(radio => {
+        this.PlaceHolder += `<div class="DivBoxRadio"><div>${radio?.name}</div><audio controls src="${radio?.url}"></audio></div>`;
       });
     });
   }
