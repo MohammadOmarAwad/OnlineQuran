@@ -19,9 +19,9 @@ export class StreamsPageComponent {
     this.HttpClient.get<RadioModel>("https://mp3quran.net/api/v3/radios?language=ar").subscribe((data: RadioModel) => {
       this.Radios = data;
 
-      this.Radios.radios.forEach(radio => {
-        this.PlaceHolder += `<div class="DivBoxRadio"><div>${radio?.name}</div><audio controls src="${radio?.url}"></audio></div>`;
-      });
+      for (let i = 0; i < 80; i++) {
+        this.PlaceHolder += `<div class="DivBoxRadio"><div>${this.Radios.radios[i]?.name}</div><audio controls src="${this.Radios.radios[i]?.url}"></audio></div>`;
+      }
     });
   }
 
