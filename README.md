@@ -1,6 +1,13 @@
-بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
+<p align="center"> 
+  بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
+</p>
+<p align="center"> 
 مواقع القرآن والحديث والذكر
-> 6236 verses, 114 surah, 30 Juz'
+</p>
+<p align="center"> 
+  6236 verses, 114 surah, 30 Juz'
+</p>
+
 
 ### مصادر للقرآن الكريم وأوقات الصلاه والاذكار والأحاديث ❤️
 
@@ -44,7 +51,6 @@ https://lnkd.in/diXsuM6U
 # Quraan voice 
 
 https://lnkd.in/dBqrgnry
-
 
 
 
