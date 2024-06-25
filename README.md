@@ -1,27 +1,97 @@
-# OnlinequranFeClient
+بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
+مواقع القرآن والحديث والذكر
+> 6236 verses, 114 surah, 30 Juz'
 
+### مصادر للقرآن الكريم وأوقات الصلاه والاذكار والأحاديث ❤️
+
+
+# Quran-Datasets:
+https://lnkd.in/dPPH-spn
+
+https://lnkd.in/d35kcFCZ
+
+https://lnkd.in/dNVtiE_J
+
+https://lnkd.in/dGy3zpTN
+
+# Hadith-Datasets:
+https://lnkd.in/dv_g7PiP
+
+https://lnkd.in/di5e6YEp
+
+https://lnkd.in/dauV-n6R
+
+# Azkar-Datasets:
+
+https://lnkd.in/dXNRrDCj
+
+https://lnkd.in/dyZ9XqET
+
+# Quran-APIs:
+
+https://alquran.cloud/api
+
+https://quran.api-docs.io/
+
+https://lnkd.in/ddfbPT9v
+
+# Prayer-Times-API:
+
+https://lnkd.in/dnQWeB2K
+
+https://lnkd.in/diXsuM6U
+
+# Quraan voice 
+
+https://lnkd.in/dBqrgnry
+
+
+
+
+# Onlinequran (Technology)
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.5.
 
-## Development server
+### Folder structure for Onlinequran
+```sh
+.
+├── README.md
+├── Index.html
+├── Main.ts
+├── Styles.css
+└── src
+    ├── app
+    │   └── about
+    │       ├── *.css
+    │       ├── *.html
+    │       └── *.ts
+    │   └── footer
+    │       ├── *.css
+    │       ├── *.html
+    │       └── *.ts
+    │   └── header
+    │       ├── *.css
+    │       ├── *.html
+    │       └── *.ts
+    │   └── Main-body
+    │       ├── *.css
+    │       ├── *.html
+    │       └── *.ts
+    │   └── Quran-page
+    │       ├── *.css
+    │       ├── *.html
+    │       └── *.ts
+    │   └── Streams-page
+    │       ├── *.css
+    │       ├── *.html
+    │       └── *.ts
+    │   └── Mid
+    │       ├── sura-frame.png
+    │       ├── SurahList.json
+    │       └── AyaList.json
+    └── assets
+        ├── bi.jpg
+        ├── facebook.png
+        ├── game.png
+        └── github.png
+```
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
