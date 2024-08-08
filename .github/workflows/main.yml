@@ -24,9 +24,5 @@ jobs:
       - name: Build Angular App
         run: npm run build
         
-      - name: Deploy to gh pages
-      - uses: JamesIves/github-pages-deploy-action@releases/v3
-        with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: gh-pages
-          FOLDER: .
+      - name: Deploy Angular to GitHub Pages
+        uses: bitovi/github-actions-angular-to-github-pages@v1.0.0
