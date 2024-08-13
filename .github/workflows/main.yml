@@ -24,6 +24,11 @@ jobs:
       - name: Build Angular App
         run: npm run build
 
+      - name: Set Git Identity
+        run: |
+          git config user.name "Mohammad Awad"
+          git config user.email "Mohammad.omar.awad@gmail.com"
+
       - name: Deploy to gh pages
         run: |
               npx angular-cli-ghpages --dir=dist/browser --no-silent
