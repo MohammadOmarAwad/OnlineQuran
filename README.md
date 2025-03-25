@@ -57,7 +57,7 @@ https://lnkd.in/dBqrgnry
 # Onlinequran (Technology)
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.5.
 
-### Folder structure for Onlinequran
+# Folder structure for Onlinequran
 ```sh
 .
 ├── README.md
