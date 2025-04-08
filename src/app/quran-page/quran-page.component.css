@@ -22,7 +22,11 @@
 }
 
 .Btn {
-  cursor: pointer
+  cursor: pointer;
+}
+
+.Btn:hover {
+  text-decoration: underline;
 }
 
 hr {

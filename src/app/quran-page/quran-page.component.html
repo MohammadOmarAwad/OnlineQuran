@@ -3,6 +3,19 @@
   <div class="DivContanier">
     <div class="DivBox">
 
+      <!-- Navigation Btns -->
+      <div style="margin-bottom: -30px;">
+        <table>
+          <tr style="white-space: nowrap; background-color: transparent;">
+            <td><span class="Btn" (click)="GoToNextPage(quranPage.Ayas[0].page)">الصفحة التالية</span></td>
+            <td style="width:100%;"><span></span></td>
+            <td><span class="Btn" (click)="GoToPriviousePage(quranPage.Ayas[0].page)">الصفحة السابقة</span></td>
+          </tr>
+        </table>
+      </div>
+
+      <hr>
+
       <!--Surah Infos-->
       <div>
         <table>
@@ -17,24 +30,12 @@
       <hr>
 
       <!--Surah Text-->
-      <div style="line-height:45px;" [innerHtml]="PageBody">
-      </div>
+      <div style="line-height:45px;" [innerHtml]="PageBody"></div>
 
       <hr>
 
       <!--Pages Number-->
-      <div style="text-align: center;">
-        <table>
-          <tr style="white-space: nowrap; background-color: transparent;">
-            <td colspan="3"><span>{{quranPage.Ayas[0].page}} الصفحة</span></td>
-          </tr>
-          <tr style="white-space: nowrap; background-color: transparent;">
-            <td><span class="Btn" (click)="GoToNextPage(quranPage.Ayas[0].page)">الصفحة التالية</span></td>
-            <td style="width:100%;"><span></span></td>
-            <td><span class="Btn" (click)="GoToPriviousePage(quranPage.Ayas[0].page)">الصفحة السابقة</span></td>
-          </tr>
-        </table>
-      </div>
+      <div><span>{{quranPage.Ayas[0].page}} الصفحة</span></div>
 
     </div>
   </div>
