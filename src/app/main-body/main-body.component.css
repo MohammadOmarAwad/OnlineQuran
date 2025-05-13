@@ -23,3 +23,11 @@
   justify-content: center;
   font-family: 'Droid Arabic Kufi';
 }
+
+.MainBody{
+  width: 60%;
+  display: block;
+  margin-left: 20%;
+  margin-right: 20%; 
+  min-height:82vh;
+}
