@@ -11,6 +11,13 @@
   font-size: 18px;
   font-weight: bolder;
   cursor:pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.DivBox:hover{
+  color: rebeccapurple;
+  box-shadow: 0px 0px 5px 5px rgba(185, 240, 163, 0.5);
+  transform: scale(1.1);
 }
 
 .DivContanier {
