@@ -1,14 +1,13 @@
 .SurahInfos {
   border-radius: 14px;
-  padding: 8px;
+  padding: 8px 20px 8px 20px;
   border-bottom: 2px solid;
   border-top: 2px solid;
+  white-space: nowrap;
 }
 
-.Surah-Seperator {
-  background: transparent url('../Mid/sura-frame.png') no-repeat scroll 50% 50%;
-  margin: 5px;
-  padding: 10px;
+.columon{
+  width: 33%;
 }
 
 .AyaClass {
@@ -26,14 +25,25 @@
 
 .NameClass {
   width: 100%;
+  margin-bottom: 10px;
 }
 
 .Btn {
-  cursor: pointer;
+  background-color: #02534d;     
+  color: white;     
+  padding: 12px 24px;      
+  border: none;              
+  border-radius: 5px;          
+  font-size: 16px;            
+  cursor: pointer;          
+  transition: all 0.3s ease;    
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
 }
 
 .Btn:hover {
-  text-decoration: underline;
+  background-color: #45a049;     
+  transform: scale(1.05);       
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); 
 }
 
 hr {
