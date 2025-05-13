@@ -11,10 +11,16 @@
   padding: 10px;
 }
 
-.AyaNumClass {
-  font-size: 35px;
-  padding: 5px;
+.AyaClass {
+  font-weight: 100;
   color: lightyellow;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.AyaClass:hover {
+  background-color: rgba(0, 153, 255, 0.24); 
+  cursor: pointer; 
+  border-radius: 30px;
 }
 
 .NameClass {
@@ -69,7 +75,7 @@ hr {
   .DivBox{
     font-size: 20px;
   }
-  .AyaNumClass{
+  .AyaClass{
     font-size: 25px;
   }
 }
