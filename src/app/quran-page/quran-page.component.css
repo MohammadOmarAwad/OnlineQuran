@@ -41,8 +41,8 @@ hr {
 }
 
 .LineClass {
-  text-align: center;
-  text-align-last: center;
+  text-align: justify;
+  text-align-last: justify;
   direction: rtl;
   font-weight: 100;
 }
