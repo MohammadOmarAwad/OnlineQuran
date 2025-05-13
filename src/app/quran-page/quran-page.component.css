@@ -42,7 +42,7 @@ hr {
 
 .LineClass {
   text-align: justify;
-  text-align-last: justify;
+  text-align-last: center;
   direction: rtl;
   font-weight: 100;
 }
