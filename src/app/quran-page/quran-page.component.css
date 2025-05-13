@@ -68,14 +68,13 @@ hr {
   font-size: 40px;
 }
 
-.DivContanier {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  margin-left: 10%;
-  margin-right: 10%;
-  font-family:monospace;
+.MainBody{
+  width: 60%;
+  display: block;
+  margin-left: 20%;
+  margin-right: 20%; 
+  min-height:82vh;
+  font-family: monospace;
 }
 
 @media screen and (min-width: 128px) and (max-width: 900px) {
@@ -88,6 +87,11 @@ hr {
   }
   .AyaClass{
     font-size: 25px;
+  }
+  .MainBody{
+    width: 100%;
+    margin-left: 1%;
+    margin-right: 1%; 
   }
 }
 

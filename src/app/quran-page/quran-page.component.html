@@ -1,38 +1,36 @@
-<div style="margin-top: 5px;min-height: 82vh;">
+<div class="MainBody">
 
-  <div class="DivContanier">
-    <div class="DivBox">
+  <div class="DivBox">
 
-      <!-- Navigation Btns -->
-        <table style="margin-bottom: 20px;">
-          <tr style="white-space: nowrap; background-color: transparent;">
-            <td><span class="Btn" (click)="GoToNextPage(quranPage.Ayas[0].page)">الصفحة التالية</span></td>
-            <td style="width:100%;"><span></span></td>
-            <td><span class="Btn" (click)="GoToPriviousePage(quranPage.Ayas[0].page)">الصفحة السابقة</span></td>
-          </tr>
-        </table>
+    <!-- Navigation Btns -->
+    <table style="margin-bottom: 20px;">
+      <tr style="white-space: nowrap; background-color: transparent;">
+        <td><span class="Btn" (click)="GoToNextPage(quranPage.Ayas[0].page)">الصفحة التالية</span></td>
+        <td style="width:100%;"><span></span></td>
+        <td><span class="Btn" (click)="GoToPriviousePage(quranPage.Ayas[0].page)">الصفحة السابقة</span></td>
+      </tr>
+    </table>
 
-      <!--Surah Infos-->
-      <div>
-        <table>
-          <tr style="white-space: nowrap; background-color: transparent;">
-            <td><span>{{quranPage.Ayas[0].juz}} الجزء</span></td>
-            <td style="width:100%;"><span></span></td>
-            <td><span>{{quranPage.Ayas[0].surah_Infos?.name}} </span></td>
-          </tr>
-        </table>
-      </div>
-
-      <hr>
-
-      <!--Surah Text-->
-      <div style="line-height:45px;" [innerHtml]="PageBody"></div>
-
-      <hr>
-
-      <!--Pages Number-->
-      <div><span>{{quranPage.Ayas[0].page}} الصفحة</span></div>
-
+    <!--Surah Infos-->
+    <div>
+      <table>
+        <tr style="white-space: nowrap; background-color: transparent;">
+          <td><span>{{quranPage.Ayas[0].juz}} الجزء</span></td>
+          <td style="width:100%;"><span></span></td>
+          <td><span>{{quranPage.Ayas[0].surah_Infos?.name}} </span></td>
+        </tr>
+      </table>
     </div>
+
+    <hr>
+
+    <!--Surah Text-->
+    <div style="line-height:45px;" [innerHtml]="PageBody"></div>
+
+    <hr>
+
+    <!--Pages Number-->
+    <div><span>{{quranPage.Ayas[0].page}} الصفحة</span></div>
+
   </div>
 </div>
