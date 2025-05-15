@@ -11,16 +11,14 @@
 }
 
 .AyaClass {
-  font-weight: 100;
   color: lightyellow;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.5s ease;
 }
 
 .AyaClass:hover {
   background-color: rgba(0, 153, 255, 0.24); 
   cursor: pointer; 
-  border-radius: 30px;
-  padding-right: 10px;
+  transform: scale(1.1);
 }
 
 .NameClass {
