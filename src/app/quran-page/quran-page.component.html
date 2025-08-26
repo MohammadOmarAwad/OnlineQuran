@@ -6,7 +6,7 @@
     <table style="margin-bottom: 20px;">
       <tr style="white-space: nowrap; background-color: transparent;">
         <td><button class="Btn" (click)="GoToNextPage(quranPage.Ayas[0].page)">الصفحة التالية</button></td>
-        <td style="width:100%;"><span></span></td>
+        <td style="width:100%;"><span>{{quranPage.Ayas[0].page}}</span></td>
         <td><button class="Btn" (click)="GoToPriviousePage(quranPage.Ayas[0].page)">الصفحة السابقة</button></td>
       </tr>
     </table>
