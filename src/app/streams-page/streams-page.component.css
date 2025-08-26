@@ -34,6 +34,14 @@
     font-size: x-large;
   }
 
+  .MainBody {
+    width: 60%;
+    display: block;
+    margin-left: 20%;
+    margin-right: 20%;
+    min-height: 82vh;
+  }
+
   @media screen and (min-width: 128px) and (max-width: 900px) {
     .DivBox {
       height: 50vh;
@@ -43,5 +51,11 @@
       font-size: large;
       width: -webkit-fill-available;
       white-space: break-spaces;
+    }
+
+    .MainBody {
+      width: 100%;
+      margin-left: 1%;
+      margin-right: 1%;
     }
   }

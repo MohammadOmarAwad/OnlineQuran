@@ -1,25 +1,53 @@
-<h1>البث المباشر</h1>
-<div class="DivContanier">
-    <iframe class="DivBox" src="https://www.youtube.com/embed/Tn28fmLi5Ko"></iframe>
-    <iframe class="DivBox" src="https://www.youtube.com/embed/rHWSRMcGGBQ"></iframe>
-</div>
+<div class="MainBody">
 
+    <h1>البث المباشر</h1>
+    <nav style="margin-top: 5px;">
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <button style="color: black;cursor: pointer;width: 100px;" class="nav-link active" id="nav-Maka-tab"
+                data-bs-toggle="tab" data-bs-target="#nav-Maka" type="button" role="tab" aria-controls="nav-Maka"
+                aria-selected="true">مكة</button>
+            <button style="color: black;cursor: pointer;width: 100px;" class="nav-link" id="nav-Madina-tab"
+                data-bs-toggle="tab" data-bs-target="#nav-Madina" type="button" role="tab" aria-controls="nav-Madina"
+                aria-selected="false">المدينة</button>
+            <button style="color: black;cursor: pointer;width: 100px;" class="nav-link" id="nav-Radio-tab"
+                data-bs-toggle="tab" data-bs-target="#nav-Radio" type="button" role="tab" aria-controls="nav-Radio"
+                aria-selected="false">الإذاعة</button>
+        </div>
+    </nav>
 
-<h1>الإذاعة</h1>
+    <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="nav-Maka" role="tabpanel" aria-labelledby="nav-Maka-tab">
+            <div class="DivContanier">
+                <iframe class="DivBox" src="https://www.youtube.com/embed/Tn28fmLi5Ko"></iframe>
+            </div>
+        </div>
 
-<div class="DivContanier">
-    <div class="DivBoxRadio">
-        <h3>Sharjah Quran Radio Sharjah, United Arab Emirates</h3>
-        <audio controls src="https://l3.itworkscdn.net/smcquranlive/quranradiolive/icecast.audio"></audio>
+        <div class="tab-pane fade" id="nav-Madina" role="tabpanel" aria-labelledby="nav-Madina-tab">
+            <div class="DivContanier">
+                <iframe class="DivBox" src="https://www.youtube.com/embed/rHWSRMcGGBQ"></iframe>
+            </div>
+        </div>
+
+        <div class="tab-pane fade" id="nav-Radio" role="tabpanel" aria-labelledby="nav-Radio-tab">
+            <div class="DivContanier">
+                
+                <div class="DivBoxRadio">
+                    <h3>Sharjah Quran Radio Sharjah, United Arab Emirates</h3>
+                    <audio controls src="https://l3.itworkscdn.net/smcquranlive/quranradiolive/icecast.audio"></audio>
+                </div>
+
+                <div class="DivBoxRadio">
+                    <h3>Zuwara Quran 103.7 FM Zuwara, Libya</h3>
+                    <audio controls src="https://stream.zeno.fm/snczwewpsg0uv"></audio>
+                </div>
+
+                <div class="DivBoxRadio">
+                    <h3>Quran FM 98.2 إذاعة القرآن الكريم Cairo, Egypt</h3>
+                    <audio controls src="https://stream.radiojar.com/8s5u5tpdtwzuv"></audio>
+                </div>
+
+            </div>
+        </div>
     </div>
 
-    <div class="DivBoxRadio">
-        <h3>Zuwara Quran 103.7 FM Zuwara, Libya</h3>
-        <audio controls src="https://stream.zeno.fm/snczwewpsg0uv"></audio>
-    </div>
-
-    <div class="DivBoxRadio">
-        <h3>Quran FM 98.2 إذاعة القرآن الكريم Cairo, Egypt</h3>
-        <audio controls src="https://stream.radiojar.com/8s5u5tpdtwzuv"></audio>
-    </div>
 </div>
