@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import AyaListData from '../Mid/AyaList.json';
 import SurahListData from '../Mid/SurahList.json';
 import { Aya, Surah, QuranPage } from '../Models/QuranPageModle';
+import { Component, ViewEncapsulation, ElementRef, Renderer2, ViewChild, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'app-quran-page',
@@ -14,17 +14,22 @@ import { Aya, Surah, QuranPage } from '../Models/QuranPageModle';
   encapsulation: ViewEncapsulation.None
 })
 export class QuranPageComponent {
+  @ViewChild('ayasContainer') ayasContainer!: ElementRef;
+
   public ayas: Aya[] = [];
   public surahs: Surah[] = [];
   public quranPage: QuranPage;
   PageNumber: string;
   PageBody: String = "";
   PlaceHolder: String = "";
+  IsDetails: String = "none";
+  IsNormal: String = "Block";
+  Show_Audio: String = "none";
+  Running_URL: String = "none";
 
-  constructor(private route: ActivatedRoute) { }
-
+  constructor(private activeRoute: ActivatedRoute) { }
   ngOnInit() {
-    this.route.params.subscribe((params: Params) => this.PageNumber = params['PageNumber']);
+    this.activeRoute.params.subscribe((params: Params) => this.PageNumber = params['PageNumber']);
     this.getData(this.PageNumber);
   }
 
@@ -36,6 +41,11 @@ export class QuranPageComponent {
 
     let AyasPage = this.ayas.filter(a => a.page === pageNumer);
     AyasPage.forEach(xx => xx.surah_Infos = this.surahs.find(a => a.order.toString() === xx.sura));
+    AyasPage.forEach(xx => {
+      const sura = xx.sura.toString().padStart(3, '0');
+      const aya = xx.aya.toString().padStart(3, '0');
+      xx.URL = `https://everyayah.com/data/Ayman_Sowaid_64kbps/${sura}${aya}.mp3`;
+    });
 
     this.quranPage.SurahNames = AyasPage[0].sura;
     this.quranPage.Ayas = AyasPage;
@@ -67,7 +77,7 @@ export class QuranPageComponent {
         }
       }
 
-      this.PlaceHolder += `<Span class="AyaClass" >
+      this.PlaceHolder += `<Span class="AyaClass">
                             <span>${aya?.text_uthmani}</span>
                             <span>﴿${aya?.aya}﴾</span>
                           </Span>`;
@@ -95,5 +105,29 @@ export class QuranPageComponent {
     }
 
     this.getData(String(newValue));
+  }
+
+  ngAfterViewInit() {
+    this.ayasContainer.nativeElement.addEventListener('click', (event: Event) => {
+      const target = (event.target as HTMLElement).closest('.AyaClass') as HTMLElement;
+      if (target) {
+        this.GoToAya_Details();
+      }
+    });
+  }
+
+  GoToAya_Details(): void {
+    this.IsDetails = this.IsDetails === "none" ? "block" : "none";
+    this.IsNormal = this.IsNormal === "none" ? "block" : "none";
+
+    if(this.IsDetails=="none"){
+      this.Running_URL="none";
+      this.Show_Audio ="none";
+    }
+  }
+
+  Run_Audio(url: any): void {
+    this.Show_Audio = "block";
+    this.Running_URL = url;
   }
 }

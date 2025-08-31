@@ -19,6 +19,7 @@ export interface Aya {
   verse_key: string
   theletter: number
   nim: string
+  URL?: string
   surah_Infos: any
 }
 

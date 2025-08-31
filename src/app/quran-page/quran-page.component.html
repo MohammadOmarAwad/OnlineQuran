@@ -16,7 +16,8 @@
       <table>
         <tr style="white-space: nowrap; background-color: transparent;">
           <td><span>{{quranPage.Ayas[0].juz}} الجزء</span></td>
-          <td style="width:100%;"><span></span></td>
+          <td style="width:100%;text-align: -webkit-center;"><button class="Btn" style="background-color: chocolate;"
+              [style.display]="IsDetails" (click)="GoToAya_Details()">X</button></td>
           <td><span>{{quranPage.Ayas[0].surah_Infos?.name}} </span></td>
         </tr>
       </table>
@@ -25,11 +26,45 @@
     <hr>
 
     <!--Surah Text-->
-    <div style="line-height:45px;" [innerHtml]="PageBody"></div>
+    <div #ayasContainer [style.display]="IsNormal" style="line-height:45px;" [innerHtml]="PageBody"></div>
+
+    <div [style.display]="IsDetails" style="line-height:45px;">
+      @for (aya of quranPage.Ayas; track aya.aya) {
+      @if(aya.aya === '1')
+      {
+      <div> بِسْــــــمِ اللَّــــــهِ الرَّحْمَـٰــنِ الرَّحِيــــم</div>
+      <br>
+      }
+
+      <table style="width: 100%;">
+        <tr>
+          <td style="text-align-last:left;font-size: x-large;padding-right: 10px;vertical-align: top;">
+            <div style="white-space:nowrap;">{{ aya.sura }}:{{ aya.aya }}</div>
+            <div>
+              <button style="background-color: transparent;border-radius: 5px;" (click)="Run_Audio(aya.URL)"><i style='font-size:24px'>&#9205;</i></button>
+            </div>
+            <!-- <audio controls src={{aya.URL}}></audio> -->
+          </td>
+          <td>
+            <div class="LineClass" style="text-align-last:right;">
+              <span class="AyaClass">
+                <span>{{ aya.text }}</span>
+                <span>﴿{{ aya.aya }}﴾</span>
+              </span>
+            </div>
+          </td>
+        </tr>
+      </table>
+      <br>
+      }
+    </div>
 
     <hr>
 
     <!--Pages Number-->
+    <div [style.display]="Show_Audio">
+      <audio controls autoplay src="{{Running_URL}}" style="width: 100%;"></audio>
+    </div>
     <div><span>{{quranPage.Ayas[0].page}} الصفحة</span></div>
 
   </div>
