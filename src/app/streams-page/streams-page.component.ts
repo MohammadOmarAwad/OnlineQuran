@@ -12,14 +12,15 @@ export class StreamsPageComponent {
 
   ComponentLiveMakka: SafeHtml;
   ComponentLiveMadina: SafeHtml;
+  Running_URL: String = "None";
 
   constructor(private sanitizer: DomSanitizer) {
-    this.Run_Audio('https://www.youtube.com/embed/fRLNpcIwz34', 'Makka');
-    this.Run_Audio('https://www.youtube.com/embed/TpT8b8JFZ6E', 'Madina');
+    this.Run_Video('https://www.youtube.com/embed/fRLNpcIwz34', 'Makka');
+    this.Run_Video('https://www.youtube.com/embed/TpT8b8JFZ6E', 'Madina');
   }
 
 
-  Run_Audio(url: string, Element: String): void {
+  Run_Video(url: string, Element: String): void {
     const iframeString = `
       <iframe class='DivBox' width="560" height="315"
         src='${url}'
@@ -34,5 +35,9 @@ export class StreamsPageComponent {
     if (Element == 'Madina') {
       this.ComponentLiveMadina = this.sanitizer.bypassSecurityTrustHtml(iframeString);
     }
+  }
+
+  Run_Audio(url: any): void {
+    this.Running_URL = url;
   }
 } 

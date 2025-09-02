@@ -43,23 +43,23 @@
   }
 
   .Btn {
-  background-color: #02534d;
-  color: white;
-  padding: 12px 24px;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  
-  margin: 1px;
-}
+    background-color: #02534d;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 1px;
+  }
 
-.Btn:hover {
-  background-color: #45a049;
-  transform: scale(1.05);
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
-}
+  .Btn:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+  }
 
   @media screen and (min-width: 128px) and (max-width: 900px) {
     .DivBox {
@@ -77,4 +77,9 @@
       margin-left: 1%;
       margin-right: 1%;
     }
+  }
+
+  /* Change the entire player background */
+  audio::-webkit-media-controls-panel {
+    background-color: lightgrey;
   }
