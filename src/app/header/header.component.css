@@ -69,6 +69,6 @@ header {
   .mobile_menu {
     right: 0;
     transition: 0.4s ease-in-out;
-    display: block;
+    display: contents;
   }
 }
