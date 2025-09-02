@@ -17,20 +17,32 @@
 
     <div class="tab-content" id="nav-tabContent">
         <div class="tab-pane fade show active" id="nav-Maka" role="tabpanel" aria-labelledby="nav-Maka-tab">
-            <div class="DivContanier">
-                <iframe class="DivBox" src="https://www.youtube.com/embed/Tn28fmLi5Ko"></iframe>
-            </div>
+            <button class="Btn" (click)="Run_Audio('https://www.youtube.com/embed/fRLNpcIwz34','Makka')">المباشر
+                1</button>
+            <button class="Btn" (click)="Run_Audio('https://www.youtube.com/embed/7-Qf3g-0xEI','Makka')">المباشر
+                2</button>
+            <button class="Btn" (click)="Run_Audio('https://www.youtube.com/embed/2v7nPi8V1UE','Makka')">المباشر
+                3</button>
+            <button class="Btn" (click)="Run_Audio('https://www.youtube.com/embed/X2JaaxtsOUM','Makka')">المباشر
+                4</button>
+            <div class="DivContanier" [innerHTML]="ComponentLiveMakka"> </div>
         </div>
 
         <div class="tab-pane fade" id="nav-Madina" role="tabpanel" aria-labelledby="nav-Madina-tab">
-            <div class="DivContanier">
-                <iframe class="DivBox" src="https://www.youtube.com/embed/rHWSRMcGGBQ"></iframe>
-            </div>
+            <button class="Btn" (click)="Run_Audio('https://www.youtube.com/embed/TpT8b8JFZ6E','Madina')">المباشر
+                1</button>
+            <button class="Btn" (click)="Run_Audio('https://www.youtube.com/embed/s2IvtZ-9Bog','Madina')">المباشر
+                2</button>
+            <button class="Btn" (click)="Run_Audio('https://www.youtube.com/embed/rHWSRMcGGBQ','Madina')">المباشر
+                3</button>
+            <button class="Btn" (click)="Run_Audio('https://www.youtube.com/embed/phF5BzEwb0U','Madina')">المباشر
+                4</button>
+            <div class="DivContanier" [innerHTML]="ComponentLiveMadina"> </div>
         </div>
 
         <div class="tab-pane fade" id="nav-Radio" role="tabpanel" aria-labelledby="nav-Radio-tab">
             <div class="DivContanier">
-                
+
                 <div class="DivBoxRadio">
                     <h3>Sharjah Quran Radio Sharjah, United Arab Emirates</h3>
                     <audio controls src="https://l3.itworkscdn.net/smcquranlive/quranradiolive/icecast.audio"></audio>
