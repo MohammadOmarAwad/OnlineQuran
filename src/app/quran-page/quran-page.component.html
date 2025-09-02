@@ -1,4 +1,8 @@
-<div class="MainBody">
+<div [style.display]="Show_Audio" style="    text-align: justify;">
+  <audio controls autoplay src="{{Running_URL}}" style="width: 100%;background-color: lightgrey;"></audio>
+</div>
+
+<div class="MainBody" style="overflow: auto;height: 100px;scrollbar-width: none;">
 
   <div class="DivBox">
 
@@ -41,7 +45,8 @@
           <td style="text-align-last:left;font-size: x-large;padding-right: 10px;vertical-align: top;">
             <div style="white-space:nowrap;">{{ aya.sura }}:{{ aya.aya }}</div>
             <div>
-              <button style="background-color: transparent;border-radius: 5px;" (click)="Run_Audio(aya.URL)"><i style='font-size:24px'>&#9205;</i></button>
+              <button style="background-color: transparent;border-radius: 5px;" (click)="Run_Audio(aya.URL)"><i
+                  style='font-size:24px'>&#9205;</i></button>
             </div>
             <!-- <audio controls src={{aya.URL}}></audio> -->
           </td>
@@ -62,9 +67,6 @@
     <hr>
 
     <!--Pages Number-->
-    <div [style.display]="Show_Audio">
-      <audio controls autoplay src="{{Running_URL}}" style="width: 100%;"></audio>
-    </div>
     <div><span>{{quranPage.Ayas[0].page}} الصفحة</span></div>
 
   </div>

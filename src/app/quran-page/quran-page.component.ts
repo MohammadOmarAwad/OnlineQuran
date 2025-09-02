@@ -13,6 +13,7 @@ import { Component, ViewEncapsulation, ElementRef, Renderer2, ViewChild, AfterVi
   styleUrl: './quran-page.component.css',
   encapsulation: ViewEncapsulation.None
 })
+
 export class QuranPageComponent {
   @ViewChild('ayasContainer') ayasContainer!: ElementRef;
 
@@ -28,6 +29,7 @@ export class QuranPageComponent {
   Running_URL: String = "none";
 
   constructor(private activeRoute: ActivatedRoute) { }
+
   ngOnInit() {
     this.activeRoute.params.subscribe((params: Params) => this.PageNumber = params['PageNumber']);
     this.getData(this.PageNumber);
@@ -120,9 +122,9 @@ export class QuranPageComponent {
     this.IsDetails = this.IsDetails === "none" ? "block" : "none";
     this.IsNormal = this.IsNormal === "none" ? "block" : "none";
 
-    if(this.IsDetails=="none"){
-      this.Running_URL="none";
-      this.Show_Audio ="none";
+    if (this.IsDetails == "none") {
+      this.Running_URL = "none";
+      this.Show_Audio = "none";
     }
   }
 
