@@ -24,12 +24,12 @@ export class MainBodyComponent implements OnInit {
     this.ayas = AyaListData;
   }
 
-  gotoQuranPageBySurah(PageNumber: number): void {
-    this.router.navigate(['/quran', PageNumber]);
-  }
-
   gotoQuranPageByJuz(JuzNumber: number): void {
     let pageNr = Number(this.ayas.filter(x => x.juz == String(JuzNumber))[0].page);
     this.router.navigate(['/quran', pageNr]);
+  }
+  
+  gotoQuranPageByPage(PageNumber: number): void {
+    this.router.navigate(['/quran', PageNumber]);
   }
 }
