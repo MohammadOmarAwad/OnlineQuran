@@ -20,17 +20,6 @@
   transform: scale(1.1);
 }
 
-.DivContanier {
-  direction: rtl;
-  white-space: nowrap;
-  display: flex;
-  flex-wrap: wrap;
-  padding: 10px;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Droid Arabic Kufi';
-}
-
 .MainBody{
   width: 60%;
   display: block;

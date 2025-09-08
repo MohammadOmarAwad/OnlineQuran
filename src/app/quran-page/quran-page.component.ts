@@ -10,7 +10,7 @@ import { Component, ViewEncapsulation, ElementRef, Renderer2, ViewChild, AfterVi
   imports: [CommonModule],
   standalone: true,
   templateUrl: './quran-page.component.html',
-  styleUrl: './quran-page.component.css',
+  styleUrls: ['../app.component.css', './quran-page.component.css'],
   encapsulation: ViewEncapsulation.None
 })
 

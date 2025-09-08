@@ -11,7 +11,7 @@ import { HeaderComponent } from '../header/header.component';
   standalone: true,
   imports: [CommonModule, RouterOutlet, RouterLink, RouterLinkActive],
   templateUrl: './main-body.component.html',
-  styleUrl: './main-body.component.css'
+  styleUrls: ['../app.component.css', './main-body.component.css']
 })
 export class MainBodyComponent implements OnInit {
   title = 'Onlinequran';
@@ -28,7 +28,7 @@ export class MainBodyComponent implements OnInit {
     let pageNr = Number(this.ayas.filter(x => x.juz == String(JuzNumber))[0].page);
     this.router.navigate(['/quran', pageNr]);
   }
-  
+
   gotoQuranPageByPage(PageNumber: number): void {
     this.router.navigate(['/quran', PageNumber]);
   }
