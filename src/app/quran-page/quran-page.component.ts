@@ -116,7 +116,7 @@ export class QuranPageComponent {
     });
   }
 
-  GoToAya_Details(isShowen:boolean): void {
+  GoToAya_Details(isShowen: boolean): void {
     this.IsDetails = isShowen;
 
     if (!this.IsDetails) {
@@ -126,5 +126,19 @@ export class QuranPageComponent {
 
   Run_Audio(url: any): void {
     this.Running_URL = url;
+  }
+
+  AddCSSClass(): void {
+    const items = document.querySelectorAll('.AyaClass');
+
+    items.forEach(item => {
+      item.addEventListener('click', () => {
+        // Remove 'active' class from all items
+        items.forEach(el => el.classList.remove('active'));
+
+        // Add 'active' class to the clicked item
+        item.classList.add('active');
+      });
+    });
   }
 }
