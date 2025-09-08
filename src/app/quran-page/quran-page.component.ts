@@ -23,9 +23,7 @@ export class QuranPageComponent {
   PageNumber: string;
   PageBody: String = "";
   PlaceHolder: String = "";
-  IsDetails: String = "none";
-  IsNormal: String = "Block";
-  Show_Audio: String = "none";
+  IsDetails: boolean = false;
   Running_URL: String = "none";
 
   constructor(private activeRoute: ActivatedRoute) { }
@@ -113,19 +111,16 @@ export class QuranPageComponent {
     this.ayasContainer.nativeElement.addEventListener('click', (event: Event) => {
       const target = (event.target as HTMLElement).closest('.AyaClass') as HTMLElement;
       if (target) {
-        this.GoToAya_Details();
+        this.GoToAya_Details(true);
       }
     });
   }
 
-  GoToAya_Details(): void {
-    this.IsDetails = this.IsDetails === "none" ? "block" : "none";
-    this.IsNormal = this.IsNormal === "none" ? "block" : "none";
-    this.Show_Audio = this.IsNormal === "none" ? "flex" : "none";
+  GoToAya_Details(isShowen:boolean): void {
+    this.IsDetails = isShowen;
 
-    if (this.IsDetails == "none") {
+    if (!this.IsDetails) {
       this.Running_URL = "none";
-      this.Show_Audio = "none";
     }
   }
 
