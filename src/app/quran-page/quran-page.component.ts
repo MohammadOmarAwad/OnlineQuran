@@ -121,6 +121,7 @@ export class QuranPageComponent {
   GoToAya_Details(): void {
     this.IsDetails = this.IsDetails === "none" ? "block" : "none";
     this.IsNormal = this.IsNormal === "none" ? "block" : "none";
+    this.Show_Audio = this.IsNormal === "none" ? "flex" : "none";
 
     if (this.IsDetails == "none") {
       this.Running_URL = "none";
@@ -129,7 +130,6 @@ export class QuranPageComponent {
   }
 
   Run_Audio(url: any): void {
-    this.Show_Audio = "block";
     this.Running_URL = url;
   }
 }
