@@ -1,6 +1,6 @@
 <div [style.display]="IsDetails ? 'flex' : 'none'" style="text-align: justify;">
   <audio controls autoplay src="{{Running_URL}}" style="width: 100%;background-color: lightgrey;"></audio>
-  <button class="Btn" style="background-color: chocolate;border-radius: unset;" (click)="GoToAya_Details(false)">X</button>
+  <button style="background-color: chocolate;padding: 12px 24px;border: none;cursor: pointer;color: white;" (click)="GoToAya_Details(false)">X</button>
 </div>
 
 <div class="MainBody" style="overflow: auto;height: 100px;scrollbar-width: none;">
@@ -30,7 +30,8 @@
     <hr>
 
     <!--Surah Text-->
-    <div #ayasContainer [style.display]="IsDetails ? 'none' : 'block'" style="line-height:45px;" [innerHtml]="PageBody"></div>
+    <div #ayasContainer [style.display]="IsDetails ? 'none' : 'block'" style="line-height:45px;" [innerHtml]="PageBody">
+    </div>
 
     <div [style.display]="IsDetails ? 'block' : 'none'" style="line-height:45px;">
       @for (aya of quranPage.Ayas; track aya.aya) {
