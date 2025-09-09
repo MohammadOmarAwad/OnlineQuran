@@ -8,14 +8,8 @@
   margin: 5px;
 }
 
-@media screen and (min-width: 128px) {
+@media screen and (max-width: 500px) {
   .ImgClass{
-    width: 3%;
+    width: 4%;
   }
-}
-
-@media screen and (max-width: 900px) {
-    .ImgClass{
-      width: 4%;
-    }
 }

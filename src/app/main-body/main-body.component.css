@@ -10,28 +10,12 @@
   background: linear-gradient(#a78140 0 0) padding-box, repeating-conic-gradient(#5d513c 0 25%, #0000 0 50%) border-box;
   font-size: 18px;
   font-weight: bolder;
-  cursor:pointer;
+  cursor: pointer;
   transition: transform 0.2s ease-in-out;
 }
 
-.DivBox:hover{
+.DivBox:hover {
   color: rebeccapurple;
   box-shadow: 0px 0px 5px 5px rgba(185, 240, 163, 0.5);
   transform: scale(1.1);
-}
-
-.MainBody{
-  width: 60%;
-  display: block;
-  margin-left: 20%;
-  margin-right: 20%; 
-  min-height:82vh;
-}
-
-@media screen and (min-width: 128px) and (max-width: 900px) {
-  .MainBody{
-    width: 100%;
-    margin-left: 1%;
-    margin-right: 1%; 
-  }
 }

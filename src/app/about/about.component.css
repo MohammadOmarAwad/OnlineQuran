@@ -1,29 +1,12 @@
 .DivBox {
-    margin: 5px;
-    align-items: center;
-    justify-content: space-around;
-    color: white;
-    border: 3px solid #0000;
-    background: linear-gradient(#a78140 0 0) padding-box, repeating-conic-gradient(#5d513c 0 25%, #0000 0 50%) border-box;
-    font-size: x-large;
-    font-weight: bold;
-    padding: 15px;
-    font-size: 20px;
-  }
-  
-  .MainBody{
-    width: 30%;
-    display: block;
-    margin-left: 35%;
-    margin-right: 35%; 
-    min-height:82vh;
-    font-family: "Droid Arabic Kufi";
-  }
-
-  @media screen and (min-width: 300px) and (max-width: 950px) {
-    .MainBody{
-      width: 100%;
-      margin-left: 1%;
-      margin-right: 1%; 
-    }
-  }
+  margin: 5px;
+  align-items: center;
+  justify-content: space-around;
+  color: white;
+  border: 3px solid #0000;
+  background: linear-gradient(#a78140 0 0) padding-box, repeating-conic-gradient(#5d513c 0 25%, #0000 0 50%) border-box;
+  font-size: x-large;
+  font-weight: bold;
+  padding: 15px;
+  font-size: 20px;
+}
