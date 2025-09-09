@@ -70,3 +70,22 @@ hr {
 audio::-webkit-media-controls-panel {
   background-color: lightgrey;
 }
+
+.dropdown-content {
+  position: absolute;
+  background-color: lightgrey;
+  min-width: 130px;
+  box-shadow: 0px 8px 16px 0px lightgrey;
+  padding: 12px 16px;
+}
+
+@media screen and (max-width: 500px) {
+  .dropdown-content {
+    position: relative;
+    display: grid;
+    background-color: lightgrey;
+    min-width: 130px;
+    box-shadow: 0px 8px 16px 0px lightgrey;
+    padding: 12px 16px;
+  }
+}

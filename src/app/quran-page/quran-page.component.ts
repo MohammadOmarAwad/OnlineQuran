@@ -2,8 +2,10 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Params } from '@angular/router';
 import AyaListData from '../Mid/AyaList.json';
 import SurahListData from '../Mid/SurahList.json';
+import RecitersListData from '../Mid/Reciters.json';
 import { Aya, Surah, QuranPage } from '../Models/QuranPageModle';
 import { Component, ViewEncapsulation, ElementRef, Renderer2, ViewChild, AfterViewInit } from '@angular/core';
+import { Reciter } from '../Models/Reciter';
 
 @Component({
   selector: 'app-quran-page',
@@ -20,17 +22,21 @@ export class QuranPageComponent {
   public ayas: Aya[] = [];
   public surahs: Surah[] = [];
   public quranPage: QuranPage;
+  public ResitorsList: Reciter[] = [];
   PageNumber: string;
   PageBody: String = "";
   PlaceHolder: String = "";
   IsDetails: boolean = false;
   Running_URL: String = "none";
+  Reciter_URL: String = "https://verses.quran.com/AbdulBaset/Mujawwad/mp3/";
 
   constructor(private activeRoute: ActivatedRoute) { }
 
   ngOnInit() {
     this.activeRoute.params.subscribe((params: Params) => this.PageNumber = params['PageNumber']);
     this.getData(this.PageNumber);
+
+    this.ResitorsList = RecitersListData;
   }
 
   getData(pageNumer: string) {
@@ -44,7 +50,7 @@ export class QuranPageComponent {
     AyasPage.forEach(xx => {
       const sura = xx.sura.toString().padStart(3, '0');
       const aya = xx.aya.toString().padStart(3, '0');
-      xx.URL = `https://everyayah.com/data/Ayman_Sowaid_64kbps/${sura}${aya}.mp3`;
+      xx.verse_Id = `${sura}${aya}.mp3`;
     });
 
     this.quranPage.SurahNames = AyasPage[0].sura;
@@ -125,7 +131,7 @@ export class QuranPageComponent {
   }
 
   Run_Audio(url: any): void {
-    this.Running_URL = url;
+    this.Running_URL = this.Reciter_URL + url;
   }
 
   AddCSSClass(): void {
@@ -140,5 +146,14 @@ export class QuranPageComponent {
         item.classList.add('active');
       });
     });
+  }
+
+  onReciterChange(event: Event) {
+    const selectedId = Number((event.target as HTMLSelectElement).value);
+    let selectedReciterURL = this.ResitorsList.find(r => r.id === selectedId)?.Reciter_URL;
+
+    if (selectedReciterURL != undefined) {
+      this.Reciter_URL = selectedReciterURL;
+    }
   }
 }
