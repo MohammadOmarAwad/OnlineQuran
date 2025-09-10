@@ -42,6 +42,16 @@
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
 }
 
+.BtnNav {
+  color: black;
+  font-weight: bold;
+}
+
+.BtnNav:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
 @media screen and (min-width: 128px) and (max-width: 900px) {
   .MainBody {
     width: 100%;

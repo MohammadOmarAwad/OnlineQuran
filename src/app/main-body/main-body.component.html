@@ -2,19 +2,17 @@
 
   <nav style="margin-top: 5px;">
     <div class="nav nav-tabs" id="nav-tab" role="tablist">
-      <button style="color: black;cursor: pointer;width: 100px;" class="nav-link active" id="nav-Surah-tab"
-        data-bs-toggle="tab" data-bs-target="#nav-Surah" type="button" role="tab" aria-controls="nav-Surah"
-        aria-selected="true">السور</button>
-      <button style="color: black;cursor: pointer;width: 100px;" class="nav-link" id="nav-Juz-tab"
-        data-bs-toggle="tab" data-bs-target="#nav-Juz" type="button" role="tab" aria-controls="nav-Juz"
-        aria-selected="false">الأجزاء</button>
-      <button style="color: black;cursor: pointer;width: 100px;" class="nav-link" id="nav-Pages-tab"
-        data-bs-toggle="tab" data-bs-target="#nav-Pages" type="button" role="tab" aria-controls="nav-Pages"
-        aria-selected="false">الصفحات</button>
+      <button class="nav-link active BtnNav" id="nav-Surah-tab" data-bs-toggle="tab" data-bs-target="#nav-Surah" type="button"
+        role="tab" aria-controls="nav-Surah" aria-selected="true">السور</button>
+      <button class="nav-link BtnNav" id="nav-Juz-tab" data-bs-toggle="tab" data-bs-target="#nav-Juz" type="button" role="tab"
+        aria-controls="nav-Juz" aria-selected="false">الأجزاء</button>
+      <button class="nav-link BtnNav" id="nav-Pages-tab" data-bs-toggle="tab" data-bs-target="#nav-Pages" type="button"
+        role="tab" aria-controls="nav-Pages" aria-selected="false">الصفحات</button>
     </div>
   </nav>
 
-  <div class="tab-content" id="nav-tabContent" style="overflow: auto;height: 100px;scrollbar-width: none;min-height: 82vh;">
+  <div class="tab-content" id="nav-tabContent"
+    style="overflow: auto;height: 100px;scrollbar-width: none;min-height: 82vh;">
     <div class="tab-pane fade show active" id="nav-Surah" role="tabpanel" aria-labelledby="nav-Surah-tab">
       <div class="DivContanier">
         <div *ngFor="let surah of surahs">

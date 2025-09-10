@@ -51,20 +51,6 @@ hr {
   font-size: 40px;
 }
 
-@media screen and (min-width: 128px) and (max-width: 900px) {
-  .DivContanier {
-    margin-left: 0%;
-    margin-right: 0%;
-  }
-
-  .DivBox {
-    font-size: 20px;
-  }
-
-  .AyaClass {
-    font-size: 25px;
-  }
-}
 
 /* Change the entire player background */
 audio::-webkit-media-controls-panel {
@@ -79,7 +65,22 @@ audio::-webkit-media-controls-panel {
   padding: 12px 16px;
 }
 
-@media screen and (max-width: 500px) {
+
+/* Small devices */
+@media screen and (max-width: 480px) {
+  .DivContanier {
+    margin-left: 0%;
+    margin-right: 0%;
+  }
+
+  .DivBox {
+    font-size: 20px;
+  }
+
+  .AyaClass {
+    font-size: 25px;
+  }
+
   .dropdown-content {
     position: relative;
     display: grid;
@@ -87,5 +88,42 @@ audio::-webkit-media-controls-panel {
     min-width: 130px;
     box-shadow: 0px 8px 16px 0px lightgrey;
     padding: 12px 16px;
+  }
+}
+
+/* Tablets */
+@media screen and (min-width: 481px) and (max-width: 900px) {
+  .DivContanier {
+    margin-left: 0%;
+    margin-right: 0%;
+    margin-top: 5%;
+  }
+
+  .DivBox {
+    font-size: 30px;
+  }
+
+  .AyaClass {
+    font-size: 35px;
+  }
+
+  .dropdown-content {
+    position: relative;
+    display: grid;
+    background-color: lightgrey;
+    min-width: 130px;
+    box-shadow: 0px 8px 16px 0px lightgrey;
+    padding: 12px 16px;
+  }
+}
+
+/* Desktops */
+@media screen and (min-width: 901px) {
+  .DivBox {
+    font-size: 30px;
+  }
+
+  .AyaClass {
+    font-size: 35px;
   }
 }
