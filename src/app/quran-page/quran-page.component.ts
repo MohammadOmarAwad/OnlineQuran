@@ -170,7 +170,8 @@ export class QuranPageComponent {
       let textToCopy = `
       ${AyaInfo.text_uthmani}
       
-      ${AyaInfo.simple}      
+      ${AyaInfo.simple}  
+          
       https://mohammadomarawad.github.io/OnlineQuran/quran/${AyaInfo.page}
       `;
 
