@@ -177,7 +177,7 @@ export class QuranPageComponent {
 
       this.clipboard.copy(textToCopy);
 
-      this.toastr.success(`الأية ${AyaInfo.aya} من ${AyaInfo.surah_Infos.name} تم نسخها`);
+      this.toastr.success(`تم نسخ الأية ${AyaInfo.aya} من سورة ${AyaInfo.surah_Infos.name}`);
     }
   }
 }
