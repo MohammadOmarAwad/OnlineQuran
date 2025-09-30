@@ -29,9 +29,13 @@ jobs:
           git config user.name "Mohammad Awad"
           git config user.email "Mohammad.omar.awad@gmail.com"
 
+      - name: Get last commit message
+        id: vars
+        run: echo "LAST_COMMIT=$(git log -1 --pretty=%B)" >> $GITHUB_ENV
+
       - name: Deploy to gh pages
         run: |
-              npx angular-cli-ghpages --dir=dist/browser --no-silent
+          npx angular-cli-ghpages --dir=dist/browser --message "${{ env.LAST_COMMIT }}"
         env:
           CI: true
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
