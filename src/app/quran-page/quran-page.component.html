@@ -6,7 +6,8 @@
   </div>
 
   <div class="dropdown-content">
-    <select id="reciter" (change)="onReciterChange($event)" style="text-align: center;background-color: lightgrey;font-weight:bold;">
+    <select id="reciter" (change)="onReciterChange($event)"
+      style="text-align: center;background-color: lightgrey;font-weight:bold;">
       <option *ngFor="let reciter of ResitorsList" [value]="reciter.id" style="font-weight:bold;">
         {{reciter.Ar_Name}}
       </option>
@@ -67,9 +68,11 @@
         <tr>
           <td style="text-align-last:left;font-size: x-large;padding-right: 10px;vertical-align: top;">
             <div style="white-space:nowrap;">{{ aya.sura }}:{{ aya.aya }}</div>
-            <div>
-              <button style="background-color: transparent;border-radius: 5px;" (click)="Run_Audio(aya.verse_Id)"><i
-                  style='font-size:24px'>&#9205;</i></button>
+            <div style="display: inline-grid;">
+              <button style="background-color: transparent;border-radius: 5px;margin-bottom:2px;"
+                (click)="Run_Audio(aya.verse_Id)"><i style='font-size:24px'>&#9205;</i></button>
+              <button style="background-color: transparent;border-radius: 5px;margin-bottom:2px;"
+                (click)="CopyAya(aya.sura, aya.aya)"><i style='font-size:24px'>&#10697;</i></button>
             </div>
           </td>
           <td>

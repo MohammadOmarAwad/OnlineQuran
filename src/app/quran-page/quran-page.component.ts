@@ -6,6 +6,7 @@ import RecitersListData from '../Mid/Reciters.json';
 import { Aya, Surah, QuranPage } from '../Models/QuranPageModle';
 import { Component, ViewEncapsulation, ElementRef, Renderer2, ViewChild, AfterViewInit } from '@angular/core';
 import { Reciter } from '../Models/Reciter';
+import { Clipboard } from '@angular/cdk/clipboard';
 
 @Component({
   selector: 'app-quran-page',
@@ -30,7 +31,7 @@ export class QuranPageComponent {
   Running_URL: String = "none";
   Reciter_URL: String = "https://verses.quran.com/AbdulBaset/Mujawwad/mp3/";
 
-  constructor(private activeRoute: ActivatedRoute) { }
+  constructor(private activeRoute: ActivatedRoute, private clipboard: Clipboard) { }
 
   ngOnInit() {
     this.activeRoute.params.subscribe((params: Params) => this.PageNumber = params['PageNumber']);
@@ -154,6 +155,22 @@ export class QuranPageComponent {
 
     if (selectedReciterURL != undefined) {
       this.Reciter_URL = selectedReciterURL;
+    }
+  }
+
+  CopyAya(sura: String, aya: String): void {
+    let AyaInfo = this.ayas.find(a => a.sura === sura && a.aya === aya);
+    if (AyaInfo != undefined) {
+      //string interpolation in TypeScript (like C#’s $"..." syntax).
+      let textToCopy = `
+      ${AyaInfo.text_uthmani}
+      
+      ${AyaInfo.simple}
+      
+      https://mohammadomarawad.github.io/OnlineQuran/quran/${AyaInfo.page}
+      `;
+
+      this.clipboard.copy(textToCopy);
     }
   }
 }
