@@ -7,6 +7,7 @@ import { Aya, Surah, QuranPage } from '../Models/QuranPageModle';
 import { Component, ViewEncapsulation, ElementRef, Renderer2, ViewChild, AfterViewInit } from '@angular/core';
 import { Reciter } from '../Models/Reciter';
 import { Clipboard } from '@angular/cdk/clipboard';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-quran-page',
@@ -20,7 +21,6 @@ import { Clipboard } from '@angular/cdk/clipboard';
 export class QuranPageComponent {
   @ViewChild('ayasContainer') ayasContainer!: ElementRef;
 
-  public ayas: Aya[] = [];
   public surahs: Surah[] = [];
   public quranPage: QuranPage;
   public ResitorsList: Reciter[] = [];
@@ -31,7 +31,11 @@ export class QuranPageComponent {
   Running_URL: String = "none";
   Reciter_URL: String = "https://verses.quran.com/AbdulBaset/Mujawwad/mp3/";
 
-  constructor(private activeRoute: ActivatedRoute, private clipboard: Clipboard) { }
+  constructor(
+    private activeRoute: ActivatedRoute,
+    private clipboard: Clipboard,
+    private toastr: ToastrService
+  ) { }
 
   ngOnInit() {
     this.activeRoute.params.subscribe((params: Params) => this.PageNumber = params['PageNumber']);
@@ -42,11 +46,10 @@ export class QuranPageComponent {
 
   getData(pageNumer: string) {
     this.surahs = SurahListData;
-    this.ayas = AyaListData;
-
     this.quranPage = new QuranPage();
+    let ayas: Aya[] = AyaListData as Aya[];
 
-    let AyasPage = this.ayas.filter(a => a.page === pageNumer);
+    let AyasPage = ayas.filter(a => a.page === pageNumer);
     AyasPage.forEach(xx => xx.surah_Infos = this.surahs.find(a => a.order.toString() === xx.sura));
     AyasPage.forEach(xx => {
       const sura = xx.sura.toString().padStart(3, '0');
@@ -159,7 +162,9 @@ export class QuranPageComponent {
   }
 
   CopyAya(sura: String, aya: String): void {
-    let AyaInfo = this.ayas.find(a => a.sura === sura && a.aya === aya);
+    let AyaInfo: Aya | undefined;
+
+    AyaInfo = this.quranPage.Ayas.find(a => a.sura === sura && a.aya === aya);
     if (AyaInfo != undefined) {
       //string interpolation in TypeScript (like C#’s $"..." syntax).
       let textToCopy = `
@@ -171,6 +176,8 @@ export class QuranPageComponent {
       `;
 
       this.clipboard.copy(textToCopy);
+
+      this.toastr.success(`الأية ${AyaInfo.aya} من ${AyaInfo.surah_Infos.name} تم نسخها`);
     }
   }
 }
