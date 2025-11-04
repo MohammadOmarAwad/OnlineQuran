@@ -6,9 +6,8 @@
   </div>
 
   <div class="dropdown-content">
-    <select id="reciter" (change)="onReciterChange($event)"
-      style="text-align: center;background-color: lightgrey;font-weight:bold;">
-      <option *ngFor="let reciter of ResitorsList" [value]="reciter.id" style="font-weight:bold;">
+    <select id="reciter" (change)="onReciterChange($event)">
+      <option *ngFor="let reciter of ResitorsList" [value]="reciter.id">
         {{reciter.Ar_Name}}
       </option>
     </select>
