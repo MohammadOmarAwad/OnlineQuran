@@ -1,6 +1,11 @@
 .footer {
   margin-top: 10px;
-  color: white;
+}
+
+.footerClass{
+  background-color: whitesmoke;
+  padding: 19px !important;
+  direction:rtl;
 }
 
 .ImgClass{

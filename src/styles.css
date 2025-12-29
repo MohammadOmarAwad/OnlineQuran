@@ -2,10 +2,8 @@
 @import "ngx-toastr/toastr";
 
 body {
-  background: url('../src/assets/bi.jpg');
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  background-color: #a78140;
 }

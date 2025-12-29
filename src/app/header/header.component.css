@@ -1,6 +1,6 @@
 header {
   padding: 10px;
-  background: #02534d;
+  background: whitesmoke;
 }
 
 .logo {
@@ -23,7 +23,6 @@ header {
 
     .desktop_menu ul li {
       list-style-type: none;
-      color: white;
       display: inline-block;
       font-size: 18px;
       margin-left: 26px;
@@ -33,7 +32,6 @@ header {
         font-size: 19px;
         font-weight: bold;
         cursor: pointer;
-        color: yellow;
         transition: 0.3s ease-in-out;
       }
 
@@ -47,7 +45,7 @@ header {
     right: -280px;
     transition: 0.4s ease-in-out;
     top: 71px;
-    background: #02534d;
+    background: whitesmoke;
     width: 280px;
     display:none;
   }
@@ -62,7 +60,6 @@ header {
 
   .menu-icon {
     display: block;
-    color: white;
     font-size: 40px;
   }
 

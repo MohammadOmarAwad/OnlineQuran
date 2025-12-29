@@ -4,7 +4,7 @@
     align-items: center;
     justify-content: space-around;
     border: 3px solid #0000;
-    background: linear-gradient(#a78140 0 0) padding-box, repeating-conic-gradient(#5d513c 0 25%, #0000 0 50%) border-box;
+    background: linear-gradient(whiteSmoke 0 0) padding-box, repeating-conic-gradient(#5d513c 0 25%, #0000 0 50%) border-box;
     cursor: pointer;
     padding: 5px;
     width: 150vh;
@@ -16,7 +16,7 @@
     align-items: center;
     justify-content: space-around;
     border: 3px solid #0000;
-    background: linear-gradient(#a78140 0 0) padding-box, repeating-conic-gradient(#5d513c 0 25%, #0000 0 50%) border-box;
+    background: linear-gradient(whiteSmoke 0 0) padding-box, repeating-conic-gradient(#5d513c 0 25%, #0000 0 50%) border-box;
     cursor: pointer;
     padding: 5px;
     font-weight: bold;

@@ -23,8 +23,7 @@
 }
 
 .Btn {
-  background-color: #02534d;
-  color: white;
+  background-color: whitesmoke;
   padding: 12px 24px;
   border: none;
   border-radius: 5px;
@@ -42,7 +41,6 @@
 }
 
 .BtnNav {
-  color: black;
   font-weight: bold;
 }
 
