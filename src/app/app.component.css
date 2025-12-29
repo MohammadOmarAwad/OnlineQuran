@@ -35,13 +35,14 @@
 }
 
 .Btn:hover {
-  background-color: #45a049;
+  background-color: #EBF0F0;
   transform: scale(1.05);
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
 }
 
 .BtnNav {
   font-weight: bold;
+  color: black !important;
 }
 
 .BtnNav:hover {
