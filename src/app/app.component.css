@@ -104,4 +104,8 @@ option :checked {
     box-shadow: 0px 8px 16px 0px lightgrey;
     padding: 12px 16px;
   }
+
+    .MainBody {
+    width: 98%;
+  }
 }

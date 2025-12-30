@@ -1,0 +1,19 @@
+<div class="MainBody" style="overflow: auto;height: 100px;scrollbar-width: none;">
+
+    <div class="searchBox">
+        <input type="text" style="text-align: center;" id="searchinput" placeholder="بحث عن أية" #titleInput>
+        <button type="submit" (click)='search(titleInput.value)'>بحث</button>
+    </div>
+
+    <div *ngFor="let e of ayasList">
+        <div class="divBox" (click)="gotoQuranPageByPage(e.page)">
+            <div class="LineClass">
+                <Span class="AyaClass">
+                    <span>{{e?.text_uthmani}}</span>
+                    <span>﴿{{e?.aya}}﴾</span>
+                    <div>الصفحة {{e.page}}</div>
+                </Span>
+            </div>
+        </div>
+    </div>
+</div>

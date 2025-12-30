@@ -23,7 +23,7 @@ export class HeaderComponent implements OnInit {
     this.menuValue = !this.menuValue;
     this.menu_icon = this.menuValue ? 'bi bi-x' : 'bi bi-list';
   }
-
+  //Todo :refactoring
   gotoQuranPage(): void {
     this.router.navigate(['/quran', 1]);
     this.closeMenu();
@@ -36,6 +36,11 @@ export class HeaderComponent implements OnInit {
 
   gotoAboutPage(): void {
     this.router.navigate(['/about']);
+    this.closeMenu();
+  }
+
+  gotoSearchPage(): void {
+    this.router.navigate(['/search']);
     this.closeMenu();
   }
 
@@ -55,6 +60,6 @@ export class HeaderComponent implements OnInit {
 
   getDates() {
     this.date = new Date().toJSON().slice(0, 10).replace(/-/g, '/');
-    this.hijridate = new Intl.DateTimeFormat('ar-SA-islamic-umalqura',{dateStyle:'long'}).format(new Date());
+    this.hijridate = new Intl.DateTimeFormat('ar-SA-islamic-umalqura', { dateStyle: 'long' }).format(new Date());
   }
 }
