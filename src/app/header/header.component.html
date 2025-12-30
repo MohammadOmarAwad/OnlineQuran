@@ -25,11 +25,11 @@
         </div>
         <div class="desktop_menu" [class.mobile_menu]="menuValue">
           <ul>
-            <li (click)="gotoHomePage()">الصفحة الرئيسية</li>
-            <li (click)="gotoSearchPage()">البحث</li>
-            <li (click)="gotoQuranPage()">القرآن الكريم</li>
-            <li (click)="gotostreamsPage()"> البث المباشر</li>
-            <li (click)="gotoAboutPage()">معلومات</li>
+            <li (click)="gotoPage('')">الصفحة الرئيسية</li>
+            <li (click)="gotoPage('search')">البحث</li>
+            <li (click)="gotoPage('quran/1')">القرآن الكريم</li>
+            <li (click)="gotoPage('streams')"> البث المباشر</li>
+            <li (click)="gotoPage('about')">معلومات</li>
           </ul>
         </div>
       </div>

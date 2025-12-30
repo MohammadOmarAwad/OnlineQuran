@@ -18,34 +18,13 @@ export class HeaderComponent implements OnInit {
 
   constructor(private router: Router) { }
 
-
   openMenu() {
     this.menuValue = !this.menuValue;
     this.menu_icon = this.menuValue ? 'bi bi-x' : 'bi bi-list';
   }
-  //Todo :refactoring
-  gotoQuranPage(): void {
-    this.router.navigate(['/quran', 1]);
-    this.closeMenu();
-  }
 
-  gotoHomePage(): void {
-    this.router.navigate(['/']);
-    this.closeMenu();
-  }
-
-  gotoAboutPage(): void {
-    this.router.navigate(['/about']);
-    this.closeMenu();
-  }
-
-  gotoSearchPage(): void {
-    this.router.navigate(['/search']);
-    this.closeMenu();
-  }
-
-  gotostreamsPage(): void {
-    this.router.navigate(['/streams']);
+  gotoPage(page:String): void {
+    this.router.navigate([page]);
     this.closeMenu();
   }
 
