@@ -1,7 +1,8 @@
 <div class="MainBody" style="overflow: auto;height: 100px;scrollbar-width: none;">
 
     <div class="searchBox">
-        <input type="text" class="Btn" style="text-align: center;width: 75%;" id="searchinput" placeholder="بحث عن أية" #titleInput>
+        <input type="text" class="Btn" style="text-align: center;width: 75%;" id="searchinput" placeholder="بحث عن أية"
+            #titleInput>
         <button type="submit" class="Btn" (click)='search(titleInput.value)'>بحث</button>
     </div>
 
@@ -11,7 +12,14 @@
                 <Span class="AyaClass">
                     <span>{{e?.text_uthmani}}</span>
                     <span>﴿{{e?.aya}}﴾</span>
-                    <div>الصفحة {{e.page}}</div>
+                </Span>
+            </div>
+
+            <div class="LineClass">
+                <Span class="AyaClass">
+                    <span>الصفحة ﴿{{e?.page}}﴾</span>
+                    <span> &nbsp; </span>
+                    <span>السورة ﴿{{e?.surah_Infos?.name}}﴾</span>
                 </Span>
             </div>
         </div>

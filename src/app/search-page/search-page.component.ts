@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import AyaListData from '../Mid/AyaList.json';
+import SurahListData from '../Mid/SurahList.json';
 import { Aya } from '../Models/QuranPageModle';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
@@ -27,6 +28,8 @@ export class SearchPageComponent {
           this.ayasList.push(element);
         }
       });
+
+      this.ayasList.forEach(xx => xx.surah_Infos = SurahListData.find(a => a.order.toString() === xx.sura));
     }
   }
 
