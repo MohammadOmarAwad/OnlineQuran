@@ -19,7 +19,7 @@ export class SearchPageComponent {
   //Search about Aya
   search(searchText: string): void {
     let ayas: Aya[] = AyaListData as Aya[];
-
+    this.ayasList = [];
     if (searchText.length > 1 && searchText !== "") {
 
       ayas.forEach(element => {

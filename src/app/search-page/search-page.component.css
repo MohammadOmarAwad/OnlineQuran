@@ -1,11 +1,6 @@
 .searchBox {
-    margin: 5px;
-    align-items: center;
-    justify-content: space-around;
-    border: 3px solid #0000;
-    font-size: x-large;
-    font-weight: bold;
-    padding: 15px;
+    margin-top: 5px;
+    margin-bottom: 5px;
     font-size: 20px;
 }
 
