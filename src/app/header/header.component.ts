@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
+import  moment  from 'moment-hijri';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule, RouterOutlet,],
+  imports: [CommonModule, RouterOutlet],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
@@ -23,7 +24,7 @@ export class HeaderComponent implements OnInit {
     this.menu_icon = this.menuValue ? 'bi bi-x' : 'bi bi-list';
   }
 
-  gotoPage(page:String): void {
+  gotoPage(page: String): void {
     this.router.navigate([page]);
     this.closeMenu();
   }
@@ -39,6 +40,6 @@ export class HeaderComponent implements OnInit {
 
   getDates() {
     this.date = new Date().toJSON().slice(0, 10).replace(/-/g, '/');
-    this.hijridate = new Intl.DateTimeFormat('ar-SA-islamic-umalqura', { dateStyle: 'long' }).format(new Date());
+    this.hijridate = moment().format('iD iMMMM iYYYY هـ');
   }
 }
