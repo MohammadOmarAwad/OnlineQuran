@@ -43,6 +43,7 @@
 .BtnNav {
   font-weight: bold;
   color: black !important;
+  min-width: 20%;
 }
 
 .BtnNav:hover {
