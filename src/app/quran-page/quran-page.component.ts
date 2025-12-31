@@ -8,6 +8,7 @@ import { Component, ViewEncapsulation, ElementRef, Renderer2, ViewChild, AfterVi
 import { Reciter } from '../Models/Reciter';
 import { Clipboard } from '@angular/cdk/clipboard';
 import { ToastrService } from 'ngx-toastr';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-quran-page',
@@ -26,24 +27,29 @@ export class QuranPageComponent {
   public ResitorsList: Reciter[] = [];
   PageNumber: string;
   PageBody: String = "";
+  PageBodyTafser: String = "";
   PlaceHolder: String = "";
   IsDetails: boolean = false;
   Running_URL: String = "none";
   Reciter_URL: String = "https://verses.quran.com/AbdulBaset/Mujawwad/mp3/";
+  TafserUrl = 'http://api.quran-tafseer.com/tafseer/1/';
 
   constructor(
     private activeRoute: ActivatedRoute,
     private clipboard: Clipboard,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private http: HttpClient
   ) { }
 
   ngOnInit() {
     this.activeRoute.params.subscribe((params: Params) => this.PageNumber = params['PageNumber']);
     this.getData(this.PageNumber);
+    this.getDataTafser(this.PageNumber);
 
     this.ResitorsList = RecitersListData;
   }
 
+  //Get the Quran Text
   getData(pageNumer: string) {
     this.surahs = SurahListData;
     this.quranPage = new QuranPage();
@@ -99,6 +105,33 @@ export class QuranPageComponent {
     }
   }
 
+  //Get the Tafser of Quran
+  //http://api.quran-tafseer.com/en/docs/#ayah-tafseer
+  getDataTafser(pageNumer: string) {
+    let ayas: Aya[] = AyaListData as Aya[];
+    let AyasPage = ayas.filter(a => a.page === pageNumer);
+    this.PageBodyTafser = "";
+
+    AyasPage.forEach((xx, index) => {
+      const isLast = index === AyasPage.length - 1;
+
+      const sura = xx.sura.toString();
+      const aya = xx.aya.toString();
+
+      this.http.get<any>(`${this.TafserUrl}${sura}/${aya}`).subscribe(data => {
+        this.PageBodyTafser += `<Span class="AyaClass">
+        <span>${data.text}</span>
+        <span>﴿${aya}﴾</span>
+        </Span>`;
+
+        if (!isLast) {
+          this.PageBodyTafser += `<hr/>`;
+        }
+      })
+    });
+  }
+
+  //Go to the Next Page
   GoToNextPage(pageNumer: string) {
     let newValue = Number(pageNumer) + 1;
     if (newValue == 605) {
@@ -106,8 +139,10 @@ export class QuranPageComponent {
     }
 
     this.getData(String(newValue));
+    this.getDataTafser(String(newValue));
   }
 
+  //Go to the Previous Page
   GoToPriviousePage(pageNumer: string) {
     let newValue = Number(pageNumer) - 1;
     if (newValue == 0) {
@@ -115,8 +150,10 @@ export class QuranPageComponent {
     }
 
     this.getData(String(newValue));
+    this.getDataTafser(String(newValue));
   }
 
+  //ToDo : Refactoring
   ngAfterViewInit() {
     this.ayasContainer.nativeElement.addEventListener('click', (event: Event) => {
       const target = (event.target as HTMLElement).closest('.AyaClass') as HTMLElement;
