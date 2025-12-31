@@ -3,7 +3,8 @@ import { ActivatedRoute, Params } from '@angular/router';
 import AyaListData from '../Mid/AyaList.json';
 import SurahListData from '../Mid/SurahList.json';
 import RecitersListData from '../Mid/Reciters.json';
-import { Aya, Surah, QuranPage } from '../Models/QuranPageModle';
+import TafserData from '../Mid/Tafser.json';
+import { Aya, Surah, QuranPage, Tafser } from '../Models/QuranPageModle';
 import { Component, ViewEncapsulation, ElementRef, Renderer2, ViewChild, AfterViewInit } from '@angular/core';
 import { Reciter } from '../Models/Reciter';
 import { Clipboard } from '@angular/cdk/clipboard';
@@ -32,7 +33,6 @@ export class QuranPageComponent {
   IsDetails: boolean = false;
   Running_URL: String = "none";
   Reciter_URL: String = "https://verses.quran.com/AbdulBaset/Mujawwad/mp3/";
-  TafserUrl = 'http://api.quran-tafseer.com/tafseer/1/';
 
   constructor(
     private activeRoute: ActivatedRoute,
@@ -106,9 +106,10 @@ export class QuranPageComponent {
   }
 
   //Get the Tafser of Quran
-  //http://api.quran-tafseer.com/en/docs/#ayah-tafseer
   getDataTafser(pageNumer: string) {
     let ayas: Aya[] = AyaListData as Aya[];
+    let tafser: Tafser[] = TafserData as Tafser[];
+
     let AyasPage = ayas.filter(a => a.page === pageNumer);
     this.PageBodyTafser = "";
 
@@ -118,17 +119,16 @@ export class QuranPageComponent {
       const sura = xx.sura.toString();
       const aya = xx.aya.toString();
 
-      this.http.get<any>(`${this.TafserUrl}${sura}/${aya}`).subscribe(data => {
-        this.PageBodyTafser += `<Span class="AyaClass">
-        <span>${data.text}</span>
+      let data = tafser.find(a => a.sura === sura && a.aya === aya);
+      this.PageBodyTafser += `<Span class="AyaClass">
+        <span>${data?.tafsertext}</span>
         <span>﴿${aya}﴾</span>
         </Span>`;
 
-        if (!isLast) {
-          this.PageBodyTafser += `<hr/>`;
-        }
-      })
-    });
+      if (!isLast) {
+        this.PageBodyTafser += `<hr/>`;
+      }
+    })
   }
 
   //Go to the Next Page

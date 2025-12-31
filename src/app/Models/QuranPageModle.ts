@@ -23,6 +23,12 @@ export interface Aya {
   surah_Infos: any
 }
 
+export interface Tafser {
+  sura: string
+  aya: string
+  tafsertext: string
+}
+
 export interface Surah {
   order: number
   tanzilorder: number
