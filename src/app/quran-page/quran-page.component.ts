@@ -100,7 +100,7 @@ export class QuranPageComponent {
 
       this.PlaceHolder += `<Span class="AyaClass">
                             <span>${aya?.text_uthmani}</span>
-                            <span>﴿${aya?.aya}﴾</span>
+                            <span class="qword">﴿${aya?.aya}﴾</span>
                           </Span>`;
 
     });
@@ -125,9 +125,9 @@ export class QuranPageComponent {
       const aya = xx.aya.toString();
 
       let data = tafser.find(a => a.sura === sura && a.aya === aya);
-      this.PageBodyTafser += `<Span class="AyaClass">
+      this.PageBodyTafser += `<Span class="WordAnalysisClass">
         <span>${data?.data}</span>
-        <span>﴿${aya}﴾</span>
+        <span class="qword">﴿${aya}﴾</span>
         </Span>`;
 
       if (!isLast) {
@@ -153,13 +153,13 @@ export class QuranPageComponent {
       let data = quranicWords.find(a => a.sura === sura && a.aya === aya);
       this.PageBodyWordAnalysis += `<Span class="AyaClass">
         <span>${xx?.text_uthmani}</span>
-        <span>﴿${aya}﴾</span>
+        <span class="qword">﴿${aya}﴾</span>
         </Span>`;
 
       let piecesofData = data?.data.split('\n');
       let piecesofDataresult = '';
       piecesofData?.forEach((pp) => {
-        piecesofDataresult += `<li>${pp.replace('•', '')}</li>`;
+        piecesofDataresult += `<li>${pp.replace('•', '').replace(/﴿(.*?)﴾/g, `<span class="qword">﴿$1﴾</span>`)}</li>`;
       });
 
       this.PageBodyWordAnalysis += `<div class="WordAnalysisClass"> <ul>${piecesofDataresult}</ul></div>`;
