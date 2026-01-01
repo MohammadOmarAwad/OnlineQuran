@@ -4,7 +4,9 @@ import AyaListData from '../Mid/AyaList.json';
 import SurahListData from '../Mid/SurahList.json';
 import RecitersListData from '../Mid/Reciters.json';
 import TafserData from '../Mid/Tafser.json';
-import { Aya, Surah, QuranPage, Tafser } from '../Models/QuranPageModle';
+import QuranicWordsData from '../Mid/QuranicWords.json';
+import { Aya, Surah, QuranPage } from '../Models/QuranPageModle';
+import { AyahExtention } from '../Models/AyahExtention';
 import { Component, ViewEncapsulation, ElementRef, Renderer2, ViewChild, AfterViewInit } from '@angular/core';
 import { Reciter } from '../Models/Reciter';
 import { Clipboard } from '@angular/cdk/clipboard';
@@ -29,6 +31,7 @@ export class QuranPageComponent {
   PageNumber: string;
   PageBody: String = "";
   PageBodyTafser: String = "";
+  PageBodyWordAnalysis: String = "";
   PlaceHolder: String = "";
   IsDetails: boolean = false;
   Running_URL: String = "none";
@@ -41,10 +44,12 @@ export class QuranPageComponent {
     private http: HttpClient
   ) { }
 
+  //Run on Start
   ngOnInit() {
     this.activeRoute.params.subscribe((params: Params) => this.PageNumber = params['PageNumber']);
     this.getData(this.PageNumber);
     this.getDataTafser(this.PageNumber);
+    this.getDataWordAnalysis(this.PageNumber);
 
     this.ResitorsList = RecitersListData;
   }
@@ -108,7 +113,7 @@ export class QuranPageComponent {
   //Get the Tafser of Quran
   getDataTafser(pageNumer: string) {
     let ayas: Aya[] = AyaListData as Aya[];
-    let tafser: Tafser[] = TafserData as Tafser[];
+    let tafser: AyahExtention[] = TafserData as AyahExtention[];
 
     let AyasPage = ayas.filter(a => a.page === pageNumer);
     this.PageBodyTafser = "";
@@ -121,12 +126,46 @@ export class QuranPageComponent {
 
       let data = tafser.find(a => a.sura === sura && a.aya === aya);
       this.PageBodyTafser += `<Span class="AyaClass">
-        <span>${data?.tafsertext}</span>
+        <span>${data?.data}</span>
         <span>﴿${aya}﴾</span>
         </Span>`;
 
       if (!isLast) {
         this.PageBodyTafser += `<hr/>`;
+      }
+    })
+  }
+
+  //Get the WordAnalysis of Quran
+  getDataWordAnalysis(pageNumer: string) {
+    let ayas: Aya[] = AyaListData as Aya[];
+    let quranicWords: AyahExtention[] = QuranicWordsData as AyahExtention[];
+
+    let AyasPage = ayas.filter(a => a.page === pageNumer);
+    this.PageBodyWordAnalysis = "";
+
+    AyasPage.forEach((xx, index) => {
+      const isLast = index === AyasPage.length - 1;
+
+      const sura = xx.sura.toString();
+      const aya = xx.aya.toString();
+
+      let data = quranicWords.find(a => a.sura === sura && a.aya === aya);
+      this.PageBodyWordAnalysis += `<Span class="AyaClass">
+        <span>${xx?.text_uthmani}</span>
+        <span>﴿${aya}﴾</span>
+        </Span>`;
+
+      let piecesofData = data?.data.split('\n');
+      let piecesofDataresult = '';
+      piecesofData?.forEach((pp) => {
+        piecesofDataresult += `<li>${pp.replace('•', '')}</li>`;
+      });
+
+      this.PageBodyWordAnalysis += `<div class="WordAnalysisClass"> <ul>${piecesofDataresult}</ul></div>`;
+
+      if (!isLast) {
+        this.PageBodyWordAnalysis += `<hr/>`;
       }
     })
   }
@@ -140,6 +179,7 @@ export class QuranPageComponent {
 
     this.getData(String(newValue));
     this.getDataTafser(String(newValue));
+    this.getDataWordAnalysis(String(newValue));
   }
 
   //Go to the Previous Page
@@ -151,6 +191,7 @@ export class QuranPageComponent {
 
     this.getData(String(newValue));
     this.getDataTafser(String(newValue));
+    this.getDataWordAnalysis(String(newValue));
   }
 
   //ToDo : Refactoring

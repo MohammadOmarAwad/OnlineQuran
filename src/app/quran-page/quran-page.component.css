@@ -10,6 +10,10 @@
   width: 33%;
 }
 
+.WordAnalysisClass {
+  text-align-last: right;
+}
+
 .AyaClass {
   transition: background-color 0.5s ease;
 }
