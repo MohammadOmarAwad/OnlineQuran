@@ -99,7 +99,7 @@
       <table style="width: 100%;">
         <tr>
           <td style="text-align-last:left;font-size: x-large;padding-right: 10px;vertical-align: top;">
-            <div style="white-space:nowrap;">{{ aya.sura }}:{{ aya.aya }}</div>
+            <div class="qword" style="white-space:nowrap;">{{ aya.sura }}:{{ aya.aya }}</div>
             <div style="display: inline-grid;">
               <button style="background-color: transparent;border-radius: 5px;margin-bottom:2px;"
                 (click)="Run_Audio(aya.verse_Id)"><i style='font-size:24px'>&#x27A4;</i></button>
@@ -111,7 +111,7 @@
             <div class="LineClass" style="text-align-last:right;">
               <span class="AyaClass" (click)="AddCSSClass()">
                 <span>{{ aya.text_uthmani }}</span>
-                <span>﴿{{ aya.aya }}﴾</span>
+                <span class="qword">﴿{{ aya.aya }}﴾</span>
               </span>
             </div>
           </td>
