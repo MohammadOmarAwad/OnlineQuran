@@ -39,8 +39,9 @@
             type="button" role="tab" aria-controls="nav-Quran" aria-selected="true">القرآن</button>
           <button class="nav-link BtnNav" id="nav-Tafser-tab" data-bs-toggle="tab" data-bs-target="#nav-Tafser"
             type="button" role="tab" aria-controls="nav-Tafser" aria-selected="false">التفسير</button>
-          <button class="nav-link BtnNav" id="nav-WordAnalysis-tab" data-bs-toggle="tab" data-bs-target="#nav-WordAnalysis"
-            type="button" role="tab" aria-controls="nav-WordAnalysis" aria-selected="false">الإعراب</button>
+          <button class="nav-link BtnNav" id="nav-WordAnalysis-tab" data-bs-toggle="tab"
+            data-bs-target="#nav-WordAnalysis" type="button" role="tab" aria-controls="nav-WordAnalysis"
+            aria-selected="false">الإعراب</button>
         </div>
       </nav>
 
@@ -109,7 +110,7 @@
           </td>
           <td>
             <div class="LineClass" style="text-align-last:right;">
-              <span class="AyaClass" (click)="AddCSSClass()">
+              <span [id]="aya.sura + aya.aya" class="AyaClass" (click)="AddActiveCSSClass(aya.sura + aya.aya)">
                 <span>{{ aya.text_uthmani }}</span>
                 <span class="qword">﴿{{ aya.aya }}﴾</span>
               </span>

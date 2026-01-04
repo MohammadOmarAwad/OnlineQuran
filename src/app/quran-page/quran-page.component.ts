@@ -217,18 +217,15 @@ export class QuranPageComponent {
   }
 
   //Add Style to selected Aya on Click
-  AddCSSClass(): void {
-    const items = document.querySelectorAll('.AyaClass');
+  AddActiveCSSClass(val: string): void {
+    let item = document.getElementById(val);
 
-    items.forEach(item => {
-      item.addEventListener('click', () => {
-        // Remove 'active' class from all items
-        items.forEach(el => el.classList.remove('active'));
+    // Add 'active' class to the clicked item
+    if (item != null) {
+      document.querySelectorAll('.AyaClass.active').forEach(el => el.classList.remove('active'));
 
-        // Add 'active' class to the clicked item
-        item.classList.add('active');
-      });
-    });
+      item.classList.add('active');
+    }
   }
 
   //Get the Reciter on dropdown
