@@ -23,7 +23,7 @@ export class PrayTimeComponent {
 
   //Run on Strat
   ngOnInit() {
-    GeolocationProvider.getLocation().then(loc => { this.callAladhanApi(loc[0], loc[1]); });
+    GeolocationProvider.getLocation().then((loc) => { this.callAladhanApi(loc[0], loc[1]); });
     GeolocationProvider.getCityName().then(output => { this.CityName = output; });
   }
 
@@ -31,8 +31,8 @@ export class PrayTimeComponent {
   callAladhanApi(Longitude: String, Latitude: String) {
     const methode = "3";
     const shafaq = "general";
-    const year = DateProvider.GrtHijriDateYear();
-    const monthe = DateProvider.GrtHijriDateMonth();
+    const year = DateProvider.GetHijriDateYear();
+    const monthe = DateProvider.GetHijriDateMonth();
     const url = `https://api.aladhan.com/v1/hijriCalendar/${year}/${monthe}?longitude=${Longitude}&latitude=${Latitude}&method=${methode}&shafaq=${shafaq}`
     this.http.get<PrayTimeModle>(url).subscribe(data => {
 

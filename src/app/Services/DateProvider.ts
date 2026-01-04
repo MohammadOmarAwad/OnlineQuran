@@ -16,11 +16,11 @@ export default class DateProvider {
     }
 
     //Get Hirjri Date
-    static GrtHijriDate() { return moment().format('iD iMMMM iYYYY هـ'); }
+    static GetHijriDate() { return moment().format('iD iMMMM iYYYY هـ'); }
 
     //Get Hirjri Year
-    static GrtHijriDateYear() { return moment(this.GetDate(), 'DD-MM-YYYY').iYear() }
+    static GetHijriDateYear() { return moment(this.GetDate(), 'DD-MM-YYYY').iYear() }
 
     //Get Hirjri Month
-    static GrtHijriDateMonth() { return moment().iMonth() + 1; }
+    static GetHijriDateMonth() { return moment().iMonth() + 1; }
 }

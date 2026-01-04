@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
-import moment from 'moment-hijri';
+import DateProvider from '../Services/DateProvider';
 
 @Component({
   selector: 'app-header',
@@ -39,10 +39,10 @@ export class HeaderComponent implements OnInit {
   }
 
   getDates() {
-    this.date = new Date().toJSON().slice(0, 10).replace(/-/g, '/');
+    this.date = DateProvider.GetDate();
+
     const RLE = '\u202B';  // Right-to-Left Embedding
     const PDF = '\u202C';  // Pop Directional Formatting
-
-    this.hijridate = RLE + moment().format('iD iMMMM iYYYY هـ') + PDF;
+    this.hijridate = RLE + DateProvider.GetHijriDate() + PDF;
   }
 }
