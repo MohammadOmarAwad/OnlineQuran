@@ -89,7 +89,7 @@ option :checked {
 
 .qword {
   color: #0f6b9c;
-  font-family: "ui-sans-serif";
+  font-family: NotoSansArabic;
   text-rendering: geometricPrecision;
 }
 
