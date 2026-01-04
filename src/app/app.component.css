@@ -87,6 +87,7 @@ option :checked {
   padding: 12px 16px;
 }
 
+//Refactoring Brackets
 .qword {
   color: #0f6b9c;
   font-family: NotoSansArabic;
