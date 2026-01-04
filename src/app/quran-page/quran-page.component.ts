@@ -11,7 +11,6 @@ import { Component, ViewEncapsulation, ElementRef, Renderer2, ViewChild, AfterVi
 import { Reciter } from '../Models/Reciter';
 import { Clipboard } from '@angular/cdk/clipboard';
 import { ToastrService } from 'ngx-toastr';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-quran-page',
@@ -40,9 +39,8 @@ export class QuranPageComponent {
   constructor(
     private activeRoute: ActivatedRoute,
     private clipboard: Clipboard,
-    private toastr: ToastrService,
-    private http: HttpClient
-  ) { }
+    private toastr: ToastrService
+    ) { }
 
   //Run on Start
   ngOnInit() {
