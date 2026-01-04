@@ -24,7 +24,7 @@
 }
 
 .active {
-  background-color: dimgrey;
+  background-color: rgba(0, 153, 255, 0.24);
 }
 
 .NameClass {
