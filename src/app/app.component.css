@@ -89,7 +89,8 @@ option :checked {
 
 .qword {
   color: #0f6b9c;
-  font-family: "NotoSansArabic";
+  font-family: "ui-sans-serif";
+  text-rendering: geometricPrecision;
 }
 
 @media screen and (min-width: 128px) and (max-width: 900px) {
