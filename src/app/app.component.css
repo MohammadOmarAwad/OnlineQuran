@@ -89,6 +89,7 @@ option :checked {
 
 .qword {
   color: #0f6b9c;
+  font-family: "NotoSansArabic";
 }
 
 @media screen and (min-width: 128px) and (max-width: 900px) {
