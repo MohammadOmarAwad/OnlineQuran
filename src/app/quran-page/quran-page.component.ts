@@ -40,20 +40,20 @@ export class QuranPageComponent {
     private activeRoute: ActivatedRoute,
     private clipboard: Clipboard,
     private toastr: ToastrService
-    ) { }
+  ) { }
 
   //Run on Start
-  ngOnInit() {
+  async ngOnInit() {
     this.activeRoute.params.subscribe((params: Params) => this.PageNumber = params['PageNumber']);
-    this.getData(this.PageNumber);
-    this.getDataTafser(this.PageNumber);
-    this.getDataWordAnalysis(this.PageNumber);
+    await this.getData(this.PageNumber);
+    await this.getDataTafser(this.PageNumber);
+    await this.getDataWordAnalysis(this.PageNumber);
 
     this.ResitorsList = RecitersListData;
   }
 
   //Get the Quran Text
-  getData(pageNumer: string) {
+  async getData(pageNumer: string) {
     this.surahs = SurahListData;
     this.quranPage = new QuranPage();
     let ayas: Aya[] = AyaListData as Aya[];
@@ -109,7 +109,7 @@ export class QuranPageComponent {
   }
 
   //Get the Tafser of Quran
-  getDataTafser(pageNumer: string) {
+  async getDataTafser(pageNumer: string) {
     let ayas: Aya[] = AyaListData as Aya[];
     let tafser: AyahExtention[] = TafserData as AyahExtention[];
 
@@ -135,7 +135,7 @@ export class QuranPageComponent {
   }
 
   //Get the WordAnalysis of Quran
-  getDataWordAnalysis(pageNumer: string) {
+  async getDataWordAnalysis(pageNumer: string) {
     let ayas: Aya[] = AyaListData as Aya[];
     let quranicWords: AyahExtention[] = QuranicWordsData as AyahExtention[];
 
