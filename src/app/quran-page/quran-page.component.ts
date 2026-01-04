@@ -7,7 +7,7 @@ import TafserData from '../Mid/Tafser.json';
 import QuranicWordsData from '../Mid/QuranicWords.json';
 import { Aya, Surah, QuranPage } from '../Models/QuranPageModle';
 import { AyahExtention } from '../Models/AyahExtention';
-import { Component, ViewEncapsulation, ElementRef, Renderer2, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, ViewEncapsulation} from '@angular/core';
 import { Reciter } from '../Models/Reciter';
 import { Clipboard } from '@angular/cdk/clipboard';
 import { ToastrService } from 'ngx-toastr';
@@ -22,7 +22,6 @@ import { ToastrService } from 'ngx-toastr';
 })
 
 export class QuranPageComponent {
-  @ViewChild('ayasContainer') ayasContainer!: ElementRef;
 
   public surahs: Surah[] = [];
   public quranPage: QuranPage;
@@ -192,18 +191,10 @@ export class QuranPageComponent {
     this.getDataWordAnalysis(String(newValue));
   }
 
-  //ToDo : Refactoring
-  ngAfterViewInit() {
-    this.ayasContainer.nativeElement.addEventListener('click', (event: Event) => {
-      const target = (event.target as HTMLElement).closest('.AyaClass') as HTMLElement;
-      if (target) {
-        this.GoToAya_Details(true);
-      }
-    });
-  }
-
   //Toggle the view of Quran
   GoToAya_Details(isShowen: boolean): void {
+    this.RemoveActiveCSSClass()
+
     this.IsDetails = isShowen;
 
     if (!this.IsDetails) {
@@ -216,16 +207,20 @@ export class QuranPageComponent {
     this.Running_URL = this.Reciter_URL + url;
   }
 
-  //Add Style to selected Aya on Click
+  //Add Style to selected Aya by id on Click
   AddActiveCSSClass(val: string): void {
     let item = document.getElementById(val);
 
     // Add 'active' class to the clicked item
     if (item != null) {
-      document.querySelectorAll('.AyaClass.active').forEach(el => el.classList.remove('active'));
-
+      this.RemoveActiveCSSClass()
       item.classList.add('active');
     }
+  }
+
+  //Add Style to selected Aya on Click
+  RemoveActiveCSSClass(): void {
+    document.querySelectorAll('.AyaClass.active').forEach(el => el.classList.remove('active'));
   }
 
   //Get the Reciter on dropdown
