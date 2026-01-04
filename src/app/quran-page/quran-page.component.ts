@@ -202,6 +202,7 @@ export class QuranPageComponent {
     });
   }
 
+  //Toggle the view of Quran
   GoToAya_Details(isShowen: boolean): void {
     this.IsDetails = isShowen;
 
@@ -210,10 +211,12 @@ export class QuranPageComponent {
     }
   }
 
+  //Set the Audio URL to Audio Player
   Run_Audio(url: any): void {
     this.Running_URL = this.Reciter_URL + url;
   }
 
+  //Add Style to selected Aya on Click
   AddCSSClass(): void {
     const items = document.querySelectorAll('.AyaClass');
 
@@ -228,6 +231,7 @@ export class QuranPageComponent {
     });
   }
 
+  //Get the Reciter on dropdown
   onReciterChange(event: Event) {
     const selectedId = Number((event.target as HTMLSelectElement).value);
     let selectedReciterURL = this.ResitorsList.find(r => r.id === selectedId)?.Reciter_URL;
@@ -237,6 +241,7 @@ export class QuranPageComponent {
     }
   }
 
+  //Copy Aya by Clicking
   CopyAya(sura: String, aya: String): void {
     let AyaInfo: Aya | undefined;
 
@@ -248,8 +253,7 @@ export class QuranPageComponent {
       
       ${AyaInfo.simple}  
           
-      https://mohammadomarawad.github.io/OnlineQuran/quran/${AyaInfo.page}
-      `;
+      https://mohammadomarawad.github.io/OnlineQuran/quran/${AyaInfo.page}`;
 
       this.clipboard.copy(textToCopy);
 
