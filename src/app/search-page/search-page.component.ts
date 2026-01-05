@@ -47,7 +47,7 @@ export class SearchPageComponent {
 
   //Go to Page
   gotoQuranPageByPage(PageNumber: String): void {
-    this.router.navigate(['/quran', PageNumber]);
+    this.router.navigate(['/quran', TextHelper.bracketsRemover(PageNumber)]);
   }
 
 }

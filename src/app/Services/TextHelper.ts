@@ -15,6 +15,16 @@ export class TextHelper {
         return output;
     }
 
+    //Remove Brackets
+    static bracketsRemover(val: String): String {
+        let output: String = "";
+        output = val;
+
+        output = val.replaceAll('﴿', '').replaceAll('﴾', '').replaceAll('(', '').replaceAll(')', '');
+
+        return output;
+    }
+
     //Replace Alef
     static ReplaceAlef(input: string): string {
         const chars: string[] = ['ٱ', 'إ', 'أ', 'آ'];
