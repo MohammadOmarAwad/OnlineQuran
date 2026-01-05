@@ -1,0 +1,1 @@
+var r=class{static isMobile(){return window.matchMedia("(pointer: coarse)").matches}static bracketsReplacer(t){let e="";return e=t,this.isMobile()&&(e=t.replaceAll("\uFD3F","(").replaceAll("\uFD3E",")")),e}static ReplaceAlef(t){let e=["\u0671","\u0625","\u0623","\u0622"],c=t;for(let s of e)c=c.replace(new RegExp(s,"g"),"\u0627");return c}};export{r as a};
