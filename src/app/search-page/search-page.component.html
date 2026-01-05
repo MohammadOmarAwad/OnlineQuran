@@ -2,8 +2,7 @@
 
     <div class="searchBox">
         <input type="text" class="Btn" style="text-align: center;width: 75%;" id="searchinput" placeholder="بحث عن أية"
-            #titleInput>
-        <button type="submit" class="Btn" (click)='search(titleInput.value)'>بحث</button>
+            #titleInput (keyup)="search(titleInput.value)">
     </div>
 
     <div *ngFor="let e of ayasList">

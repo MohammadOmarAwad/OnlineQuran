@@ -4,6 +4,7 @@ import SurahListData from '../Mid/SurahList.json';
 import { Aya } from '../Models/QuranPageModle';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { TextHelper } from '../Services/TextHelper';
 
 @Component({
   selector: 'app-search-page',
@@ -21,10 +22,10 @@ export class SearchPageComponent {
   search(searchText: string): void {
     let ayas: Aya[] = AyaListData as Aya[];
     this.ayasList = [];
-    if (searchText.length > 1 && searchText !== "") {
+    if (searchText.length > 2 && searchText !== "") {
 
       ayas.forEach(element => {
-        if (element.simple.toLowerCase().includes(searchText.toLowerCase())) {
+        if (TextHelper.ReplaceAlef(element.simple).toLowerCase().includes(TextHelper.ReplaceAlef(searchText).toLowerCase())) {
           this.ayasList.push(element);
         }
       });

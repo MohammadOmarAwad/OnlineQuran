@@ -14,4 +14,17 @@ export class TextHelper {
 
         return output;
     }
+
+    //Replace Alef
+    static ReplaceAlef(input: string): string {
+        const chars: string[] = ['ٱ', 'إ', 'أ', 'آ'];
+
+        let result = input;
+
+        for (const ch of chars) {
+            result = result.replace(new RegExp(ch, 'g'), 'ا');
+        }
+
+        return result;
+    }
 }
