@@ -112,7 +112,7 @@
             <div class="LineClass" style="text-align-last:right;">
               <span [id]="aya.sura + aya.aya" class="AyaClass" (click)="AddActiveCSSClass(aya.sura + aya.aya)">
                 <span>{{ aya.text_uthmani }}</span>
-                <span class="qword">﴿{{ aya.aya }}﴾</span>
+                <span class="qword" [innerHTML]="BracketsReplacer(aya.aya)"></span>
               </span>
             </div>
           </td>

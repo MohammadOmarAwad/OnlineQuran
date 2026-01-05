@@ -24,7 +24,8 @@ import { TextHelper } from '../Services/TextHelper';
 
 export class QuranPageComponent {
 
-  public surahs: Surah[] = [];
+  public AyasList: Aya[] = AyaListData as Aya[];
+  public SurahsList: Surah[] = SurahListData as Surah[];
   public quranPage: QuranPage;
   public ResitorsList: Reciter[] = [];
   PageNumber: string;
@@ -55,12 +56,10 @@ export class QuranPageComponent {
 
   //Get the Quran Text
   async getData(pageNumer: string) {
-    this.surahs = SurahListData;
     this.quranPage = new QuranPage();
-    let ayas: Aya[] = AyaListData as Aya[];
 
-    let AyasPage = ayas.filter(a => a.page === pageNumer);
-    AyasPage.forEach(xx => xx.surah_Infos = this.surahs.find(a => a.order.toString() === xx.sura));
+    let AyasPage = this.AyasList.filter(a => a.page === pageNumer);
+    AyasPage.forEach(xx => xx.surah_Infos = this.SurahsList.find(a => a.order.toString() === xx.sura));
     AyasPage.forEach(xx => {
       const sura = xx.sura.toString().padStart(3, '0');
       const aya = xx.aya.toString().padStart(3, '0');
@@ -259,5 +258,10 @@ export class QuranPageComponent {
 
       this.toastr.success(`تم نسخ الأية ${AyaInfo.aya} من سورة ${AyaInfo.surah_Infos.name}`);
     }
+  }
+
+  //Applay Brackets
+  BracketsReplacer(val: String): String {
+    return TextHelper.bracketsReplacer(`﴿${val}﴾`);
   }
 }
