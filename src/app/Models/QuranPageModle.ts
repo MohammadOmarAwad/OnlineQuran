@@ -7,12 +7,12 @@ export class QuranPage {
 export interface Aya {
   index: string
   sura: string
-  aya: string
+  aya: String
   text: string
   simple: string
   juz: string
   hizb: string
-  page: string
+  page: String
   word: string
   text_uthmani: string
   rub: string

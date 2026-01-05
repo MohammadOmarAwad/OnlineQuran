@@ -176,7 +176,7 @@ export class QuranPageComponent {
   }
 
   //Go to the Next Page
-  GoToNextPage(pageNumer: string) {
+  GoToNextPage(pageNumer: String) {
     let newValue = Number(pageNumer) + 1;
     if (newValue == 605) {
       newValue = 1;
@@ -188,7 +188,7 @@ export class QuranPageComponent {
   }
 
   //Go to the Previous Page
-  GoToPriviousePage(pageNumer: string) {
+  GoToPriviousePage(pageNumer: String) {
     let newValue = Number(pageNumer) - 1;
     if (newValue == 0) {
       newValue = 604;

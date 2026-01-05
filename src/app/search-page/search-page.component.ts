@@ -20,22 +20,33 @@ export class SearchPageComponent {
 
   //Search about Aya
   search(searchText: string): void {
-    let ayas: Aya[] = AyaListData as Aya[];
-    this.ayasList = [];
-    if (searchText.length > 2 && searchText !== "") {
+    const keyword = TextHelper.ReplaceAlef(searchText).toLowerCase().trim();
 
-      ayas.forEach(element => {
-        if (TextHelper.ReplaceAlef(element.simple).toLowerCase().includes(TextHelper.ReplaceAlef(searchText).toLowerCase())) {
-          this.ayasList.push(element);
-        }
-      });
-
-      this.ayasList.forEach(xx => xx.surah_Infos = SurahListData.find(a => a.order.toString() === xx.sura));
+    if (keyword.length < 3) {
+      this.ayasList = [];
+      return;
     }
+
+    this.ayasList = (AyaListData as Aya[])
+      .filter(a =>
+        TextHelper.ReplaceAlef(a.simple)
+          .toLowerCase()
+          .includes(keyword)
+      )
+      .map(a => {
+        const surah = SurahListData.find(s => s.order.toString() === a.sura);
+
+        return {
+          ...a,
+          aya: TextHelper.bracketsReplacer(`﴿${a.aya}﴾`),
+          page: TextHelper.bracketsReplacer(`﴿${a.page}﴾`),
+          surah_Infos: surah ? { ...surah, name: TextHelper.bracketsReplacer(`﴿${surah.name}﴾`) } : null
+        };
+      });
   }
 
   //Go to Page
-  gotoQuranPageByPage(PageNumber: string): void {
+  gotoQuranPageByPage(PageNumber: String): void {
     this.router.navigate(['/quran', PageNumber]);
   }
 
