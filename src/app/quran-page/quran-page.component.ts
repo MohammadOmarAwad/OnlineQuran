@@ -7,10 +7,11 @@ import TafserData from '../Mid/Tafser.json';
 import QuranicWordsData from '../Mid/QuranicWords.json';
 import { Aya, Surah, QuranPage } from '../Models/QuranPageModle';
 import { AyahExtention } from '../Models/AyahExtention';
-import { Component, ViewEncapsulation} from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { Reciter } from '../Models/Reciter';
 import { Clipboard } from '@angular/cdk/clipboard';
 import { ToastrService } from 'ngx-toastr';
+import { TextHelper } from '../Services/TextHelper';
 
 @Component({
   selector: 'app-quran-page',
@@ -44,6 +45,7 @@ export class QuranPageComponent {
   //Run on Start
   async ngOnInit() {
     this.activeRoute.params.subscribe((params: Params) => this.PageNumber = params['PageNumber']);
+
     await this.getData(this.PageNumber);
     await this.getDataTafser(this.PageNumber);
     await this.getDataWordAnalysis(this.PageNumber);
@@ -105,6 +107,8 @@ export class QuranPageComponent {
     if (this.PlaceHolder != "") {
       this.PageBody += `<div class="LineClass">${this.PlaceHolder}</div>`
     }
+
+    this.PageBody = TextHelper.bracketsReplacer(this.PageBody);
   }
 
   //Get the Tafser of Quran
@@ -131,6 +135,8 @@ export class QuranPageComponent {
         this.PageBodyTafser += `<hr/>`;
       }
     })
+
+    this.PageBodyTafser = TextHelper.bracketsReplacer(this.PageBodyTafser);
   }
 
   //Get the WordAnalysis of Quran
@@ -165,6 +171,8 @@ export class QuranPageComponent {
         this.PageBodyWordAnalysis += `<hr/>`;
       }
     })
+
+    this.PageBodyWordAnalysis = TextHelper.bracketsReplacer(this.PageBodyWordAnalysis);
   }
 
   //Go to the Next Page
