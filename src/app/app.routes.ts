@@ -7,5 +7,6 @@ export const routes: Routes = [
   { path: 'streams', loadComponent: () => import('../app/streams-page/streams-page.component').then((c) => c.StreamsPageComponent), title: 'Streams Page' },
   { path: 'about', loadComponent: () => import('../app/about/about.component').then((c) => c.AboutComponent), title: 'About' },
   { path: 'search', loadComponent: () => import('../app/search-page/search-page.component').then((c) => c.SearchPageComponent), title: 'Search' },
-  { path: 'prayTime', loadComponent: () => import('../app/pray-time/pray-time.component').then((c) => c.PrayTimeComponent), title: 'PrayTime' }
+  { path: 'prayTime', loadComponent: () => import('../app/pray-time/pray-time.component').then((c) => c.PrayTimeComponent), title: 'PrayTime' },
+  { path: 'masjids', loadComponent: () => import('../app/masjids/masjids.component').then((c) => c.MasjidsComponent), title: 'Masjids' }
 ];

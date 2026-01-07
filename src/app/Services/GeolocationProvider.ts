@@ -21,7 +21,7 @@ export default class GeolocationProvider {
             );
         });
     }
-
+        
     //Get City Name by geolocation
     static async getCityName(): Promise<string> {
         const [lat, lng] = await this.getLocation();

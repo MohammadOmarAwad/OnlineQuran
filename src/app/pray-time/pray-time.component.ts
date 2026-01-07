@@ -46,8 +46,6 @@ export class PrayTimeComponent {
       }
 
       this.PrayTimeToday = today;
-
-      console.log(data);
     });
 
 
