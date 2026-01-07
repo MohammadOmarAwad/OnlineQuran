@@ -14,6 +14,7 @@ import { CommonModule } from '@angular/common';
 export class MasjidsComponent {
   public MasjidInfor: MasjidResponse;
   public CityName: String;
+  public ErrorMessage: String;
 
   constructor(
     private http: HttpClient
@@ -33,8 +34,17 @@ export class MasjidsComponent {
     this.http.get<MasjidResponse>(url).subscribe(res => {
 
       if (res.status == "OK") {
-        res.data.masjids.forEach(xx => { xx.masjidAddress.description = this.getAdress(xx.masjidAddress) });
-        this.MasjidInfor = res;
+
+        if (res.data.masjids.length > 0) {
+
+          res.data.masjids.forEach(xx => { xx.masjidAddress.description = this.getAdress(xx.masjidAddress) });
+          this.MasjidInfor = res;
+
+        } else {
+
+          this.ErrorMessage = "لا توجد مساجد";
+          
+        }
 
       }
     });
