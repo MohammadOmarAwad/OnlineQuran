@@ -28,7 +28,7 @@ export class MasjidsComponent {
 
   //Call the ParyTime Athan
   callMasjidsApi(latitude: String, longitude: String) {
-    const rad = 500000;
+    const rad = 1000000;
     const url = `https://api.masjidnear.me/v1/masjids/search` + `?lat=${latitude}&lng=${longitude}&radius=${rad}/`;
 
     this.http.get<MasjidResponse>(url).subscribe(res => {
@@ -43,7 +43,7 @@ export class MasjidsComponent {
         } else {
 
           this.ErrorMessage = "لا توجد مساجد";
-          
+
         }
 
       }
