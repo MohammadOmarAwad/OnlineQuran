@@ -44,7 +44,7 @@ export class QuranPageComponent {
   ) { }
 
   //Run on Start
-  async ngOnInit() {
+  async ngOnInit() : Promise<void>{
     this.activeRoute.params.subscribe((params: Params) => this.PageNumber = params['PageNumber']);
 
     await this.getData(this.PageNumber);
@@ -55,7 +55,7 @@ export class QuranPageComponent {
   }
 
   //Get the Quran Text
-  async getData(pageNumer: string) {
+  async getData(pageNumer: string) : Promise<void>{
     this.quranPage = new QuranPage();
 
     let AyasPage = this.AyasList.filter(a => a.page === pageNumer);
@@ -111,7 +111,7 @@ export class QuranPageComponent {
   }
 
   //Get the Tafser of Quran
-  async getDataTafser(pageNumer: string) {
+  async getDataTafser(pageNumer: string) : Promise<void> {
     let ayas: Aya[] = AyaListData as Aya[];
     let tafser: AyahExtention[] = TafserData as AyahExtention[];
 
@@ -142,7 +142,7 @@ export class QuranPageComponent {
   }
 
   //Get the WordAnalysis of Quran
-  async getDataWordAnalysis(pageNumer: string) {
+  async getDataWordAnalysis(pageNumer: string) : Promise<void> {
     let ayas: Aya[] = AyaListData as Aya[];
     let quranicWords: AyahExtention[] = QuranicWordsData as AyahExtention[];
 
