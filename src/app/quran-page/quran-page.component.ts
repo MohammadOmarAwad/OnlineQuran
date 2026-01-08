@@ -125,10 +125,13 @@ export class QuranPageComponent {
       const aya = xx.aya.toString();
 
       let data = tafser.find(a => a.sura === sura && a.aya === aya);
-      this.PageBodyTafser += `<Span class="WordAnalysisClass">
-        <span>${data?.data}</span>
+      this.PageBodyTafser += `
+      <Span class="WordAnalysisClass">
+        <span>${xx?.text_uthmani}</span>
         <span class="qword">﴿${aya}﴾</span>
-        </Span>`;
+        <br>
+        <span>${data?.data}</span>
+      </Span>`;
 
       if (!isLast) {
         this.PageBodyTafser += `<hr/>`;

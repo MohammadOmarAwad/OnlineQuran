@@ -14,7 +14,7 @@ import { CommonModule } from '@angular/common';
 })
 export class PrayTimeComponent {
   public prayTimeModle: PrayTimeModle;
-  public PrayTimeToday: Daum;
+  public PrayTimeToday?: Daum;
   public CityName: String;
 
   constructor(

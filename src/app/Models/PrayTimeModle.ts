@@ -5,7 +5,7 @@ export interface PrayTimeModle {
 }
 
 export class Daum {
-  timings: Timings
+  timings?: Timings
   date: Date
   meta: Meta
 }
