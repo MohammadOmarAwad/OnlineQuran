@@ -156,11 +156,12 @@ export class QuranPageComponent {
       const aya = xx.aya.toString();
 
       let data = quranicWords.find(a => a.sura === sura && a.aya === aya);
-      this.PageBodyWordAnalysis += `<Span class="AyaClass">
+      this.PageBodyWordAnalysis +=`
+      <Span class="WordAnalysisClass">
         <span>${xx?.text_uthmani}</span>
         <span class="qword">﴿${aya}﴾</span>
-        </Span>`;
-
+      </Span>`;
+      
       let piecesofData = data?.data.split('\n');
       let piecesofDataresult = '';
       piecesofData?.forEach((pp) => {
