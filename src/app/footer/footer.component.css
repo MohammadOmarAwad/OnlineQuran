@@ -2,19 +2,30 @@
   margin-top: 10px;
 }
 
-.footerClass{
+.footerClass {
   background-color: whitesmoke;
   padding: 19px !important;
-  direction:rtl;
+  direction: rtl;
 }
 
-.ImgClass{
+.IconClass {
   width: 2%;
-  margin: 5px;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.IconClass:hover {
+  cursor: pointer;
+  box-shadow: 0px 0px 5px 5px rgba(185, 240, 163, 0.5);
+  background-color: rgba(185, 240, 163, 0.5);
+  border-radius: 10px;
+  transform: scale(2);
+  transition: transform 1s ease;
 }
 
 @media screen and (max-width: 500px) {
-  .ImgClass{
+  .IconClass {
     width: 4%;
   }
 }
