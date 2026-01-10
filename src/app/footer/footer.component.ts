@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RoutingHelper } from '../Services/RoutingHelper';
 
 @Component({
   selector: 'app-footer',
@@ -9,4 +10,12 @@ import { Component } from '@angular/core';
 })
 export class FooterComponent {
 
+    //Go to Map to find Masjid
+    gotoLink(url: string): void {
+      {
+        if (!url) return;
+  
+        RoutingHelper.OpenTab(url);
+      }
+    }
 }

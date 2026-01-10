@@ -3,6 +3,7 @@ import GeolocationProvider from '../Services/GeolocationProvider';
 import { HttpClient } from '@angular/common/http';
 import { Masjid, MasjidAddress, MasjidLocation, MasjidResponse } from '../Models/MasjidResponse';
 import { CommonModule } from '@angular/common';
+import { RoutingHelper } from '../Services/RoutingHelper';
 
 @Component({
   selector: 'app-masjids',
@@ -56,7 +57,7 @@ export class MasjidsComponent {
       if (!val) return;
 
       const url = `https://www.google.com/maps?q=${val.coordinates[1]},${val.coordinates[0]}`;
-      window.open(url, "_blank");
+      RoutingHelper.OpenTab(url);
     }
   }
 
