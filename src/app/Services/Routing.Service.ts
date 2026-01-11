@@ -1,4 +1,4 @@
-export class RoutingHelper {
+export class RoutingService {
 
     //Open New Tab
     static OpenTab(url: string): void {

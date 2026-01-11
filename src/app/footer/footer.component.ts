@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RoutingHelper } from '../Services/RoutingHelper';
+import { RoutingService } from '../Services/Routing.Service';
 
 @Component({
   selector: 'app-footer',
@@ -15,7 +15,7 @@ export class FooterComponent {
       {
         if (!url) return;
   
-        RoutingHelper.OpenTab(url);
+        RoutingService.OpenTab(url);
       }
     }
 }

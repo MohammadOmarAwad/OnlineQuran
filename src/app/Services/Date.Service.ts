@@ -1,7 +1,6 @@
 import moment from 'moment-hijri';
 
-
-export default class DateProvider {
+export class DateService {
 
     //Get Current Date
     static GetDate() { return this.formatDateDMY(new Date); }

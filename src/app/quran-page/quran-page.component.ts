@@ -11,7 +11,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
 import { Reciter } from '../Models/Reciter';
 import { Clipboard } from '@angular/cdk/clipboard';
 import { ToastrService } from 'ngx-toastr';
-import { TextHelper } from '../Services/TextHelper';
+import { TextService } from '../Services/Text.Service';
 
 @Component({
   selector: 'app-quran-page',
@@ -44,7 +44,7 @@ export class QuranPageComponent {
   ) { }
 
   //Run on Start
-  async ngOnInit() : Promise<void>{
+  async ngOnInit(): Promise<void> {
     this.activeRoute.params.subscribe((params: Params) => this.PageNumber = params['PageNumber']);
 
     await this.getData(this.PageNumber);
@@ -55,7 +55,7 @@ export class QuranPageComponent {
   }
 
   //Get the Quran Text
-  async getData(pageNumer: string) : Promise<void>{
+  async getData(pageNumer: string): Promise<void> {
     this.quranPage = new QuranPage();
 
     let AyasPage = this.AyasList.filter(a => a.page === pageNumer);
@@ -107,11 +107,11 @@ export class QuranPageComponent {
       this.PageBody += `<div class="LineClass">${this.PlaceHolder}</div>`
     }
 
-    this.PageBody = TextHelper.bracketsReplacer(this.PageBody);
+    this.PageBody = TextService.bracketsReplacer(this.PageBody);
   }
 
   //Get the Tafser of Quran
-  async getDataTafser(pageNumer: string) : Promise<void> {
+  async getDataTafser(pageNumer: string): Promise<void> {
     let ayas: Aya[] = AyaListData as Aya[];
     let tafser: AyahExtention[] = TafserData as AyahExtention[];
 
@@ -138,11 +138,11 @@ export class QuranPageComponent {
       }
     })
 
-    this.PageBodyTafser = TextHelper.bracketsReplacer(this.PageBodyTafser);
+    this.PageBodyTafser = TextService.bracketsReplacer(this.PageBodyTafser);
   }
 
   //Get the WordAnalysis of Quran
-  async getDataWordAnalysis(pageNumer: string) : Promise<void> {
+  async getDataWordAnalysis(pageNumer: string): Promise<void> {
     let ayas: Aya[] = AyaListData as Aya[];
     let quranicWords: AyahExtention[] = QuranicWordsData as AyahExtention[];
 
@@ -156,12 +156,12 @@ export class QuranPageComponent {
       const aya = xx.aya.toString();
 
       let data = quranicWords.find(a => a.sura === sura && a.aya === aya);
-      this.PageBodyWordAnalysis +=`
+      this.PageBodyWordAnalysis += `
       <Span class="WordAnalysisClass">
         <span>${xx?.text_uthmani}</span>
         <span class="qword">﴿${aya}﴾</span>
       </Span>`;
-      
+
       let piecesofData = data?.data.split('\n');
       let piecesofDataresult = '';
       piecesofData?.forEach((pp) => {
@@ -175,7 +175,7 @@ export class QuranPageComponent {
       }
     })
 
-    this.PageBodyWordAnalysis = TextHelper.bracketsReplacer(this.PageBodyWordAnalysis);
+    this.PageBodyWordAnalysis = TextService.bracketsReplacer(this.PageBodyWordAnalysis);
   }
 
   //Go to the Next Page
@@ -266,6 +266,6 @@ export class QuranPageComponent {
 
   //Applay Brackets
   BracketsReplacer(val: String): String {
-    return TextHelper.bracketsReplacer(`﴿${val}﴾`);
+    return TextService.bracketsReplacer(`﴿${val}﴾`);
   }
 }

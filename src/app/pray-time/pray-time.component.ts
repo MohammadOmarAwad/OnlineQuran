@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import GeolocationProvider from '../Services/GeolocationProvider';
-import DateProvider from '../Services/DateProvider';
+import { GeolocationService } from '../Services/Geolocation.Service';
+import { DateService } from '../Services/Date.Service';
 import { HttpClient } from '@angular/common/http';
 import { PrayTimeModle, Daum } from '../Models/PrayTimeModle';
 import { CommonModule } from '@angular/common';
@@ -23,21 +23,21 @@ export class PrayTimeComponent {
 
   //Run on Strat
   ngOnInit() {
-    GeolocationProvider.getLocation().then((loc) => { this.callAladhanApi(loc[0], loc[1]); });
-    GeolocationProvider.getCityName().then(output => { this.CityName = output; });
+    GeolocationService.getLocation().then((loc) => { this.callAladhanApi(loc[0], loc[1]); });
+    GeolocationService.getCityName().then(output => { this.CityName = output; });
   }
 
   //Call the ParyTime Athan
   callAladhanApi(Longitude: String, Latitude: String) {
     const methode = "3";
     const shafaq = "general";
-    const year = DateProvider.GetHijriDateYear();
-    const monthe = DateProvider.GetHijriDateMonth();
+    const year = DateService.GetHijriDateYear();
+    const monthe = DateService.GetHijriDateMonth();
     const url = `https://api.aladhan.com/v1/hijriCalendar/${year}/${monthe}?longitude=${Longitude}&latitude=${Latitude}&method=${methode}&shafaq=${shafaq}`
     this.http.get<PrayTimeModle>(url).subscribe(data => {
 
       this.prayTimeModle = data
-      let date = DateProvider.GetDate();
+      let date = DateService.GetDate();
 
       const today = data.data.find(xx => xx.date.gregorian.date === date);
 

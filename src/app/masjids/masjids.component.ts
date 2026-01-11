@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import GeolocationProvider from '../Services/GeolocationProvider';
 import { HttpClient } from '@angular/common/http';
-import { Masjid, MasjidAddress, MasjidLocation, MasjidResponse } from '../Models/MasjidResponse';
+import { MasjidAddress, MasjidLocation, MasjidResponse } from '../Models/MasjidResponse';
 import { CommonModule } from '@angular/common';
-import { RoutingHelper } from '../Services/RoutingHelper';
+import { GeolocationService } from '../Services/Geolocation.Service';
+import { RoutingService } from '../Services/Routing.Service';
 
 @Component({
   selector: 'app-masjids',
@@ -21,10 +21,12 @@ export class MasjidsComponent {
     private http: HttpClient
   ) { }
 
-
   ngOnInit() {
-    GeolocationProvider.getLocation().then((loc) => { this.callMasjidsApi(loc[0], loc[1]); });
-    GeolocationProvider.getCityName().then(output => { this.CityName = output; });
+    GeolocationService.getLocation().then((loc) => { this.callMasjidsApi(loc[0], loc[1]); });
+    GeolocationService.getCityName().then(output => { 
+      this.CityName = output;
+      
+     });
   }
 
   //Call the ParyTime Athan
@@ -57,7 +59,7 @@ export class MasjidsComponent {
       if (!val) return;
 
       const url = `https://www.google.com/maps?q=${val.coordinates[1]},${val.coordinates[0]}`;
-      RoutingHelper.OpenTab(url);
+      RoutingService.OpenTab(url);
     }
   }
 

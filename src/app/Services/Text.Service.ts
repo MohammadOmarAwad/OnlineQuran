@@ -1,4 +1,4 @@
-export class TextHelper {
+export class TextService {
 
     //Is the Device Mobile
     static isMobile(): Boolean { return window.matchMedia('(pointer: coarse)').matches };

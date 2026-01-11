@@ -1,6 +1,4 @@
-
-
-export default class GeolocationProvider {
+export class GeolocationService {
 
     //Get Location 
     static getLocation(): Promise<[string, string]> {

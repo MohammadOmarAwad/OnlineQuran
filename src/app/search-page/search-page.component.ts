@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
 import AyaListData from '../Mid/AyaList.json';
 import SurahListData from '../Mid/SurahList.json';
 import { Aya } from '../Models/QuranPageModle';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { TextHelper } from '../Services/TextHelper';
+import { TextService } from '../Services/Text.Service';
 
 @Component({
   selector: 'app-search-page',
@@ -20,7 +20,7 @@ export class SearchPageComponent {
 
   //Search about Aya
   search(searchText: string): void {
-    const keyword = TextHelper.ReplaceAlef(searchText).toLowerCase().trim();
+    const keyword = TextService.ReplaceAlef(searchText).toLowerCase().trim();
 
     if (keyword.length < 3) {
       this.ayasList = [];
@@ -29,7 +29,7 @@ export class SearchPageComponent {
 
     this.ayasList = (AyaListData as Aya[])
       .filter(a =>
-        TextHelper.ReplaceAlef(a.simple)
+        TextService.ReplaceAlef(a.simple)
           .toLowerCase()
           .includes(keyword)
       )
@@ -38,16 +38,16 @@ export class SearchPageComponent {
 
         return {
           ...a,
-          aya: TextHelper.bracketsReplacer(`﴿${a.aya}﴾`),
-          page: TextHelper.bracketsReplacer(`﴿${a.page}﴾`),
-          surah_Infos: surah ? { ...surah, name: TextHelper.bracketsReplacer(`﴿${surah.name}﴾`) } : null
+          aya: TextService.bracketsReplacer(`﴿${a.aya}﴾`),
+          page: TextService.bracketsReplacer(`﴿${a.page}﴾`),
+          surah_Infos: surah ? { ...surah, name: TextService.bracketsReplacer(`﴿${surah.name}﴾`) } : null
         };
       });
   }
 
   //Go to Page
   gotoQuranPageByPage(PageNumber: String): void {
-    this.router.navigate(['/quran', TextHelper.bracketsRemover(PageNumber)]);
+    this.router.navigate(['/quran', TextService.bracketsRemover(PageNumber)]);
   }
 
 }
