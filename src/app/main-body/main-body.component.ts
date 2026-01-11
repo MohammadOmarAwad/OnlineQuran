@@ -13,22 +13,22 @@ import { HeaderComponent } from '../header/header.component';
   templateUrl: './main-body.component.html',
   styleUrls: ['../app.component.css', './main-body.component.css']
 })
+
 export class MainBodyComponent implements OnInit {
   title = 'Onlinequran';
-  public surahs: Surah[] = [];
-  public ayas: Aya[] = [];
+  public AyasList: Aya[] = AyaListData as Aya[];
+  public SurahsList: Surah[] = SurahListData as Surah[];
   constructor(private router: Router) { }
 
-  ngOnInit() {
-    this.surahs = SurahListData;
-    this.ayas = AyaListData;
-  }
+  ngOnInit() { }
 
+  //Go to Quran Page by Juz
   gotoQuranPageByJuz(JuzNumber: number): void {
-    let pageNr = Number(this.ayas.filter(x => x.juz == String(JuzNumber))[0].page);
+    let pageNr = Number(this.AyasList.filter(x => x.juz == String(JuzNumber))[0].page);
     this.router.navigate(['/quran', pageNr]);
   }
 
+  //Go to Quran Page by Page
   gotoQuranPageByPage(PageNumber: number): void {
     this.router.navigate(['/quran', PageNumber]);
   }
