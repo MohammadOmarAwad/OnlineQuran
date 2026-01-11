@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Strings } from '../Resources/Strings';
 
 @Component({
   selector: 'app-about',
@@ -7,12 +8,7 @@ import { Component } from '@angular/core';
   styleUrls: ['../app.component.css', './about.component.css']
 })
 export class AboutComponent {
-
-  public infos: String = "موقع إسلامي دعوي، ينتهج منهج أهل السنة والجماعة في المعتقد والعمل" +
-    " أهداف الموقع:" +
-    " نشر العقيدة الإسلامية الصحيحة، والعلوم الشرعية ." +
-    " الاهتمام بدعوة غير المسلمين بالطريقة الصحيحة، وفق المنهج القويم." +
-    " جمع كلمة المسلمين.";
-  public vision: String = "موقع القرآن مبادرة متواضعة بهدف خدمة الكتاب العزيز و السنة المطهرة و تيسير العلوم الشرعية على منهاج الكتاب و السنة , وإننا سعيدون بدعمكم لنا و نقدّر حرصكم على استمرارنا و نسأل الله تعالى أن يتقبل منا و يجعل أعمالنا خالصة لوجهه الكريم .";
-
+  AboutTitle: String = Strings.About_Title;
+  Information: String = Strings.About_Information;
+  Vision: String = Strings.About_Vision;
 }
