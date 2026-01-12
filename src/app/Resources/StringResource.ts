@@ -3,8 +3,8 @@ import { StreamsPageComponent } from "../streams-page/streams-page.component";
 export const StringResource = {
 
   App_Title: "Online Quran",
-
-
+  
+  About_VisionTitle: "الرؤية",
   About_Title: 'معلومات',
   About_Information: "موقع إسلامي دعوي، ينتهج منهج أهل السنة والجماعة في المعتقد والعمل" +
     " أهداف الموقع:" +
@@ -56,9 +56,9 @@ export const StringResource = {
   SearchPage_PlaceHolder_SearchBox: "البحث عن أية",
   SearchPage_Surah: "السورة",
 
-  StreamPage_Tab_Makka:"مكة",
-  StreamPage_Tab_Madina:"المدينة",
-  StreamPage_Tab_Radio:"الإذاعة",
+  StreamPage_Tab_Makka: "مكة",
+  StreamPage_Tab_Madina: "المدينة",
+  StreamPage_Tab_Radio: "الإذاعة",
   StreamsPage_Live: "المباشر",
   Sharjah_Radio_Name: "الشارقة",
   ZuwaraLibya_Radio_Name: "زوارة ليبيا",

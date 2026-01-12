@@ -4,24 +4,6 @@
     font-size: 20px;
 }
 
-.divBox {
-    margin: 5px;
-    align-items: center;
-    justify-content: space-around;
-    border: 3px solid #0000;
-    font-size: x-large;
-    font-weight: bold;
-    padding: 15px;
-    font-size: 20px;
-}
-
-.divBox:hover {
-    font-size: 24px;
-    box-shadow: 0px 0px 5px 5px rgba(185, 240, 163, 0.5);
-    cursor: pointer;
-    transition: box 0.2s ease-in-out;
-}
-
 .AyaClass {
     transition: background-color 0.5s ease;
 }
@@ -40,11 +22,6 @@
 
 /* Small devices */
 @media screen and (max-width: 480px) {
-    .divBox {
-        font-size: 20px;
-        box-shadow: 0px 0px 5px 5px rgba(185, 240, 163, 0.5);
-    }
-
     .AyaClass {
         font-size: 25px;
     }
@@ -52,11 +29,6 @@
 
 /* Tablets */
 @media screen and (min-width: 481px) and (max-width: 900px) {
-    .divBox {
-        font-size: 30px;
-        box-shadow: 0px 0px 5px 5px rgba(185, 240, 163, 0.5);
-    }
-
     .AyaClass {
         font-size: 35px;
     }

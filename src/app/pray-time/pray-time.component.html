@@ -9,18 +9,18 @@
                     aria-selected="true">{{Strings.Header_PrayTimePage}}</button>
                 <button class="nav-link BtnNav" id="nav-PrayTimeWholeMonth-tab" data-bs-toggle="tab"
                     data-bs-target="#nav-PrayTimeWholeMonth" type="button" role="tab"
-                    aria-controls="nav-PrayTimeWholeMonth" aria-selected="false">{{Strings.PrayTime_Tab_WholeMonth}}</button>
+                    aria-controls="nav-PrayTimeWholeMonth"
+                    aria-selected="false">{{Strings.PrayTime_Tab_WholeMonth}}</button>
             </div>
         </nav>
 
-        <div class="tab-content" id="nav-tabContent"
-            style="overflow: auto;height: 100px;scrollbar-width: none;min-height: 82vh;">
+        <div class="tab-content" id="nav-tabContent" style="line-height:45px;">
 
             <br />
 
             <!-- PrayTime -->
-            <div class="tab-pane DivBox fade show active" style="line-height:45px;background-color:transparent;"
-                id="nav-PrayTime" role="tabpanel" aria-labelledby="nav-PrayTime-tab">
+            <div class="tab-pane DivBox fade show active" id="nav-PrayTime" role="tabpanel"
+                aria-labelledby="nav-PrayTime-tab">
 
                 <div class="table-responsive-sm">
 
@@ -74,14 +74,14 @@
             </div>
 
             <!-- Whole Month PrayTime -->
-            <div class="tab-pane fade" style="line-height:45px;background-color:transparent;"
-                id="nav-PrayTimeWholeMonth" role="tabpanel" aria-labelledby="nav-PrayTimeWholeMonth-tab">
+            <div class="tab-pane DivBox fade" id="nav-PrayTimeWholeMonth" role="tabpanel"
+                aria-labelledby="nav-PrayTimeWholeMonth-tab">
 
-                <div class="tab-pane DivBox fade show active" style="line-height:45px;background-color:transparent;"
-                    id="nav-PrayTime" role="tabpanel" aria-labelledby="nav-PrayTime-tab">
+                <div class="tab-pane fade show active" id="nav-PrayTime" role="tabpanel"
+                    aria-labelledby="nav-PrayTime-tab">
 
                     <div> {{CityName}}</div>
-                    <div class="DivBox" style="text-align: -webkit-center;" *ngFor="let data of prayTimeModle?.data">
+                    <div style="text-align: -webkit-center;" *ngFor="let data of prayTimeModle?.data">
                         <div>
                             <span class="qword"> ({{data?.date?.hijri?.weekday?.ar}})</span>
                             <br />
@@ -90,7 +90,7 @@
                         </div>
 
                         <table class="table table-hover" style="width: 70%;">
-                           <tr>
+                            <tr>
                                 <td style="text-align: left;">{{data?.timings?.Fajr}}</td>
                                 <td style="text-align: right;">
                                     <span class="qword" style="white-space: nowrap;">الفجر </span>
@@ -125,6 +125,9 @@
                                 </td>
                             </tr>
                         </table>
+
+                        <hr>
+
                     </div>
                 </div>
 

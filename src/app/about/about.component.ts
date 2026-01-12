@@ -9,6 +9,7 @@ import { StringResource } from '../Resources/StringResource';
 })
 export class AboutComponent {
   AboutTitle: String = StringResource.About_Title;
+  AboutVisionTitle: String = StringResource.About_VisionTitle;
   Information: String = StringResource.About_Information;
   Vision: String = StringResource.About_Vision;
 }
