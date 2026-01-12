@@ -14,27 +14,25 @@
   </div>
 </div>
 
-
 <div class="MainBody" style="overflow: auto;height: 100px;scrollbar-width: none;">
+
+  <nav [style.display]="IsDetails ? 'none' : 'block'" style="margin-top: 5px;">
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <button class="nav-link active BtnNav" id="nav-Quran-tab" data-bs-toggle="tab" data-bs-target="#nav-Quran"
+        type="button" role="tab" aria-controls="nav-Quran" aria-selected="true">{{Strings.QuranPage_Tab_Quran}}</button>
+      <button class="nav-link BtnNav" id="nav-Tafser-tab" data-bs-toggle="tab" data-bs-target="#nav-Tafser"
+        type="button" role="tab" aria-controls="nav-Tafser"
+        aria-selected="false">{{Strings.QuranPage_Tab_Tafser}}</button>
+      <button class="nav-link BtnNav" id="nav-WordAnalysis-tab" data-bs-toggle="tab" data-bs-target="#nav-WordAnalysis"
+        type="button" role="tab" aria-controls="nav-WordAnalysis"
+        aria-selected="false">{{Strings.QuranPage_Tab_WordAnalysis}}</button>
+    </div>
+  </nav>
 
   <div class="DivBox">
 
     <!--Surah Text-->
     <div #ayasContainer [style.display]="IsDetails ? 'none' : 'block'">
-
-      <nav style="margin-top: 5px;">
-        <div class="nav nav-tabs" id="nav-tab" role="tablist">
-          <button class="nav-link active BtnNav" id="nav-Quran-tab" data-bs-toggle="tab" data-bs-target="#nav-Quran"
-            type="button" role="tab" aria-controls="nav-Quran"
-            aria-selected="true">{{Strings.QuranPage_Tab_Quran}}</button>
-          <button class="nav-link BtnNav" id="nav-Tafser-tab" data-bs-toggle="tab" data-bs-target="#nav-Tafser"
-            type="button" role="tab" aria-controls="nav-Tafser"
-            aria-selected="false">{{Strings.QuranPage_Tab_Tafser}}</button>
-          <button class="nav-link BtnNav" id="nav-WordAnalysis-tab" data-bs-toggle="tab"
-            data-bs-target="#nav-WordAnalysis" type="button" role="tab" aria-controls="nav-WordAnalysis"
-            aria-selected="false">{{Strings.QuranPage_Tab_WordAnalysis}}</button>
-        </div>
-      </nav>
 
       <div class="tab-content" id="nav-tabContent"
         style="overflow: auto;height: 100px;scrollbar-width: none;min-height: 82vh;">
