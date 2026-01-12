@@ -19,22 +19,8 @@
 
   <div class="DivBox">
 
-    <!-- Navigation Btns -->
-    <table style="margin-bottom: 20px;">
-      <tr style="white-space: nowrap; background-color: transparent;">
-        <td><button class="Btn" (click)="GoToNextPage(quranPage.Ayas[0].page)">{{Strings.QuranPage_NextPage}}</button>
-        </td>
-        <td style="width:100%;"><span>{{quranPage.Ayas[0].page}}</span></td>
-        <td><button class="Btn"
-            (click)="GoToPriviousePage(quranPage.Ayas[0].page)">{{Strings.QuranPage_PreviousPage}}</button></td>
-      </tr>
-    </table>
-
-    <hr>
-
     <!--Surah Text-->
     <div #ayasContainer [style.display]="IsDetails ? 'none' : 'block'">
-
 
       <nav style="margin-top: 5px;">
         <div class="nav nav-tabs" id="nav-tab" role="tablist">
@@ -133,6 +119,14 @@
     <hr>
 
     <!--Pages Number-->
-    <div><span>{{quranPage.Ayas[0].page}} {{Strings.MainPage_Page}}</span></div>
-
+    <!-- Navigation Btns -->
+    <table style="margin-bottom: 20px;">
+      <tr style="white-space: nowrap; background-color: transparent;">
+        <td><button class="Btn" (click)="GoToNextPage(quranPage.Ayas[0].page)">{{Strings.QuranPage_NextPage}}</button>
+        </td>
+        <td style="width:100%;"><span>{{Strings.MainPage_Page}} {{quranPage.Ayas[0].page}}</span></td>
+        <td><button class="Btn"
+            (click)="GoToPriviousePage(quranPage.Ayas[0].page)">{{Strings.QuranPage_PreviousPage}}</button></td>
+      </tr>
+    </table>
   </div>
