@@ -25,13 +25,13 @@
         </div>
         <div class="desktop_menu" [class.mobile_menu]="menuValue">
           <ul>
-            <li (click)="gotoPage('')">الصفحة الرئيسية</li>
-            <li (click)="gotoPage('search')">البحث</li>
-            <li (click)="gotoPage('quran/1')">القرآن الكريم</li>
-            <li (click)="gotoPage('streams')"> البث المباشر</li>
-            <li (click)="gotoPage('prayTime')"> أوقات الصلاة</li>
-            <li (click)="gotoPage('masjids')">المساجد</li>
-            <li (click)="gotoPage('about')">معلومات</li>
+            <li (click)="gotoPage('')">{{Strings.Header_MainPage}}</li>
+            <li (click)="gotoPage('search')">{{Strings.Header_SearchPage}}</li>
+            <li (click)="gotoPage('quran/1')">{{Strings.Header_QuranPage}}</li>
+            <li (click)="gotoPage('streams')">{{Strings.Header_StreamsPage}}</li>
+            <li (click)="gotoPage('prayTime')">{{Strings.Header_PrayTimePage}}</li>
+            <li (click)="gotoPage('masjids')">{{Strings.Header_MasjidsPage}}</li>
+            <li (click)="gotoPage('about')">{{Strings.Header_AboutPage}}</li>
           </ul>
         </div>
       </div>

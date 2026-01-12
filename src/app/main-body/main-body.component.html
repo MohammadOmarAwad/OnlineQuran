@@ -3,11 +3,11 @@
   <nav style="margin-top: 5px;">
     <div class="nav nav-tabs" id="nav-tab" role="tablist">
       <button data-testid="gotoPage-search3" class="nav-link active BtnNav" id="nav-Surah-tab" data-bs-toggle="tab" data-bs-target="#nav-Surah" type="button"
-        role="tab" aria-controls="nav-Surah" aria-selected="true">السور</button>
+        role="tab" aria-controls="nav-Surah" aria-selected="true">{{Strings.MainPage_Tab_Surahs}}</button>
       <button data-testid="gotoPage-search" class="nav-link BtnNav" id="nav-Juz-tab" data-bs-toggle="tab" data-bs-target="#nav-Juz" type="button" role="tab"
-        aria-controls="nav-Juz" aria-selected="false">الأجزاء</button>
+        aria-controls="nav-Juz" aria-selected="false">{{Strings.MainPage_Tab_Juzs}}</button>
       <button data-testid="gotoPage-search2" class="nav-link BtnNav" id="nav-Pages-tab" data-bs-toggle="tab" data-bs-target="#nav-Pages" type="button"
-        role="tab" aria-controls="nav-Pages" aria-selected="false">الصفحات</button>
+        role="tab" aria-controls="nav-Pages" aria-selected="false">{{Strings.MainPage_Tab_Pages}}</button>
     </div>
   </nav>
 
@@ -20,7 +20,7 @@
           <div (click)="gotoQuranPageByPage(surah.startpage)" class="DivBox">
             <span style="direction: rtl;white-space:break-spaces;">
               {{ surah.order }}.
-              سورة {{ surah.name }}
+              {{Strings.MainPage_Surah}} {{ surah.name }}
             </span>
           </div>
         </div>
@@ -30,7 +30,7 @@
     <div class="tab-pane fade" id="nav-Juz" role="tabpanel" aria-labelledby="nav-Juz-tab">
       <div class="DivContanier">
         <div *ngFor="let _ of [].constructor(30); let number = index">
-          <div (click)="gotoQuranPageByJuz(number+1)" class="DivBox">الجزء {{ number+1 }}</div>
+          <div (click)="gotoQuranPageByJuz(number+1)" class="DivBox">{{Strings.MainPage_Juz}} {{ number+1 }}</div>
         </div>
       </div>
     </div>
@@ -38,7 +38,7 @@
     <div class="tab-pane fade" id="nav-Pages" role="tabpanel" aria-labelledby="nav-Pages-tab">
       <div class="DivContanier">
         <div *ngFor="let _ of [].constructor(604); let number = index">
-          <div (click)="gotoQuranPageByPage(number+1)" class="DivBox">الصفحة {{ number+1 }}</div>
+          <div (click)="gotoQuranPageByPage(number+1)" class="DivBox">{{Strings.MainPage_Page}} {{ number+1 }}</div>
         </div>
       </div>
     </div>

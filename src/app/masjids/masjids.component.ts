@@ -4,6 +4,8 @@ import { MasjidAddress, MasjidLocation, MasjidResponse } from '../Models/MasjidR
 import { CommonModule } from '@angular/common';
 import { GeolocationService } from '../Services/Geolocation.Service';
 import { RoutingService } from '../Services/Routing.Service';
+import { StringResource } from '../Resources/StringResource';
+import { UrlResource } from '../Resources/UrlResource';
 
 @Component({
   selector: 'app-masjids',
@@ -12,7 +14,9 @@ import { RoutingService } from '../Services/Routing.Service';
   templateUrl: './masjids.component.html',
   styleUrls: ['../app.component.css', './masjids.component.css']
 })
+
 export class MasjidsComponent {
+  Strings = StringResource;
   public MasjidInfor: MasjidResponse;
   public CityName: String;
   public ErrorMessage: String;
@@ -21,18 +25,16 @@ export class MasjidsComponent {
     private http: HttpClient
   ) { }
 
+  //Run On Start
   ngOnInit() {
     GeolocationService.getLocation().then((loc) => { this.callMasjidsApi(loc[0], loc[1]); });
-    GeolocationService.getCityName().then(output => { 
-      this.CityName = output;
-      
-     });
+    GeolocationService.getCityName().then(output => { this.CityName = output; });
   }
 
   //Call the ParyTime Athan
   callMasjidsApi(latitude: String, longitude: String) {
     const rad = 1000000;
-    const url = `https://api.masjidnear.me/v1/masjids/search` + `?lat=${latitude}&lng=${longitude}&radius=${rad}/`;
+    const url = `${UrlResource.Masjidnear_Url}` + `?lat=${latitude}&lng=${longitude}&radius=${rad}/`;
 
     this.http.get<MasjidResponse>(url).subscribe(res => {
 
@@ -45,7 +47,7 @@ export class MasjidsComponent {
 
         } else {
 
-          this.ErrorMessage = "لا توجد مساجد";
+          this.ErrorMessage = StringResource.Massjid_Error;
 
         }
 
@@ -58,7 +60,7 @@ export class MasjidsComponent {
     {
       if (!val) return;
 
-      const url = `https://www.google.com/maps?q=${val.coordinates[1]},${val.coordinates[0]}`;
+      const url = `${UrlResource.GoogleMap_Url}?q=${val.coordinates[1]},${val.coordinates[0]}`;
       RoutingService.OpenTab(url);
     }
   }

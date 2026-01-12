@@ -4,7 +4,7 @@ import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/rou
 import SurahListData from '../Mid/SurahList.json';
 import AyaListData from '../Mid/AyaList.json';
 import { CommonModule } from '@angular/common';
-import { HeaderComponent } from '../header/header.component';
+import { StringResource } from '../Resources/StringResource';
 
 @Component({
   selector: 'app-main-body',
@@ -15,11 +15,13 @@ import { HeaderComponent } from '../header/header.component';
 })
 
 export class MainBodyComponent implements OnInit {
-  title = 'Onlinequran';
-  public AyasList: Aya[] = AyaListData as Aya[];
-  public SurahsList: Surah[] = SurahListData as Surah[];
+  Strings = StringResource;
+  AyasList: Aya[] = AyaListData as Aya[];
+  SurahsList: Surah[] = SurahListData as Surah[];
+
   constructor(private router: Router) { }
 
+  //Run on Strat
   ngOnInit() { }
 
   //Go to Quran Page by Juz

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { RoutingService } from '../Services/Routing.Service';
+import { UrlResource } from '../Resources/UrlResource';
+import { StringResource } from '../Resources/StringResource';
 
 @Component({
   selector: 'app-footer',
@@ -10,12 +12,15 @@ import { RoutingService } from '../Services/Routing.Service';
 })
 export class FooterComponent {
 
-    //Go to Map to find Masjid
-    gotoLink(url: string): void {
-      {
-        if (!url) return;
-  
-        RoutingService.OpenTab(url);
-      }
+  URLS = UrlResource;
+  FooterInfo: String = StringResource.App_Title;
+
+  //Go to Map to find Masjid
+  gotoLink(url: string): void {
+    {
+      if (!url) return;
+
+      RoutingService.OpenTab(url);
     }
+  }
 }

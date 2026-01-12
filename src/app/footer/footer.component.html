@@ -1,23 +1,23 @@
 <footer class="bg-light text-center text-lg-start footer">
   <div class="text-center p-3 footerClass">
 
-    <div style="font-weight: bold;"> Online Quran </div>
+    <div style="font-weight: bold;"> {{FooterInfo}} </div>
 
     <div>
 
-      <span (click)="gotoLink('https://github.com/MohammadOmarAwad/OnlineQuran/tree/main')">
+      <span (click)="gotoLink(URLS.GitHub_Url)">
         <i class="fab fa-github icon IconClass"></i>
       </span>
 
-      <span (click)="gotoLink('https://www.facebook.com/almanee.abdalrhman')">
+      <span (click)="gotoLink(URLS.FaceBook_Url)">
         <i class="fab fa-facebook-f icon IconClass"></i>
       </span>
 
-      <span (click)="gotoLink('https://www.linkedin.com/in/mohammad-awad-97b2b0256/')">
+      <span (click)="gotoLink(URLS.Linkedin_Url)">
         <i class="fab fa-linkedin-in icon IconClass"></i>
       </span>
 
-      <span (click)="gotoLink('https://play.google.com/store/apps/dev?id=6977806523137890552')">
+      <span (click)="gotoLink(URLS.GooglePlay_Url)">
         <i class="fab fa-google-play icon IconClass"></i>
       </span>
 

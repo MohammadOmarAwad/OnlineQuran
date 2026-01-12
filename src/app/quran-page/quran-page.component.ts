@@ -12,6 +12,8 @@ import { Reciter } from '../Models/Reciter';
 import { Clipboard } from '@angular/cdk/clipboard';
 import { ToastrService } from 'ngx-toastr';
 import { TextService } from '../Services/Text.Service';
+import { UrlResource } from '../Resources/UrlResource';
+import { StringResource } from '../Resources/StringResource';
 
 @Component({
   selector: 'app-quran-page',
@@ -23,7 +25,7 @@ import { TextService } from '../Services/Text.Service';
 })
 
 export class QuranPageComponent {
-
+  Strings = StringResource;
   public AyasList: Aya[] = AyaListData as Aya[];
   public SurahsList: Surah[] = SurahListData as Surah[];
   public quranPage: QuranPage;
@@ -35,7 +37,7 @@ export class QuranPageComponent {
   PlaceHolder: String = "";
   IsDetails: boolean = false;
   Running_URL: String = "none";
-  Reciter_URL: String = "https://verses.quran.com/AbdulBaset/Mujawwad/mp3/";
+  Reciter_URL: String = UrlResource.Recitors_Url;
 
   constructor(
     private activeRoute: ActivatedRoute,
@@ -92,7 +94,7 @@ export class QuranPageComponent {
                           </div>`;
 
         if (aya.page != "187" && aya.page != "1") {
-          this.PageBody += `<div> بِسْــــــمِ اللَّــــــهِ الرَّحْمَـٰــنِ الرَّحِيــــم</div>`;
+          this.PageBody += `<div>${StringResource.QuranPage_Basmale}</div>`;
         }
       }
 
@@ -256,11 +258,11 @@ export class QuranPageComponent {
       
       ${AyaInfo.simple}  
           
-      https://mohammadomarawad.github.io/OnlineQuran/quran/${AyaInfo.page}`;
+      ${UrlResource.OnlineQuran_Url}/quran/${AyaInfo.page}`;
 
       this.clipboard.copy(textToCopy);
 
-      this.toastr.success(`تم نسخ الأية ${AyaInfo.aya} من سورة ${AyaInfo.surah_Infos.name}`);
+      this.toastr.success(TextService.FormatMessage(StringResource.QuranPage_CopyMessage, AyaInfo.aya, AyaInfo.surah_Infos.name));
     }
   }
 

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Strings } from '../Resources/Strings';
+import { StringResource } from '../Resources/StringResource';
 
 @Component({
   selector: 'app-about',
@@ -8,7 +8,7 @@ import { Strings } from '../Resources/Strings';
   styleUrls: ['../app.component.css', './about.component.css']
 })
 export class AboutComponent {
-  AboutTitle: String = Strings.About_Title;
-  Information: String = Strings.About_Information;
-  Vision: String = Strings.About_Vision;
+  AboutTitle: String = StringResource.About_Title;
+  Information: String = StringResource.About_Information;
+  Vision: String = StringResource.About_Vision;
 }

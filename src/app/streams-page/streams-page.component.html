@@ -1,38 +1,41 @@
 <div class="MainBody">
 
-    <h1>البث المباشر</h1>
+    <h1>{{Strings.Header_StreamsPage}} </h1>
     <nav style="margin-top: 5px;">
         <div class="nav nav-tabs" id="nav-tab" role="tablist">
             <button class="nav-link active BtnNav" id="nav-Maka-tab" data-bs-toggle="tab" data-bs-target="#nav-Maka"
-                type="button" role="tab" aria-controls="nav-Maka" aria-selected="true">مكة</button>
-            <button class="nav-link BtnNav" id="nav-Madina-tab" data-bs-toggle="tab" data-bs-target="#nav-Madina" type="button"
-                role="tab" aria-controls="nav-Madina" aria-selected="false">المدينة</button>
-            <button class="nav-link BtnNav" id="nav-Radio-tab" data-bs-toggle="tab" data-bs-target="#nav-Radio" type="button"
-                role="tab" aria-controls="nav-Radio" aria-selected="false">الإذاعة</button>
+                type="button" role="tab" aria-controls="nav-Maka"
+                aria-selected="true">{{Strings.StreamPage_Tab_Makka}}</button>
+            <button class="nav-link BtnNav" id="nav-Madina-tab" data-bs-toggle="tab" data-bs-target="#nav-Madina"
+                type="button" role="tab" aria-controls="nav-Madina"
+                aria-selected="false">{{Strings.StreamPage_Tab_Madina}}</button>
+            <button class="nav-link BtnNav" id="nav-Radio-tab" data-bs-toggle="tab" data-bs-target="#nav-Radio"
+                type="button" role="tab" aria-controls="nav-Radio"
+                aria-selected="false">{{Strings.StreamPage_Tab_Radio}}</button>
         </div>
     </nav>
 
     <div class="tab-content" id="nav-tabContent">
         <div class="tab-pane fade show active" id="nav-Maka" role="tabpanel" aria-labelledby="nav-Maka-tab">
-            <button class="Btn" (click)="Run_Video('https://www.youtube.com/embed/fRLNpcIwz34','Makka')">المباشر
+            <button class="Btn" (click)="Run_Video(Urls.MakkaLive1,IsMakka)">{{Strings.StreamsPage_Live}}
                 1</button>
-            <button class="Btn" (click)="Run_Video('https://www.youtube.com/embed/7-Qf3g-0xEI','Makka')">المباشر
+            <button class="Btn" (click)="Run_Video(Urls.MakkaLive2,IsMakka)">{{Strings.StreamsPage_Live}}
                 2</button>
-            <button class="Btn" (click)="Run_Video('https://www.youtube.com/embed/2v7nPi8V1UE','Makka')">المباشر
+            <button class="Btn" (click)="Run_Video(Urls.MakkaLive3,IsMakka)">{{Strings.StreamsPage_Live}}
                 3</button>
-            <button class="Btn" (click)="Run_Video('https://www.youtube.com/embed/X2JaaxtsOUM','Makka')">المباشر
+            <button class="Btn" (click)="Run_Video(Urls.MakkaLive4,IsMakka)">{{Strings.StreamsPage_Live}}
                 4</button>
             <div class="DivContanier" [innerHTML]="ComponentLiveMakka"> </div>
         </div>
 
         <div class="tab-pane fade" id="nav-Madina" role="tabpanel" aria-labelledby="nav-Madina-tab">
-            <button class="Btn" (click)="Run_Video('https://www.youtube.com/embed/TpT8b8JFZ6E','Madina')">المباشر
+            <button class="Btn" (click)="Run_Video(Urls.MadineLive1,IsMadina)">{{Strings.StreamsPage_Live}}
                 1</button>
-            <button class="Btn" (click)="Run_Video('https://www.youtube.com/embed/s2IvtZ-9Bog','Madina')">المباشر
+            <button class="Btn" (click)="Run_Video(Urls.MadineLive2,IsMadina)">{{Strings.StreamsPage_Live}}
                 2</button>
-            <button class="Btn" (click)="Run_Video('https://www.youtube.com/embed/rHWSRMcGGBQ','Madina')">المباشر
+            <button class="Btn" (click)="Run_Video(Urls.MadineLive3,IsMadina)">{{Strings.StreamsPage_Live}}
                 3</button>
-            <button class="Btn" (click)="Run_Video('https://www.youtube.com/embed/phF5BzEwb0U','Madina')">المباشر
+            <button class="Btn" (click)="Run_Video(Urls.MadineLive4,IsMadina)">{{Strings.StreamsPage_Live}}
                 4</button>
             <div class="DivContanier" [innerHTML]="ComponentLiveMadina"> </div>
         </div>
@@ -45,14 +48,13 @@
             <div class="DivContanier">
 
                 <div class="DivBoxRadio">
+                    <button class="Btn" (click)="Run_Audio(Urls.Sharjah_Radio)">{{Strings.Sharjah_Radio_Name}}</button>
+
                     <button class="Btn"
-                        (click)="Run_Audio('https://l3.itworkscdn.net/smcquranlive/quranradiolive/icecast.audio')">Sharjah</button>
+                        (click)="Run_Audio(Urls.ZuwaraLibya_Radio)">{{Strings.ZuwaraLibya_Radio_Name}}</button>
 
-                    <button class="Btn" (click)="Run_Audio('https://stream.zeno.fm/snczwewpsg0uv')">Zuwara,
-                        Libya</button>
-
-                    <button class="Btn" (click)="Run_Audio('https://stream.radiojar.com/8s5u5tpdtwzuv')">Quran,
-                        Egypt</button>
+                    <button class="Btn"
+                        (click)="Run_Audio(Urls.QuranEgypt_Radio)">{{Strings.QuranEgypt_Radio_Name}}</button>
                 </div>
 
             </div>

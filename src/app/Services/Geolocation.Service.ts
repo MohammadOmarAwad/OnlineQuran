@@ -1,3 +1,5 @@
+import { UrlResource } from "../Resources/UrlResource";
+
 export class GeolocationService {
 
     //Get Location 
@@ -24,7 +26,7 @@ export class GeolocationService {
     static async getCityName(): Promise<string> {
         const [lat, lng] = await this.getLocation();
 
-        const url = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}`;
+        const url = `${UrlResource.OpenStreetMap}?format=json&lat=${lat}&lon=${lng}`;
 
         const res = await fetch(url, {
             headers: {

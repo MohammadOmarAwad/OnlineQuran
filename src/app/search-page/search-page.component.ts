@@ -5,6 +5,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { TextService } from '../Services/Text.Service';
+import { StringResource } from '../Resources/StringResource';
 
 @Component({
   selector: 'app-search-page',
@@ -15,6 +16,8 @@ import { TextService } from '../Services/Text.Service';
 })
 
 export class SearchPageComponent {
+    Strings = StringResource;
+  
   public ayasList: Aya[] = []
   constructor(private router: Router) { }
 

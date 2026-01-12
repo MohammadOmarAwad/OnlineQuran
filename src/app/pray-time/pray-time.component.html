@@ -6,10 +6,10 @@
             <div class="nav nav-tabs" id="nav-tab" role="tablist">
                 <button class="nav-link active BtnNav" id="nav-PrayTime-tab" data-bs-toggle="tab"
                     data-bs-target="#nav-PrayTime" type="button" role="tab" aria-controls="nav-PrayTime"
-                    aria-selected="true">أوقات الصلاة</button>
+                    aria-selected="true">{{Strings.Header_PrayTimePage}}</button>
                 <button class="nav-link BtnNav" id="nav-PrayTimeWholeMonth-tab" data-bs-toggle="tab"
                     data-bs-target="#nav-PrayTimeWholeMonth" type="button" role="tab"
-                    aria-controls="nav-PrayTimeWholeMonth" aria-selected="false">كامل الشهر</button>
+                    aria-controls="nav-PrayTimeWholeMonth" aria-selected="false">{{Strings.PrayTime_Tab_WholeMonth}}</button>
             </div>
         </nav>
 
@@ -37,35 +37,35 @@
                             <tr>
                                 <td style="text-align: left;">{{PrayTimeToday?.timings?.Fajr}}</td>
                                 <td style="text-align: right;">
-                                    <span class="qword" style="white-space: nowrap;">الفجر </span>
+                                    <span class="qword" style="white-space: nowrap;">{{Strings.PrayTime_Fajr}} </span>
                                 </td>
                             </tr>
 
                             <tr>
                                 <td style="text-align: left;">{{PrayTimeToday?.timings?. Dhuhr }}</td>
                                 <td style="text-align: right;">
-                                    <span class="qword" style="white-space: nowrap;">الظهر </span>
+                                    <span class="qword" style="white-space: nowrap;">{{Strings.PrayTime_Dhuhr}} </span>
                                 </td>
                             </tr>
 
                             <tr>
                                 <td style="text-align: left;">{{PrayTimeToday?.timings?. Asr }}</td>
                                 <td style="text-align: right;">
-                                    <span class="qword" style="white-space: nowrap;">العصر </span>
+                                    <span class="qword" style="white-space: nowrap;">{{Strings.PrayTime_Asr}} </span>
                                 </td>
                             </tr>
 
                             <tr>
                                 <td style="text-align: left;">{{PrayTimeToday?.timings?. Maghrib }}</td>
                                 <td style="text-align: right;">
-                                    <span class="qword" style="white-space: nowrap;">المغرب </span>
+                                    <span class="qword" style="white-space: nowrap;">{{Strings.PrayTime_Magrib}} </span>
                                 </td>
                             </tr>
 
                             <tr>
                                 <td style="text-align: left;">{{PrayTimeToday?.timings?. Isha }}</td>
                                 <td style="text-align: right;">
-                                    <span class="qword" style="white-space: nowrap;">العشاء </span>
+                                    <span class="qword" style="white-space: nowrap;">{{Strings.PrayTime_Isha}} </span>
                                 </td>
                             </tr>
                         </table>

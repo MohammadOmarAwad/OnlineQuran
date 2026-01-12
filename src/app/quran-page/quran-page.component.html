@@ -22,9 +22,11 @@
     <!-- Navigation Btns -->
     <table style="margin-bottom: 20px;">
       <tr style="white-space: nowrap; background-color: transparent;">
-        <td><button class="Btn" (click)="GoToNextPage(quranPage.Ayas[0].page)">الصفحة التالية</button></td>
+        <td><button class="Btn" (click)="GoToNextPage(quranPage.Ayas[0].page)">{{Strings.QuranPage_NextPage}}</button>
+        </td>
         <td style="width:100%;"><span>{{quranPage.Ayas[0].page}}</span></td>
-        <td><button class="Btn" (click)="GoToPriviousePage(quranPage.Ayas[0].page)">الصفحة السابقة</button></td>
+        <td><button class="Btn"
+            (click)="GoToPriviousePage(quranPage.Ayas[0].page)">{{Strings.QuranPage_PreviousPage}}</button></td>
       </tr>
     </table>
 
@@ -37,12 +39,14 @@
       <nav style="margin-top: 5px;">
         <div class="nav nav-tabs" id="nav-tab" role="tablist">
           <button class="nav-link active BtnNav" id="nav-Quran-tab" data-bs-toggle="tab" data-bs-target="#nav-Quran"
-            type="button" role="tab" aria-controls="nav-Quran" aria-selected="true">القرآن</button>
+            type="button" role="tab" aria-controls="nav-Quran"
+            aria-selected="true">{{Strings.QuranPage_Tab_Quran}}</button>
           <button class="nav-link BtnNav" id="nav-Tafser-tab" data-bs-toggle="tab" data-bs-target="#nav-Tafser"
-            type="button" role="tab" aria-controls="nav-Tafser" aria-selected="false">التفسير</button>
+            type="button" role="tab" aria-controls="nav-Tafser"
+            aria-selected="false">{{Strings.QuranPage_Tab_Tafser}}</button>
           <button class="nav-link BtnNav" id="nav-WordAnalysis-tab" data-bs-toggle="tab"
             data-bs-target="#nav-WordAnalysis" type="button" role="tab" aria-controls="nav-WordAnalysis"
-            aria-selected="false">الإعراب</button>
+            aria-selected="false">{{Strings.QuranPage_Tab_WordAnalysis}}</button>
         </div>
       </nav>
 
@@ -53,7 +57,7 @@
         <div>
           <table>
             <tr style="white-space: nowrap; background-color: transparent;">
-              <td><span>{{quranPage.Ayas[0].juz}} الجزء</span></td>
+              <td><span>{{quranPage.Ayas[0].juz}} {{Strings.MainPage_Juz}}</span></td>
               <td style="width:100%;"><span></span></td>
               <td><span>{{quranPage.Ayas[0].surah_Infos?.name}} </span></td>
             </tr>
@@ -61,8 +65,9 @@
         </div>
 
         <!-- Quran Text -->
-        <div (click)="GoToAya_Details(true)" class="tab-pane fade show active" style="line-height:45px;background-color:transparent;"
-          id="nav-Quran" role="tabpanel" aria-labelledby="nav-Quran-tab" [innerHtml]="PageBody">
+        <div (click)="GoToAya_Details(true)" class="tab-pane fade show active"
+          style="line-height:45px;background-color:transparent;" id="nav-Quran" role="tabpanel"
+          aria-labelledby="nav-Quran-tab" [innerHtml]="PageBody">
 
         </div>
 
@@ -88,14 +93,15 @@
       <div>
         <table class="NameClass">
           <tr style="white-space: nowrap; background-color: transparent;">
-            <td class="columon"><span class="SurahInfos">{{aya?.sura}} ترتيبها</span></td>
+            <td class="columon"><span class="SurahInfos">{{aya?.sura}} {{Strings.QuranPage_SurahOrder}}</span></td>
             <td class="columon"><span class="SurahInfos">{{aya?.surah_Infos?.name}}</span></td>
-            <td class="columon"><span class="SurahInfos">{{aya?.surah_Infos?.ayas}} عدد أياتها</span></td>
+            <td class="columon"><span class="SurahInfos">{{aya?.surah_Infos?.ayas}}
+                {{Strings.QuranPage_AyaCount}}</span></td>
           </tr>
         </table>
       </div>
 
-      <div> بِسْــــــمِ اللَّــــــهِ الرَّحْمَـٰــنِ الرَّحِيــــم</div>
+      <div> {{Strings.QuranPage_Basmale}}</div>
       <br>
       }
 
@@ -127,7 +133,6 @@
     <hr>
 
     <!--Pages Number-->
-    <div><span>{{quranPage.Ayas[0].page}} الصفحة</span></div>
-
+    <div><span>{{quranPage.Ayas[0].page}} {{Strings.MainPage_Page}}</span></div>
 
   </div>

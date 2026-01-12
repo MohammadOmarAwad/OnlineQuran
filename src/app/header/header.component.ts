@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 import { DateService } from '../Services/Date.Service';
+import { StringResource } from '../Resources/StringResource';
 
 @Component({
   selector: 'app-header',
@@ -12,6 +13,7 @@ import { DateService } from '../Services/Date.Service';
 })
 
 export class HeaderComponent implements OnInit {
+  Strings = StringResource;
   menuValue: boolean = false;
   menu_icon: string = 'bi bi-list';
   date: String = "";
@@ -19,6 +21,7 @@ export class HeaderComponent implements OnInit {
 
   constructor(private router: Router) { }
 
+  //Run on Start
   ngOnInit() {
     this.getDates();
   }

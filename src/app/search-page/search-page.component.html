@@ -1,8 +1,7 @@
 <div class="MainBody" style="overflow: auto;height: 100px;scrollbar-width: none;">
 
     <div class="searchBox">
-        <input type="text" class="Btn" style="text-align: center;width: 75%;" id="searchinput" placeholder="بحث عن أية"
-            #titleInput (keyup)="search(titleInput.value)">
+        <input type="text" class="Btn" style="text-align: center;width: 75%;" id="searchinput" placeholder={{Strings.SearchPage_PlaceHolder_SearchBox}} #titleInput (keyup)="search(titleInput.value)">
     </div>
 
     <div *ngFor="let e of ayasList">
@@ -16,9 +15,9 @@
 
             <div class="LineClass">
                 <Span class="AyaClass">
-                    <span class="qword">الصفحة {{e?.page}}</span>
+                    <span class="qword">{{Strings.MainPage_Page}} {{e?.page}}</span>
                     <span> &nbsp; </span>
-                    <span class="qword">السورة {{e?.surah_Infos?.name}}</span>
+                    <span class="qword">{{Strings.SearchPage_Surah}} {{e?.surah_Infos?.name}}</span>
                 </Span>
             </div>
         </div>
