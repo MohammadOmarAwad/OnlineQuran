@@ -1,3 +1,5 @@
+
+/* Contanier Css */
 .Block {
   width: 90%;
   min-width: 150px;
@@ -117,6 +119,12 @@
   margin-right: 20%;
   min-height: 86vh;
   font-family: "Droid Arabic Kufi";
+  text-align: -webkit-center;
+}
+
+/* Text Css */
+.qword {
+  color: #0f6b9c;
 }
 
 
@@ -155,6 +163,9 @@
     width: 90%;
   }
 }
+
+
+
 
 
 
@@ -229,9 +240,4 @@ option :checked {
   min-width: 130px;
   box-shadow: 0px 8px 16px 0px lightgrey;
   padding: 12px 16px;
-}
-
-/* Refactoring Brackets */
-.qword {
-  color: #0f6b9c;
 }

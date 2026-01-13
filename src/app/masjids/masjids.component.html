@@ -1,25 +1,24 @@
-<div class="MainBody" style="overflow: auto;height: 100px;scrollbar-width: none;">
+<div class="MainBody">
 
     <h3>{{CityName}}</h3>
     <h3>{{ErrorMessage}}</h3>
 
-    <div class="DivContanier table-responsive-sm">
-        <div *ngFor="let masjid of MasjidInfor?.data?.masjids" class="DivBox"
-            style="text-align: -webkit-center;white-space:normal;direction: ltr;">
+    <div class="table-responsive-sm">
+        <div *ngFor="let masjid of MasjidInfor?.data?.masjids" class="Block">
 
             <table class="table table-hover" style="width: 70%;" (click)="gotoMasjid(masjid.masjidLocation)">
                 <tr>
-                    <td style="text-align: left;vertical-align: top;">{{ masjid.masjidName }}</td>
                     <td style="text-align: right;vertical-align: top;">
                         <span class="qword" style="white-space: nowrap;">{{ Strings.Massjid_MasjidName }} </span>
                     </td>
+                    <td style="text-align: left;vertical-align: top;">{{ masjid.masjidName }}</td>
                 </tr>
                 <tr>
-                    <td style="text-align: left;vertical-align: top;">
-                        {{masjid.masjidAddress.description }}
-                    </td>
                     <td style="text-align: right;vertical-align: top;">
                         <span class="qword" style="white-space: nowrap;">{{ Strings.Massjid_MasjidAddress }} </span>
+                    </td>
+                    <td style="text-align: left;vertical-align: top;">
+                        {{masjid.masjidAddress.description }}
                     </td>
                 </tr>
             </table>
