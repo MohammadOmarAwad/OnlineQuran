@@ -8,23 +8,24 @@
   background-color: rgba(0, 153, 255, 0.24);
 }
 
-.textalign_Left {
-  text-align: left;
+%BaseClass {
+  white-space: nowrap;
   width: 33%;
+}
+
+.textalign_Left {
+  @extend %BaseClass;
+  text-align: left;
 }
 
 .textalign_right {
+  @extend %BaseClass;
   text-align: right;
-  width: 33%;
 }
 
 .textalign_center {
+  @extend %BaseClass;
   text-align: center;
-  width: 33%;
-}
-
-.tessssst {
-  color: yellow;
 }
 
 /* Change the entire player background */
