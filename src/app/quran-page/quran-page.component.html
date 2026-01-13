@@ -77,12 +77,11 @@
         @if(aya.aya === '1')
         {
         <div>
-          <table class="NameClass">
-            <tr style="white-space: nowrap; background-color: transparent;">
-              <td class="columon"><span class="SurahInfos">{{aya?.sura}} {{Strings.QuranPage_SurahOrder}}</span></td>
-              <td class="columon"><span class="SurahInfos">{{aya?.surah_Infos?.name}}</span></td>
-              <td class="columon"><span class="SurahInfos">{{aya?.surah_Infos?.ayas}}
-                  {{Strings.QuranPage_AyaCount}}</span></td>
+          <table Class="TableClass">
+            <tr>
+              <td><span class="qword">﴿ {{aya?.sura}} {{Strings.QuranPage_SurahOrder}} ﴾</span></td>
+              <td><span>﴿ {{aya?.surah_Infos?.name}} ﴾</span></td>
+              <td><span class="qword">﴿ {{aya?.surah_Infos?.ayas}} {{Strings.QuranPage_AyaCount}} ﴾</span></td>
             </tr>
           </table>
         </div>

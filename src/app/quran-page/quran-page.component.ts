@@ -84,11 +84,11 @@ export class QuranPageComponent {
 
         this.PageBody += `<br/>
                           <div> 
-                            <table class="NameClass">
-                              <tr style="white-space: nowrap; background-color: transparent;">
-                                <td class="columon"><span class="SurahInfos">${aya?.sura} ترتيبها</span></td>
-                                <td class="columon"><span class="SurahInfos">${aya?.surah_Infos?.name}</span></td>
-                                <td class="columon"><span class="SurahInfos">${aya?.surah_Infos?.ayas} عدد أياتها</span></td>
+                            <table Class="TableClass">
+                              <tr>
+                                <td><span class="qword">﴿ ${aya?.sura} ${StringResource.QuranPage_SurahOrder} ﴾</span></td>
+                                <td><span>﴿ ${aya?.surah_Infos?.name} ﴾</span></td>
+                                <td><span class="qword">﴿ ${aya?.surah_Infos?.ayas} ${StringResource.QuranPage_AyaCount} ﴾</span></td>
                               </tr>
                             </table>
                           </div>`;

@@ -49,8 +49,8 @@ export const StringResource = {
   QuranPage_Tab_Quran: "القرآن",
   QuranPage_Tab_Tafser: "التفسير",
   QuranPage_Tab_WordAnalysis: "الإعراب",
-  QuranPage_SurahOrder: "ترتيبها",
-  QuranPage_AyaCount: "عدد أياتها",
+  QuranPage_SurahOrder: "ترتيب",
+  QuranPage_AyaCount: "أية",
   QuranPage_Basmale: "بِسْــــــمِ اللَّــــــهِ الرَّحْمَـٰــنِ الرَّحِيــــم",
 
   SearchPage_PlaceHolder_SearchBox: "البحث عن أية",
