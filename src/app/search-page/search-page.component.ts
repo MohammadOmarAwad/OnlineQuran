@@ -12,7 +12,7 @@ import { StringResource } from '../Resources/StringResource';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './search-page.component.html',
-  styleUrls: ['../app.component.css', './search-page.component.css']
+  styleUrls: ['../app.component.scss', './search-page.component.scss']
 })
 
 export class SearchPageComponent {

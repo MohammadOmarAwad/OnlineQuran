@@ -7,7 +7,7 @@ import { UrlResource } from '../Resources/UrlResource';
   selector: 'app-streams-page',
   standalone: true,
   templateUrl: './streams-page.component.html',
-  styleUrls: ['../app.component.css', './streams-page.component.css'],
+  styleUrls: ['../app.component.scss', './streams-page.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
 

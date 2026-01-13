@@ -12,7 +12,7 @@ import { UrlResource } from '../Resources/UrlResource';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './masjids.component.html',
-  styleUrls: ['../app.component.css', './masjids.component.css']
+  styleUrls: ['../app.component.scss', './masjids.component.scss']
 })
 
 export class MasjidsComponent {

@@ -20,7 +20,7 @@ import { StringResource } from '../Resources/StringResource';
   imports: [CommonModule],
   standalone: true,
   templateUrl: './quran-page.component.html',
-  styleUrls: ['../app.component.css', './quran-page.component.css'],
+  styleUrls: ['../app.component.scss', './quran-page.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
 

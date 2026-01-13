@@ -1,0 +1,33 @@
+.TableClass {
+  width: 100%;
+  text-align: center;
+  direction: rtl;
+}
+
+.active {
+  background-color: rgba(0, 153, 255, 0.24);
+}
+
+.textalign_Left {
+  text-align: left;
+  width: 33%;
+}
+
+.textalign_right {
+  text-align: right;
+  width: 33%;
+}
+
+.textalign_center {
+  text-align: center;
+  width: 33%;
+}
+
+.tessssst {
+  color: yellow;
+}
+
+/* Change the entire player background */
+audio::-webkit-media-controls-panel {
+  background-color: lightgrey;
+}

@@ -12,7 +12,7 @@ import { UrlResource } from '../Resources/UrlResource';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './pray-time.component.html',
-  styleUrls: ['../app.component.css', './pray-time.component.css'],
+  styleUrls: ['../app.component.scss', './pray-time.component.scss'],
 })
 
 export class PrayTimeComponent {

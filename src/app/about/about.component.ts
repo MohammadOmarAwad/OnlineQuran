@@ -5,7 +5,7 @@ import { StringResource } from '../Resources/StringResource';
   selector: 'app-about',
   standalone: true,
   templateUrl: './about.component.html',
-  styleUrls: ['../app.component.css', './about.component.css']
+  styleUrls: ['../app.component.scss', './about.component.scss']
 })
 export class AboutComponent {
   AboutTitle: String = StringResource.About_Title;

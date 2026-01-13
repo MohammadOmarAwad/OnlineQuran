@@ -11,7 +11,7 @@ import { StringResource } from '../Resources/StringResource';
   standalone: true,
   imports: [CommonModule, RouterOutlet, RouterLink, RouterLinkActive],
   templateUrl: './main-body.component.html',
-  styleUrls: ['../app.component.css', './main-body.component.css']
+  styleUrls: ['../app.component.scss', './main-body.component.scss']
 })
 
 export class MainBodyComponent implements OnInit {
