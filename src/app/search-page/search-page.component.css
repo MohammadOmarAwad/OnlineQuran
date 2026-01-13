@@ -3,33 +3,3 @@
     margin-bottom: 5px;
     font-size: 20px;
 }
-
-.AyaClass {
-    transition: background-color 0.5s ease;
-}
-
-.AyaClass:hover {
-    background-color: rgba(0, 153, 255, 0.24);
-    cursor: pointer;
-}
-
-.LineClass {
-    text-align: justify;
-    text-align-last: center;
-    direction: rtl;
-    font-weight: 100;
-}
-
-/* Small devices */
-@media screen and (max-width: 480px) {
-    .AyaClass {
-        font-size: 25px;
-    }
-}
-
-/* Tablets */
-@media screen and (min-width: 481px) and (max-width: 900px) {
-    .AyaClass {
-        font-size: 35px;
-    }
-}

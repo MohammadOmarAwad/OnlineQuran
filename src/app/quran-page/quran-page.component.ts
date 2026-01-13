@@ -106,7 +106,7 @@ export class QuranPageComponent {
     });
 
     if (this.PlaceHolder != "") {
-      this.PageBody += `<div class="LineClass">${this.PlaceHolder}</div>`
+      this.PageBody += `<div>${this.PlaceHolder}</div>`
     }
 
     this.PageBody = TextService.bracketsReplacer(this.PageBody);
@@ -128,7 +128,7 @@ export class QuranPageComponent {
 
       let data = tafser.find(a => a.sura === sura && a.aya === aya);
       this.PageBodyTafser += `
-      <Span class="WordAnalysisClass">
+      <Span class="LineClass">
         <span>${xx?.text_uthmani}</span>
         <span class="qword">﴿${aya}﴾</span>
         <br>
@@ -159,7 +159,7 @@ export class QuranPageComponent {
 
       let data = quranicWords.find(a => a.sura === sura && a.aya === aya);
       this.PageBodyWordAnalysis += `
-      <Span class="WordAnalysisClass">
+      <Span class="LineClass">
         <span>${xx?.text_uthmani}</span>
         <span class="qword">﴿${aya}﴾</span>
       </Span>`;
