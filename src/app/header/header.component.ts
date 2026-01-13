@@ -9,7 +9,7 @@ import { StringResource } from '../Resources/StringResource';
   standalone: true,
   imports: [CommonModule, RouterOutlet],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.css'
+  styleUrls: ['../app.component.css', './header.component.css']
 })
 
 export class HeaderComponent implements OnInit {
