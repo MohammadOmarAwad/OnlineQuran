@@ -8,7 +8,7 @@ import { StringResource } from '../Resources/StringResource';
   standalone: true,
   imports: [],
   templateUrl: './footer.component.html',
-  styleUrl: './footer.component.css'
+  styleUrls: ['../app.component.css', './footer.component.css']
 })
 export class FooterComponent {
 

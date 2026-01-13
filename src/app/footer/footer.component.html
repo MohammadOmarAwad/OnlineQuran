@@ -1,27 +1,35 @@
 <footer class="bg-light text-center text-lg-start footer">
-  <div class="text-center p-3 footerClass">
+  <div class="text-center p-3">
 
-    <div style="font-weight: bold;"> {{FooterInfo}} </div>
+    <table>
+      <tr>
 
-    <div>
+        <td>
+          <div style="font-weight: bold;"> {{FooterInfo}} </div>
+        </td>
 
-      <span (click)="gotoLink(URLS.GitHub_Url)">
-        <i class="fab fa-github icon IconClass"></i>
-      </span>
+        <td>
 
-      <span (click)="gotoLink(URLS.FaceBook_Url)">
-        <i class="fab fa-facebook-f icon IconClass"></i>
-      </span>
+          <span (click)="gotoLink(URLS.GitHub_Url)">
+            <i class="fab fa-github icon IconClass"></i>
+          </span>
 
-      <span (click)="gotoLink(URLS.Linkedin_Url)">
-        <i class="fab fa-linkedin-in icon IconClass"></i>
-      </span>
+          <span (click)="gotoLink(URLS.FaceBook_Url)">
+            <i class="fab fa-facebook-f icon IconClass"></i>
+          </span>
 
-      <span (click)="gotoLink(URLS.GooglePlay_Url)">
-        <i class="fab fa-google-play icon IconClass"></i>
-      </span>
+          <span (click)="gotoLink(URLS.Linkedin_Url)">
+            <i class="fab fa-linkedin-in icon IconClass"></i>
+          </span>
 
-    </div>
+          <span (click)="gotoLink(URLS.GooglePlay_Url)">
+            <i class="fab fa-google-play icon IconClass"></i>
+          </span>
+
+
+      </tr>
+    </table>
+
 
   </div>
 </footer>
