@@ -76,15 +76,7 @@
         @for (aya of quranPage.Ayas; track aya.aya) {
         @if(aya.aya === '1')
         {
-        <div>
-          <table Class="TableClass">
-            <tr>
-              <td><span class="qword">﴿ {{aya?.sura}} {{Strings.QuranPage_SurahOrder}} ﴾</span></td>
-              <td><span>﴿ {{aya?.surah_Infos?.name}} ﴾</span></td>
-              <td><span class="qword">﴿ {{aya?.surah_Infos?.ayas}} {{Strings.QuranPage_AyaCount}} ﴾</span></td>
-            </tr>
-          </table>
-        </div>
+        <div [innerHTML]="SurahHeaderBuilder(aya)"></div>
 
         <div> {{Strings.QuranPage_Basmale}}</div>
         <br>
@@ -103,9 +95,7 @@
             </td>
             <td>
               <div class="LineClass" style="text-align-last:right;">
-                <span [id]="aya.sura + aya.aya" class="AyaClass" (click)="AddActiveCSSClass(aya.sura + aya.aya)">
-                  <span>{{ aya.text_uthmani }}</span>
-                  <span class="qword" [innerHTML]="BracketsReplacer(aya.aya)"></span>
+                <span [id]="aya.sura + aya.aya" class="AyaClass" (click)="AddActiveCSSClass(aya.sura + aya.aya)" [innerHTML]="AyaBuilder(aya)">
                 </span>
               </div>
             </td>
@@ -123,7 +113,8 @@
         <tr style="white-space: nowrap; background-color: transparent;">
           <td><button class="Btn" (click)="GoToNextPage(quranPage.Ayas[0].page)">{{Strings.QuranPage_NextPage}}</button>
           </td>
-          <td style="width:100%;"><span>{{Strings.MainPage_Page}} {{quranPage.Ayas[0].page}}</span></td>
+          <td style="width:100%; text-align: center;"><span>{{Strings.MainPage_Page}} {{quranPage.Ayas[0].page}}</span>
+          </td>
           <td><button class="Btn"
               (click)="GoToPriviousePage(quranPage.Ayas[0].page)">{{Strings.QuranPage_PreviousPage}}</button></td>
         </tr>

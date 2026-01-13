@@ -82,34 +82,46 @@ export class QuranPageComponent {
           this.PlaceHolder = "";
         }
 
-        this.PageBody += `<br/>
-                          <div> 
-                            <table Class="TableClass">
-                              <tr>
-                                <td><span class="qword">﴿ ${aya?.sura} ${StringResource.QuranPage_SurahOrder} ﴾</span></td>
-                                <td><span>﴿ ${aya?.surah_Infos?.name} ﴾</span></td>
-                                <td><span class="qword">﴿ ${aya?.surah_Infos?.ayas} ${StringResource.QuranPage_AyaCount} ﴾</span></td>
-                              </tr>
-                            </table>
-                          </div>`;
+        this.PageBody += this.SurahHeaderBuilder(aya);
 
         if (aya.page != "187" && aya.page != "1") {
           this.PageBody += `<div>${StringResource.QuranPage_Basmale}</div>`;
         }
       }
 
-      this.PlaceHolder += `<Span class="AyaClass">
-                            <span>${aya?.text_uthmani}</span>
-                            <span class="qword">﴿${aya?.aya}﴾</span>
-                          </Span>`;
+      this.PlaceHolder += this.AyaBuilder(aya);
 
     });
 
     if (this.PlaceHolder != "") {
-      this.PageBody += `<div>${this.PlaceHolder}</div>`
+      this.PageBody += `<div class="LineClass">${this.PlaceHolder}</div>`
     }
+  }
 
-    this.PageBody = TextService.bracketsReplacer(this.PageBody);
+  //Build Aya Part
+  AyaBuilder(aya: Aya): string {
+    const output = `<Span class="AyaClass">
+                            <span>${aya?.text_uthmani}</span>
+                            <span class="qword">﴿${aya?.aya}﴾</span>
+                          </Span>`;
+
+    return TextService.bracketsReplacer(output).toString();
+  }
+
+  //Build SurahHeader Part
+  SurahHeaderBuilder(aya: Aya): string {
+    const output = `<br/>
+                          <div> 
+                            <table Class="SurhaHeader TableClass">
+                              <tr>
+                                <td class="textalign_right"><span class="qword AyaClass">﴿ ${aya?.sura} ${StringResource.QuranPage_SurahOrder} ﴾</span></td>
+                                <td class="textalign_center"><span Class="AyaClass">﴿ ${aya?.surah_Infos?.name} ﴾</span></td>
+                                <td class="textalign_Left"><span class="qword AyaClass">﴿ ${aya?.surah_Infos?.ayas} ${StringResource.QuranPage_AyaCount} ﴾</span></td>
+                              </tr>
+                            </table>
+                          </div>`;
+
+    return TextService.bracketsReplacer(output).toString();
   }
 
   //Get the Tafser of Quran
