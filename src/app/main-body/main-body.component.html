@@ -11,11 +11,10 @@
     </div>
   </nav>
 
-  <div class="tab-content" id="nav-tabContent"
-    style="overflow: auto;height: 100px;scrollbar-width: none;min-height: 82vh;">
+  <div class="tab-content" id="nav-tabContent" style="scrollbar-width: none;min-height: 82vh;">
 
     <div class="tab-pane fade show active" id="nav-Surah" role="tabpanel" aria-labelledby="nav-Surah-tab">
-      <div class="DivContanier">
+      <div class="ContanierClass">
         <div *ngFor="let surah of SurahsList">
           <div (click)="gotoQuranPageByPage(surah.startpage)" class="Block">
             <span style="direction: rtl;white-space:break-spaces;">
@@ -28,7 +27,7 @@
     </div>
 
     <div class="tab-pane fade" id="nav-Juz" role="tabpanel" aria-labelledby="nav-Juz-tab">
-      <div class="DivContanier">
+      <div class="ContanierClass">
         <div *ngFor="let _ of [].constructor(30); let number = index">
           <div (click)="gotoQuranPageByJuz(number+1)" class="Block">{{Strings.MainPage_Juz}} {{ number+1 }}</div>
         </div>
@@ -36,7 +35,7 @@
     </div>
 
     <div class="tab-pane fade" id="nav-Pages" role="tabpanel" aria-labelledby="nav-Pages-tab">
-      <div class="DivContanier">
+      <div class="ContanierClass">
         <div *ngFor="let _ of [].constructor(604); let number = index">
           <div (click)="gotoQuranPageByPage(number+1)" class="Block">{{Strings.MainPage_Page}} {{ number+1 }}</div>
         </div>

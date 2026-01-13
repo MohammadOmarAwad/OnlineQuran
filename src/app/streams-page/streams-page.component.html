@@ -25,7 +25,7 @@
                 3</button>
             <button class="Btn" (click)="Run_Video(Urls.MakkaLive4,IsMakka)">{{Strings.StreamsPage_Live}}
                 4</button>
-            <div class="DivContanier" [innerHTML]="ComponentLiveMakka"> </div>
+            <div class="ContanierClass" [innerHTML]="ComponentLiveMakka"> </div>
         </div>
 
         <div class="tab-pane fade" id="nav-Madina" role="tabpanel" aria-labelledby="nav-Madina-tab">
@@ -37,7 +37,7 @@
                 3</button>
             <button class="Btn" (click)="Run_Video(Urls.MadineLive4,IsMadina)">{{Strings.StreamsPage_Live}}
                 4</button>
-            <div class="DivContanier" [innerHTML]="ComponentLiveMadina"> </div>
+            <div class="ContanierClass" [innerHTML]="ComponentLiveMadina"> </div>
         </div>
 
         <div class="tab-pane fade" id="nav-Radio" role="tabpanel" aria-labelledby="nav-Radio-tab">
@@ -45,7 +45,7 @@
                 <audio controls autoplay src="{{Running_URL}}" style="width: 100%;background-color: lightgrey;"></audio>
             </div>
 
-            <div class="DivContanier">
+            <div class="ContanierClass">
 
                 <div class="DivBoxRadio">
                     <button class="Btn" (click)="Run_Audio(Urls.Sharjah_Radio)">{{Strings.Sharjah_Radio_Name}}</button>
