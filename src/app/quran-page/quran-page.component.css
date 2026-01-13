@@ -43,17 +43,6 @@ hr {
   font-weight: 100;
 }
 
-.DivBox {
-  margin: 5px;
-  align-items: center;
-  justify-content: space-around;
-  border: 3px solid #0000;
-  background: linear-gradient(whiteSmoke 0 0) padding-box, repeating-conic-gradient(#5d513c 0 25%, #0000 0 50%) border-box;
-  padding: 15px;
-  font-size: 40px;
-}
-
-
 /* Change the entire player background */
 audio::-webkit-media-controls-panel {
   background-color: lightgrey;
@@ -61,10 +50,6 @@ audio::-webkit-media-controls-panel {
 
 /* Small devices */
 @media screen and (max-width: 480px) {
-  .DivBox {
-    font-size: 20px;
-  }
-
   .AyaClass {
     font-size: 25px;
   }
@@ -73,10 +58,6 @@ audio::-webkit-media-controls-panel {
 /* Tablets */
 @media screen and (min-width: 481px) and (max-width: 900px) {
 
-  .DivBox {
-    font-size: 30px;
-  }
-
   .AyaClass {
     font-size: 35px;
   }
@@ -84,10 +65,6 @@ audio::-webkit-media-controls-panel {
 
 /* Desktops */
 @media screen and (min-width: 901px) {
-  .DivBox {
-    font-size: 30px;
-  }
-
   .AyaClass {
     font-size: 35px;
   }

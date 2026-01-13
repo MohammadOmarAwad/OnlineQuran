@@ -209,15 +209,7 @@ option :checked {
 }
 
 
-@media screen and (min-width: 128px) and (max-width: 900px) {
-  .MainBody {
-    width: 100%;
-    margin-left: 1%;
-    margin-right: 1%;
-  }
-}
-
-/* Small devices */
+/* Small devices – phones */
 @media screen and (max-width: 480px) {
   .dropdown-content {
     position: relative;
@@ -231,6 +223,16 @@ option :checked {
   .IconClass {
     width: 4%;
   }
+
+  .DivBox {
+    font-size: 20px;
+  }
+
+  .MainBody {
+  width: 98%;
+  margin-left: 1%;
+  margin-right: 1%;
+}
 }
 
 /* Tablets */
@@ -244,7 +246,20 @@ option :checked {
     padding: 12px 16px;
   }
 
-  .MainBody {
-    width: 90%;
+  .DivBox {
+    font-size: 24px;
+  }
+
+    .MainBody {
+  width: 98%;
+  margin-left: 1%;
+  margin-right: 1%;
+}
+}
+
+/* Desktops */
+@media screen and (min-width: 901px) {
+  .DivBox {
+    font-size: 24px;
   }
 }

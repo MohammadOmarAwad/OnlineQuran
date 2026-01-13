@@ -29,102 +29,105 @@
     </div>
   </nav>
 
-  <div class="DivBox">
+  <div>
 
-    <!--Surah Text-->
-    <div #ayasContainer [style.display]="IsDetails ? 'none' : 'block'">
+    <div class="DivBox">
 
-      <div class="tab-content" id="nav-tabContent"
-        style="overflow: auto;height: 100px;scrollbar-width: none;min-height: 82vh;">
+      <!--Surah Text-->
+      <div #ayasContainer [style.display]="IsDetails ? 'none' : 'block'">
 
-        <!--Surah Infos-->
+        <div class="tab-content" id="nav-tabContent"
+          style="overflow: auto;height: 100px;scrollbar-width: none;min-height: 82vh;">
+
+          <!--Surah Infos-->
+          <div>
+            <table>
+              <tr style="white-space: nowrap; background-color: transparent;">
+                <td><span>{{quranPage.Ayas[0].juz}} {{Strings.MainPage_Juz}}</span></td>
+                <td style="width:100%;"><span></span></td>
+                <td><span>{{quranPage.Ayas[0].surah_Infos?.name}} </span></td>
+              </tr>
+            </table>
+          </div>
+
+          <!-- Quran Text -->
+          <div (click)="GoToAya_Details(true)" class="tab-pane fade show active"
+            style="line-height:45px;background-color:transparent;" id="nav-Quran" role="tabpanel"
+            aria-labelledby="nav-Quran-tab" [innerHtml]="PageBody">
+
+          </div>
+
+          <!-- Tafser -->
+          <div class="tab-pane fade" style="line-height:45px;background-color:transparent;" id="nav-Tafser"
+            role="tabpanel" aria-labelledby="nav-Tafser-tab">
+            <div class="LineClass" [innerHtml]="PageBodyTafser"></div>
+          </div>
+
+          <!-- WordAnalysis -->
+          <div class="tab-pane fade" style="line-height:45px;background-color:transparent;" id="nav-WordAnalysis"
+            role="tabpanel" aria-labelledby="nav-WordAnalysis-tab">
+            <div class="LineClass" [innerHtml]="PageBodyWordAnalysis"></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div [style.display]="IsDetails ? 'block' : 'none'" style="line-height:45px;">
+        @for (aya of quranPage.Ayas; track aya.aya) {
+        @if(aya.aya === '1')
+        {
         <div>
-          <table>
+          <table class="NameClass">
             <tr style="white-space: nowrap; background-color: transparent;">
-              <td><span>{{quranPage.Ayas[0].juz}} {{Strings.MainPage_Juz}}</span></td>
-              <td style="width:100%;"><span></span></td>
-              <td><span>{{quranPage.Ayas[0].surah_Infos?.name}} </span></td>
+              <td class="columon"><span class="SurahInfos">{{aya?.sura}} {{Strings.QuranPage_SurahOrder}}</span></td>
+              <td class="columon"><span class="SurahInfos">{{aya?.surah_Infos?.name}}</span></td>
+              <td class="columon"><span class="SurahInfos">{{aya?.surah_Infos?.ayas}}
+                  {{Strings.QuranPage_AyaCount}}</span></td>
             </tr>
           </table>
         </div>
 
-        <!-- Quran Text -->
-        <div (click)="GoToAya_Details(true)" class="tab-pane fade show active"
-          style="line-height:45px;background-color:transparent;" id="nav-Quran" role="tabpanel"
-          aria-labelledby="nav-Quran-tab" [innerHtml]="PageBody">
+        <div> {{Strings.QuranPage_Basmale}}</div>
+        <br>
+        }
 
-        </div>
-
-        <!-- Tafser -->
-        <div class="tab-pane fade" style="line-height:45px;background-color:transparent;" id="nav-Tafser"
-          role="tabpanel" aria-labelledby="nav-Tafser-tab">
-          <div class="LineClass" [innerHtml]="PageBodyTafser"></div>
-        </div>
-
-        <!-- WordAnalysis -->
-        <div class="tab-pane fade" style="line-height:45px;background-color:transparent;" id="nav-WordAnalysis"
-          role="tabpanel" aria-labelledby="nav-WordAnalysis-tab">
-          <div class="LineClass" [innerHtml]="PageBodyWordAnalysis"></div>
-        </div>
-
-      </div>
-    </div>
-
-    <div [style.display]="IsDetails ? 'block' : 'none'" style="line-height:45px;">
-      @for (aya of quranPage.Ayas; track aya.aya) {
-      @if(aya.aya === '1')
-      {
-      <div>
-        <table class="NameClass">
-          <tr style="white-space: nowrap; background-color: transparent;">
-            <td class="columon"><span class="SurahInfos">{{aya?.sura}} {{Strings.QuranPage_SurahOrder}}</span></td>
-            <td class="columon"><span class="SurahInfos">{{aya?.surah_Infos?.name}}</span></td>
-            <td class="columon"><span class="SurahInfos">{{aya?.surah_Infos?.ayas}}
-                {{Strings.QuranPage_AyaCount}}</span></td>
+        <table style="width: 100%;">
+          <tr>
+            <td style="text-align-last:left;font-size: x-large;padding-right: 10px;vertical-align: top;">
+              <div class="qword" style="white-space:nowrap;">{{ aya.sura }}:{{ aya.aya }}</div>
+              <div style="display: inline-grid;">
+                <button style="background-color: transparent;border-radius: 5px;margin-bottom:2px;"
+                  (click)="Run_Audio(aya.verse_Id)"><i style='font-size:24px'>&#x27A4;</i></button>
+                <button style="background-color: transparent;border-radius: 5px;margin-bottom:2px;"
+                  (click)="CopyAya(aya.sura, aya.aya)"><i style='font-size:24px'>&#10697;</i></button>
+              </div>
+            </td>
+            <td>
+              <div class="LineClass" style="text-align-last:right;">
+                <span [id]="aya.sura + aya.aya" class="AyaClass" (click)="AddActiveCSSClass(aya.sura + aya.aya)">
+                  <span>{{ aya.text_uthmani }}</span>
+                  <span class="qword" [innerHTML]="BracketsReplacer(aya.aya)"></span>
+                </span>
+              </div>
+            </td>
           </tr>
         </table>
+        <br>
+        }
       </div>
 
-      <div> {{Strings.QuranPage_Basmale}}</div>
-      <br>
-      }
+      <hr>
 
-      <table style="width: 100%;">
-        <tr>
-          <td style="text-align-last:left;font-size: x-large;padding-right: 10px;vertical-align: top;">
-            <div class="qword" style="white-space:nowrap;">{{ aya.sura }}:{{ aya.aya }}</div>
-            <div style="display: inline-grid;">
-              <button style="background-color: transparent;border-radius: 5px;margin-bottom:2px;"
-                (click)="Run_Audio(aya.verse_Id)"><i style='font-size:24px'>&#x27A4;</i></button>
-              <button style="background-color: transparent;border-radius: 5px;margin-bottom:2px;"
-                (click)="CopyAya(aya.sura, aya.aya)"><i style='font-size:24px'>&#10697;</i></button>
-            </div>
+      <!--Pages Number-->
+      <!-- Navigation Btns -->
+      <table style="margin-bottom: 20px;">
+        <tr style="white-space: nowrap; background-color: transparent;">
+          <td><button class="Btn" (click)="GoToNextPage(quranPage.Ayas[0].page)">{{Strings.QuranPage_NextPage}}</button>
           </td>
-          <td>
-            <div class="LineClass" style="text-align-last:right;">
-              <span [id]="aya.sura + aya.aya" class="AyaClass" (click)="AddActiveCSSClass(aya.sura + aya.aya)">
-                <span>{{ aya.text_uthmani }}</span>
-                <span class="qword" [innerHTML]="BracketsReplacer(aya.aya)"></span>
-              </span>
-            </div>
-          </td>
+          <td style="width:100%;"><span>{{Strings.MainPage_Page}} {{quranPage.Ayas[0].page}}</span></td>
+          <td><button class="Btn"
+              (click)="GoToPriviousePage(quranPage.Ayas[0].page)">{{Strings.QuranPage_PreviousPage}}</button></td>
         </tr>
       </table>
-      <br>
-      }
     </div>
-
-    <hr>
-
-    <!--Pages Number-->
-    <!-- Navigation Btns -->
-    <table style="margin-bottom: 20px;">
-      <tr style="white-space: nowrap; background-color: transparent;">
-        <td><button class="Btn" (click)="GoToNextPage(quranPage.Ayas[0].page)">{{Strings.QuranPage_NextPage}}</button>
-        </td>
-        <td style="width:100%;"><span>{{Strings.MainPage_Page}} {{quranPage.Ayas[0].page}}</span></td>
-        <td><button class="Btn"
-            (click)="GoToPriviousePage(quranPage.Ayas[0].page)">{{Strings.QuranPage_PreviousPage}}</button></td>
-      </tr>
-    </table>
   </div>
