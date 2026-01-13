@@ -29,7 +29,7 @@ export class StreamsPageComponent {
   //Run Video from Stream
   Run_Video(url: string, Element: String): void {
     const iframeString = `
-      <iframe class='DivBox' width="560" height="315"
+      <iframe width="95%" height="315"
         src='${url}'
         frameborder="0"
         allowfullscreen>

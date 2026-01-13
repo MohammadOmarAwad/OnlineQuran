@@ -15,7 +15,7 @@
         </div>
     </nav>
 
-    <div class="tab-content" id="nav-tabContent">
+    <div class="DivBox tab-content" id="nav-tabContent">
         <div class="tab-pane fade show active" id="nav-Maka" role="tabpanel" aria-labelledby="nav-Maka-tab">
             <button class="Btn" (click)="Run_Video(Urls.MakkaLive1,IsMakka)">{{Strings.StreamsPage_Live}}
                 1</button>
@@ -25,7 +25,7 @@
                 3</button>
             <button class="Btn" (click)="Run_Video(Urls.MakkaLive4,IsMakka)">{{Strings.StreamsPage_Live}}
                 4</button>
-            <div class="ContanierClass" [innerHTML]="ComponentLiveMakka"> </div>
+            <div [innerHTML]="ComponentLiveMakka"> </div>
         </div>
 
         <div class="tab-pane fade" id="nav-Madina" role="tabpanel" aria-labelledby="nav-Madina-tab">
@@ -37,23 +37,24 @@
                 3</button>
             <button class="Btn" (click)="Run_Video(Urls.MadineLive4,IsMadina)">{{Strings.StreamsPage_Live}}
                 4</button>
-            <div class="ContanierClass" [innerHTML]="ComponentLiveMadina"> </div>
+            <div [innerHTML]="ComponentLiveMadina"> </div>
         </div>
 
         <div class="tab-pane fade" id="nav-Radio" role="tabpanel" aria-labelledby="nav-Radio-tab">
-            <div style="text-align: justify;">
-                <audio controls autoplay src="{{Running_URL}}" style="width: 100%;background-color: lightgrey;"></audio>
-            </div>
+            <div>
+                <div style="text-align: justify;">
+                    <audio controls autoplay src="{{Running_URL}}"
+                        style="width: 100%;background-color: lightgrey;"></audio>
+                </div>
 
-            <div class="ContanierClass">
+                <div>
+                    <button class="Block"
+                        (click)="Run_Audio(Urls.Sharjah_Radio)">{{Strings.Sharjah_Radio_Name}}</button>
 
-                <div class="DivBoxRadio">
-                    <button class="Btn" (click)="Run_Audio(Urls.Sharjah_Radio)">{{Strings.Sharjah_Radio_Name}}</button>
-
-                    <button class="Btn"
+                    <button class="Block"
                         (click)="Run_Audio(Urls.ZuwaraLibya_Radio)">{{Strings.ZuwaraLibya_Radio_Name}}</button>
 
-                    <button class="Btn"
+                    <button class="Block"
                         (click)="Run_Audio(Urls.QuranEgypt_Radio)">{{Strings.QuranEgypt_Radio_Name}}</button>
                 </div>
 
