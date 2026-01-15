@@ -234,8 +234,8 @@ option :checked {
 }
 
 
-/* Small devices – phones */
-@media screen and (max-width: 480px) {
+/* Small devices – phones (Mobil)*/
+@media screen and (max-width: 575.98px) {
   .dropdown-content {
     position: relative;
     display: grid;
@@ -265,7 +265,7 @@ option :checked {
 }
 
 /* Tablets */
-@media screen and (min-width: 481px) and (max-width: 900px) {
+@media screen and (min-width: 576px) and (max-width: 991.98px) {
   .dropdown-content {
     position: relative;
     display: grid;
@@ -287,8 +287,11 @@ option :checked {
 }
 
 /* Desktops */
-@media screen and (min-width: 901px) {
+@media screen and (min-width: 992px) and (min-width: 1199.98px) {
   .DivBox {
     font-size: 24px;
   }
 }
+
+/* Extra Large Devices */
+@media screen and (max-width: 1200px) {}
