@@ -1,5 +1,11 @@
 [
   {
+    "id": 13,
+    "Ar_Name": "أيمن سويد",
+    "En_Name": "Ayman Suwayd",
+    "Reciter_URL": "https://everyayah.com/data/Ayman_Sowaid_64kbps/"
+  },
+  {
     "id": 1,
     "Ar_Name": "عبد الباسط عبد الصمد",
     "En_Name": "AbdulBaset AbdulSamad",
@@ -70,12 +76,6 @@
     "Ar_Name": "محمد الطبلاوي",
     "En_Name": "Mohamed al-Tablawi",
     "Reciter_URL": "https://mirrors.quranicaudio.com/everyayah/Mohammad_al_Tablaway_128kbps/"
-  },
-  {
-    "id": 13,
-    "Ar_Name": "أيمن سويد",
-    "En_Name": "Ayman Suwayd",
-    "Reciter_URL": "https://everyayah.com/data/Ayman_Sowaid_64kbps/"
   },
   {
     "id": 14,
