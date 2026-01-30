@@ -9,7 +9,7 @@ export const UrlResource = {
     Masjidnear_Url: "https://api.masjidnear.me/v1/masjids/search",
 
     PrayTime_Url: "https://api.aladhan.com/v1/hijriCalendar/",
-    Recitors_Url: "https://verses.quran.com/AbdulBaset/Mujawwad/mp3/",
+    Recitors_Url: "https://everyayah.com/data/Ayman_Sowaid_64kbps/",
 
     OnlineQuran_Url: "https://mohammadomarawad.github.io/OnlineQuran",
     OpenStreetMap:"https://nominatim.openstreetmap.org/reverse",
