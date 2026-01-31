@@ -31,10 +31,9 @@ export class QuranPageComponent {
   public quranPage: QuranPage;
   public ResitorsList: Reciter[] = [];
   PageNumber: string;
-  PageBody: String = "";
+  PageBodyQuranText: String = "";
   PageBodyTafser: String = "";
   PageBodyWordAnalysis: String = "";
-  PlaceHolder: String = "";
   IsDetails: boolean = false;
   Running_URL: String = "none";
   Reciter_URL: String = UrlResource.Recitors_Url;
@@ -71,31 +70,42 @@ export class QuranPageComponent {
     this.quranPage.SurahNames = AyasPage[0].sura;
     this.quranPage.Ayas = AyasPage;
 
-    this.PageBody = "";
-    this.PlaceHolder = "";
+    this.PageBodyQuranText = "";
+    let placeHolder: string = "";
 
     AyasPage.forEach(aya => {
       if (aya.aya == "1") {
 
-        if (this.PlaceHolder != "") {
-          this.PageBody += `<div class="LineClass">${this.PlaceHolder}</div>`
-          this.PlaceHolder = "";
+        if (placeHolder != "") {
+          this.PageBodyQuranText += `<div class="LineClass">${placeHolder}</div>`
+          placeHolder = "";
         }
 
-        this.PageBody += this.SurahHeaderBuilder(aya);
-
-        if (aya.page != "187" && aya.page != "1") {
-          this.PageBody += `<div>${StringResource.QuranPage_Basmale}</div>`;
-        }
+        this.PageBodyQuranText += this.AddSurahTitle(aya);
       }
 
-      this.PlaceHolder += this.AyaBuilder(aya);
-
+      placeHolder += this.AyaBuilder(aya);
     });
 
-    if (this.PlaceHolder != "") {
-      this.PageBody += `<div class="LineClass">${this.PlaceHolder}</div>`
+    if (placeHolder != "") {
+      this.PageBodyQuranText += `<div class="LineClass">${placeHolder}</div>`
     }
+  }
+
+  //Build the Surah Title 
+  private AddSurahTitle(xx: Aya): string {
+
+    let result = "";
+
+    if (xx.aya == "1") {
+      result += this.SurahHeaderBuilder(xx);
+
+      if (xx.page != "187" && xx.page != "1") {
+        result += `<div>${StringResource.QuranPage_Basmale}</div>`;
+      }
+    }
+
+    return result;
   }
 
   //Build Aya Part
@@ -139,6 +149,9 @@ export class QuranPageComponent {
       const aya = xx.aya.toString();
 
       let data = tafser.find(a => a.sura === sura && a.aya === aya);
+
+      this.PageBodyTafser += this.AddSurahTitle(xx);
+
       this.PageBodyTafser += `
       <Span class="LineClass">
         <span>${xx?.text_uthmani}</span>
@@ -170,6 +183,9 @@ export class QuranPageComponent {
       const aya = xx.aya.toString();
 
       let data = quranicWords.find(a => a.sura === sura && a.aya === aya);
+
+      this.PageBodyWordAnalysis += this.AddSurahTitle(xx);
+
       this.PageBodyWordAnalysis += `
       <Span class="LineClass">
         <span>${xx?.text_uthmani}</span>
