@@ -16,10 +16,10 @@
     <div class="tab-pane fade show active" id="nav-Surah" role="tabpanel" aria-labelledby="nav-Surah-tab">
       <div class="ContanierClass">
         <div *ngFor="let surah of SurahsList">
-          <div (click)="gotoQuranPageByPage(surah.startpage)" class="Block">
+          <div (click)="gotoQuranPageByPage(surah.StartPage)" class="Block">
             <span style="direction: rtl;white-space:break-spaces;">
-              {{ surah.order }}.
-              {{Strings.MainPage_Surah}} {{ surah.name }}
+              {{ surah.SurahIndex }}.
+              {{Strings.MainPage_Surah}} {{ surah.AName }}
             </span>
           </div>
         </div>

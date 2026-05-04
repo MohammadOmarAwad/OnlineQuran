@@ -1,11 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Params } from '@angular/router';
 import AyaListData from '../Mid/AyaList.json';
-import SurahListData from '../Mid/SurahList.json';
 import RecitersListData from '../Mid/Reciters.json';
 import TafserData from '../Mid/Tafser.json';
 import QuranicWordsData from '../Mid/QuranicWords.json';
-import { Aya, Surah, QuranPage } from '../Models/QuranPageModle';
+import { Aya, QuranPage } from '../Models/QuranPageModle';
 import { AyahExtention } from '../Models/AyahExtention';
 import { Component, ViewEncapsulation } from '@angular/core';
 import { Reciter } from '../Models/Reciter';
@@ -14,6 +13,8 @@ import { ToastrService } from 'ngx-toastr';
 import { TextService } from '../Services/Text.Service';
 import { UrlResource } from '../Resources/UrlResource';
 import { StringResource } from '../Resources/StringResource';
+import { DataService } from '../Services/Data.Service';
+import { SurahModel } from '../Models/SurahModel';
 
 @Component({
   selector: 'app-quran-page',
@@ -27,7 +28,7 @@ import { StringResource } from '../Resources/StringResource';
 export class QuranPageComponent {
   Strings = StringResource;
   public AyasList: Aya[] = AyaListData as Aya[];
-  public SurahsList: Surah[] = SurahListData as Surah[];
+  SurahsList: SurahModel[] = [];
   public quranPage: QuranPage;
   public ResitorsList: Reciter[] = [];
   PageNumber: string;
@@ -45,12 +46,16 @@ export class QuranPageComponent {
   ) { }
 
   //Run on Start
-  async ngOnInit(): Promise<void> {
+  async ngOnInit() {
+    this.SurahsList = await DataService.GetSurahsData();
+
     this.activeRoute.params.subscribe((params: Params) => this.PageNumber = params['PageNumber']);
 
-    await this.getData(this.PageNumber);
-    await this.getDataTafser(this.PageNumber);
-    await this.getDataWordAnalysis(this.PageNumber);
+    await Promise.all([
+      this.getData(this.PageNumber),
+      this.getDataTafser(this.PageNumber),
+      this.getDataWordAnalysis(this.PageNumber)
+    ]);
 
     this.ResitorsList = RecitersListData;
   }
@@ -60,7 +65,7 @@ export class QuranPageComponent {
     this.quranPage = new QuranPage();
 
     let AyasPage = this.AyasList.filter(a => a.page === pageNumer);
-    AyasPage.forEach(xx => xx.surah_Infos = this.SurahsList.find(a => a.order.toString() === xx.sura));
+    AyasPage.forEach(xx => xx.surah_Infos = this.SurahsList.find(a => a.SurahIndex.toString() === xx.sura));
     AyasPage.forEach(xx => {
       const sura = xx.sura.toString().padStart(3, '0');
       const aya = xx.aya.toString().padStart(3, '0');
@@ -125,8 +130,8 @@ export class QuranPageComponent {
                             <table Class="SurhaHeader TableClass">
                               <tr>
                                 <td class="textalign_right"><span class="qword AyaClass">﴿ ${aya?.sura} ${StringResource.QuranPage_SurahOrder} ﴾</span></td>
-                                <td class="textalign_center"><span Class="AyaClass">﴿ ${aya?.surah_Infos?.name} ﴾</span></td>
-                                <td class="textalign_Left"><span class="qword AyaClass">﴿ ${aya?.surah_Infos?.ayas} ${StringResource.QuranPage_AyaCount} ﴾</span></td>
+                                <td class="textalign_center"><span Class="AyaClass">﴿ ${aya?.surah_Infos?.AName} ﴾</span></td>
+                                <td class="textalign_Left"><span class="qword AyaClass">﴿ ${aya?.surah_Infos?.AyasCount} ${StringResource.QuranPage_AyaCount} ﴾</span></td>
                               </tr>
                             </table>
                           </div>`;

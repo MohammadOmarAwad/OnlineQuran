@@ -1,11 +1,12 @@
 import AyaListData from '../Mid/AyaList.json';
-import SurahListData from '../Mid/SurahList.json';
 import { Aya } from '../Models/QuranPageModle';
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { TextService } from '../Services/Text.Service';
 import { StringResource } from '../Resources/StringResource';
+import { SurahModel } from '../Models/SurahModel';
+import { DataService } from '../Services/Data.Service';
 
 @Component({
   selector: 'app-search-page',
@@ -16,10 +17,16 @@ import { StringResource } from '../Resources/StringResource';
 })
 
 export class SearchPageComponent {
-    Strings = StringResource;
-  
+  Strings = StringResource;
+  SurahsList: SurahModel[] = [];
+
   public ayasList: Aya[] = []
   constructor(private router: Router) { }
+
+  //Run on Strat
+  async ngOnInit() {
+    this.SurahsList = await DataService.GetSurahsData();
+  }
 
   //Search about Aya
   search(searchText: string): void {
@@ -37,13 +44,13 @@ export class SearchPageComponent {
           .includes(keyword)
       )
       .map(a => {
-        const surah = SurahListData.find(s => s.order.toString() === a.sura);
+        const surah =this.SurahsList.find(s => s.SurahIndex.toString() === a.sura);
 
         return {
           ...a,
           aya: TextService.bracketsReplacer(`﴿${a.aya}﴾`),
           page: TextService.bracketsReplacer(`﴿${a.page}﴾`),
-          surah_Infos: surah ? { ...surah, name: TextService.bracketsReplacer(`﴿${surah.name}﴾`) } : null
+          surah_Infos: surah ? { ...surah, name: TextService.bracketsReplacer(`﴿${surah.AName}﴾`) } : null
         };
       });
   }
