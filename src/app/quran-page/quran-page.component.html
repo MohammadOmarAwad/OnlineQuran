@@ -7,8 +7,8 @@
 
   <div class="dropdown-content">
     <select id="reciter" (change)="onReciterChange($event)">
-      <option *ngFor="let reciter of ResitorsList" [value]="reciter.id">
-        {{reciter.Ar_Name}}
+      <option *ngFor="let reciter of RecitersList" [value]="reciter.ReciterId">
+        {{reciter.ArabicName}}
       </option>
     </select>
   </div>

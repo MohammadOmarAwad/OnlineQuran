@@ -2,11 +2,13 @@ import Papa from "papaparse";
 import { UrlResource } from "../Resources/UrlResource";
 import { SurahModel } from "../Models/SurahModel";
 import { AyahModel } from "../Models/AyahModel";
+import { ReciterModel } from "../Models/ReciterModel";
 
 export class DataService {
 
     private static surahsCache: SurahModel[] | null = null;
     private static ayahsCache: AyahModel[] | null = null;
+    private static RecitersCache: ReciterModel[] | null = null;
 
     //Get List of SurahList
     static async GetSurahsData(): Promise<SurahModel[]> {
@@ -28,6 +30,17 @@ export class DataService {
 
         this.ayahsCache = parsed.data;
         return this.ayahsCache;
+    }
+
+    //Get List of Reciter
+    static async GetRecitersData(): Promise<ReciterModel[]> {
+        if (this.RecitersCache) return this.RecitersCache;
+
+        const csv = await this.GetData(UrlResource.RecitersList_Url);
+        const parsed = this.parseCsv<ReciterModel>(csv);
+
+        this.RecitersCache = parsed.data;
+        return this.RecitersCache;
     }
 
     //Parse the CSV Rows

@@ -1,11 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Params } from '@angular/router';
-import RecitersListData from '../Mid/Reciters.json';
 import TafserData from '../Mid/Tafser.json';
 import QuranicWordsData from '../Mid/QuranicWords.json';
 import { AyahExtention } from '../Models/AyahExtention';
 import { Component, ViewEncapsulation } from '@angular/core';
-import { Reciter } from '../Models/Reciter';
+import { ReciterModel } from '../Models/ReciterModel';
 import { Clipboard } from '@angular/cdk/clipboard';
 import { ToastrService } from 'ngx-toastr';
 import { TextService } from '../Services/Text.Service';
@@ -29,8 +28,8 @@ export class QuranPageComponent {
   AyahsList: AyahModel[] = [];
   AyahsList_UI: AyahModel[] = [];
   SurahsList: SurahModel[] = [];
+  RecitersList: ReciterModel[] = [];
 
-  public ResitorsList: Reciter[] = [];
   PageNumber: string;
   PageBodyQuranText: String = "";
   PageBodyTafser: String = "";
@@ -49,6 +48,7 @@ export class QuranPageComponent {
   async ngOnInit() {
     this.SurahsList = await DataService.GetSurahsData();
     this.AyahsList = await DataService.GetAyasData();
+    this.RecitersList = await DataService.GetRecitersData();
 
     this.activeRoute.params.subscribe((params: Params) => this.PageNumber = params['PageNumber']);
 
@@ -57,8 +57,6 @@ export class QuranPageComponent {
       this.getDataTafser(this.PageNumber),
       this.getDataWordAnalysis(this.PageNumber)
     ]);
-
-    this.ResitorsList = RecitersListData;
   }
 
   //Get the Quran Text
@@ -271,7 +269,7 @@ export class QuranPageComponent {
   //Get the Reciter on dropdown
   onReciterChange(event: Event) {
     const selectedId = Number((event.target as HTMLSelectElement).value);
-    let selectedReciterURL = this.ResitorsList.find(r => r.id === selectedId)?.Reciter_URL;
+    let selectedReciterURL = this.RecitersList.find(r => r.ReciterId === selectedId)?.Reciter_URL;
 
     if (selectedReciterURL != undefined) {
       this.Reciter_URL = selectedReciterURL;

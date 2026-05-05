@@ -18,5 +18,6 @@ export class AppComponent {
   async ngOnInit() {
     await DataService.GetAyasData(); // preload
     await DataService.GetSurahsData(); // preload
+    await DataService.GetRecitersData(); // preload
   }
 }
