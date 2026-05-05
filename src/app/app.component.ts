@@ -1,10 +1,10 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router, RouterOutlet } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { MainBodyComponent } from './main-body/main-body.component';
+import { DataService } from './Services/Data.Service';
 
 @Component({
   selector: 'app-root',
@@ -13,4 +13,10 @@ import { MainBodyComponent } from './main-body/main-body.component';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent { }
+export class AppComponent {
+
+  async ngOnInit() {
+    await DataService.GetAyasData(); // preload
+    await DataService.GetSurahsData(); // preload
+  }
+}
