@@ -19,5 +19,6 @@ export class AppComponent {
     await DataService.GetAyasData(); // preload
     await DataService.GetSurahsData(); // preload
     await DataService.GetRecitersData(); // preload
+    await DataService.GetTafsersData(); // preload
   }
 }

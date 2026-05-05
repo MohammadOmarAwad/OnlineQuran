@@ -3,12 +3,14 @@ import { UrlResource } from "../Resources/UrlResource";
 import { SurahModel } from "../Models/SurahModel";
 import { AyahModel } from "../Models/AyahModel";
 import { ReciterModel } from "../Models/ReciterModel";
+import { TafserModel } from "../Models/TafserModel";
 
 export class DataService {
 
     private static surahsCache: SurahModel[] | null = null;
     private static ayahsCache: AyahModel[] | null = null;
     private static RecitersCache: ReciterModel[] | null = null;
+    private static tafsersCache: TafserModel[] | null = null;
 
     //Get List of SurahList
     static async GetSurahsData(): Promise<SurahModel[]> {
@@ -41,6 +43,17 @@ export class DataService {
 
         this.RecitersCache = parsed.data;
         return this.RecitersCache;
+    }
+
+    //Get List of Ayahs Tafser
+    static async GetTafsersData(): Promise<TafserModel[]> {
+        if (this.tafsersCache) return this.tafsersCache;
+
+        const csv = await this.GetData(UrlResource.TafserAyahList_Url);
+        const parsed = this.parseCsv<TafserModel>(csv);
+
+        this.tafsersCache = parsed.data;
+        return this.tafsersCache;
     }
 
     //Parse the CSV Rows

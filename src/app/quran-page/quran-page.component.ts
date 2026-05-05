@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Params } from '@angular/router';
-import TafserData from '../Mid/Tafser.json';
 import QuranicWordsData from '../Mid/QuranicWords.json';
 import { AyahExtention } from '../Models/AyahExtention';
 import { Component, ViewEncapsulation } from '@angular/core';
@@ -13,6 +12,7 @@ import { StringResource } from '../Resources/StringResource';
 import { DataService } from '../Services/Data.Service';
 import { SurahModel } from '../Models/SurahModel';
 import { AyahModel } from '../Models/AyahModel';
+import { TafserModel } from '../Models/TafserModel';
 
 @Component({
   selector: 'app-quran-page',
@@ -29,6 +29,7 @@ export class QuranPageComponent {
   AyahsList_UI: AyahModel[] = [];
   SurahsList: SurahModel[] = [];
   RecitersList: ReciterModel[] = [];
+  TafserAyahsList: TafserModel[] = [];
 
   PageNumber: string;
   PageBodyQuranText: String = "";
@@ -49,6 +50,7 @@ export class QuranPageComponent {
     this.SurahsList = await DataService.GetSurahsData();
     this.AyahsList = await DataService.GetAyasData();
     this.RecitersList = await DataService.GetRecitersData();
+    this.TafserAyahsList = await DataService.GetTafsersData();
 
     this.activeRoute.params.subscribe((params: Params) => this.PageNumber = params['PageNumber']);
 
@@ -139,18 +141,17 @@ export class QuranPageComponent {
   //Get the Tafser of Quran
   async getDataTafser(pageNumer: string): Promise<void> {
     let ayas: AyahModel[] = this.AyahsList;
-    let tafser: AyahExtention[] = TafserData as AyahExtention[];
-
+    
     let AyasPage = ayas.filter(a => a.PageNr === Number(pageNumer));
     this.PageBodyTafser = "";
 
     AyasPage.forEach((xx, index) => {
       const isLast = index === AyasPage.length - 1;
 
-      const sura = xx.SuraNr.toString();
-      const aya = xx.AyaNr.toString();
+      const sura = xx.SuraNr;
+      const aya = xx.AyaNr;
 
-      let data = tafser.find(a => a.sura === sura && a.aya === aya);
+      let data = this.TafserAyahsList.find(a => a.SuraNr === sura && a.AyaNr === aya);
 
       this.PageBodyTafser += this.AddSurahTitle(xx);
 
@@ -159,7 +160,7 @@ export class QuranPageComponent {
         <span>${xx?.Text_Uthmani}</span>
         <span class="qword">﴿${aya}﴾</span>
         <br>
-        <span>${data?.data}</span>
+        <span>${data?.ArabicValue}</span>
       </Span>`;
 
       if (!isLast) {
