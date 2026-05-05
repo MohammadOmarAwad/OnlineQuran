@@ -1,10 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Params } from '@angular/router';
-import AyaListData from '../Mid/AyaList.json';
 import RecitersListData from '../Mid/Reciters.json';
 import TafserData from '../Mid/Tafser.json';
 import QuranicWordsData from '../Mid/QuranicWords.json';
-import { Aya, QuranPage } from '../Models/QuranPageModle';
 import { AyahExtention } from '../Models/AyahExtention';
 import { Component, ViewEncapsulation } from '@angular/core';
 import { Reciter } from '../Models/Reciter';
@@ -15,6 +13,7 @@ import { UrlResource } from '../Resources/UrlResource';
 import { StringResource } from '../Resources/StringResource';
 import { DataService } from '../Services/Data.Service';
 import { SurahModel } from '../Models/SurahModel';
+import { AyahModel } from '../Models/AyahModel';
 
 @Component({
   selector: 'app-quran-page',
@@ -27,9 +26,10 @@ import { SurahModel } from '../Models/SurahModel';
 
 export class QuranPageComponent {
   Strings = StringResource;
-  public AyasList: Aya[] = AyaListData as Aya[];
+  AyahsList: AyahModel[] = [];
+  AyahsList_UI: AyahModel[] = [];
   SurahsList: SurahModel[] = [];
-  public quranPage: QuranPage;
+
   public ResitorsList: Reciter[] = [];
   PageNumber: string;
   PageBodyQuranText: String = "";
@@ -48,6 +48,7 @@ export class QuranPageComponent {
   //Run on Start
   async ngOnInit() {
     this.SurahsList = await DataService.GetSurahsData();
+    this.AyahsList = await DataService.GetAyasData();
 
     this.activeRoute.params.subscribe((params: Params) => this.PageNumber = params['PageNumber']);
 
@@ -62,24 +63,22 @@ export class QuranPageComponent {
 
   //Get the Quran Text
   async getData(pageNumer: string): Promise<void> {
-    this.quranPage = new QuranPage();
 
-    let AyasPage = this.AyasList.filter(a => a.page === pageNumer);
-    AyasPage.forEach(xx => xx.surah_Infos = this.SurahsList.find(a => a.SurahIndex.toString() === xx.sura));
+    let AyasPage = this.AyahsList.filter(a => a.PageNr === Number(pageNumer));
+    AyasPage.forEach(xx => xx.surah_Infos = this.SurahsList.find(a => a.SurahIndex === xx.SuraNr));
     AyasPage.forEach(xx => {
-      const sura = xx.sura.toString().padStart(3, '0');
-      const aya = xx.aya.toString().padStart(3, '0');
+      const sura = xx.SuraNr.toString().padStart(3, '0');
+      const aya = xx.AyaNr.toString().padStart(3, '0');
       xx.verse_Id = `${sura}${aya}.mp3`;
     });
 
-    this.quranPage.SurahNames = AyasPage[0].sura;
-    this.quranPage.Ayas = AyasPage;
+    this.AyahsList_UI = AyasPage;
 
     this.PageBodyQuranText = "";
     let placeHolder: string = "";
 
     AyasPage.forEach(aya => {
-      if (aya.aya == "1") {
+      if (aya.AyaNr == 1) {
 
         if (placeHolder != "") {
           this.PageBodyQuranText += `<div class="LineClass">${placeHolder}</div>`
@@ -98,14 +97,14 @@ export class QuranPageComponent {
   }
 
   //Build the Surah Title 
-  private AddSurahTitle(xx: Aya): string {
+  private AddSurahTitle(xx: AyahModel): string {
 
     let result = "";
 
-    if (xx.aya == "1") {
+    if (xx.AyaNr == 1) {
       result += this.SurahHeaderBuilder(xx);
 
-      if (xx.page != "187" && xx.page != "1") {
+      if (xx.PageNr != 187 && xx.PageNr != 1) {
         result += `<div>${StringResource.QuranPage_Basmale}</div>`;
       }
     }
@@ -114,22 +113,22 @@ export class QuranPageComponent {
   }
 
   //Build Aya Part
-  AyaBuilder(aya: Aya): string {
+  AyaBuilder(aya: AyahModel): string {
     const output = `<Span class="AyaClass">
-                            <span>${aya?.text_uthmani}</span>
-                            <span class="qword">﴿${aya?.aya}﴾</span>
+                            <span>${aya?.Text_Uthmani}</span>
+                            <span class="qword">﴿${aya?.AyaNr}﴾</span>
                           </Span>`;
 
     return TextService.bracketsReplacer(output).toString();
   }
 
   //Build SurahHeader Part
-  SurahHeaderBuilder(aya: Aya): string {
+  SurahHeaderBuilder(aya: AyahModel): string {
     const output = `<br/>
                           <div> 
                             <table Class="SurhaHeader TableClass">
                               <tr>
-                                <td class="textalign_right"><span class="qword AyaClass">﴿ ${aya?.sura} ${StringResource.QuranPage_SurahOrder} ﴾</span></td>
+                                <td class="textalign_right"><span class="qword AyaClass">﴿ ${aya?.SuraNr} ${StringResource.QuranPage_SurahOrder} ﴾</span></td>
                                 <td class="textalign_center"><span Class="AyaClass">﴿ ${aya?.surah_Infos?.AName} ﴾</span></td>
                                 <td class="textalign_Left"><span class="qword AyaClass">﴿ ${aya?.surah_Infos?.AyasCount} ${StringResource.QuranPage_AyaCount} ﴾</span></td>
                               </tr>
@@ -141,17 +140,17 @@ export class QuranPageComponent {
 
   //Get the Tafser of Quran
   async getDataTafser(pageNumer: string): Promise<void> {
-    let ayas: Aya[] = AyaListData as Aya[];
+    let ayas: AyahModel[] = this.AyahsList;
     let tafser: AyahExtention[] = TafserData as AyahExtention[];
 
-    let AyasPage = ayas.filter(a => a.page === pageNumer);
+    let AyasPage = ayas.filter(a => a.PageNr === Number(pageNumer));
     this.PageBodyTafser = "";
 
     AyasPage.forEach((xx, index) => {
       const isLast = index === AyasPage.length - 1;
 
-      const sura = xx.sura.toString();
-      const aya = xx.aya.toString();
+      const sura = xx.SuraNr.toString();
+      const aya = xx.AyaNr.toString();
 
       let data = tafser.find(a => a.sura === sura && a.aya === aya);
 
@@ -159,7 +158,7 @@ export class QuranPageComponent {
 
       this.PageBodyTafser += `
       <Span class="LineClass">
-        <span>${xx?.text_uthmani}</span>
+        <span>${xx?.Text_Uthmani}</span>
         <span class="qword">﴿${aya}﴾</span>
         <br>
         <span>${data?.data}</span>
@@ -175,17 +174,17 @@ export class QuranPageComponent {
 
   //Get the WordAnalysis of Quran
   async getDataWordAnalysis(pageNumer: string): Promise<void> {
-    let ayas: Aya[] = AyaListData as Aya[];
+    let ayas: AyahModel[] = this.AyahsList;
     let quranicWords: AyahExtention[] = QuranicWordsData as AyahExtention[];
 
-    let AyasPage = ayas.filter(a => a.page === pageNumer);
+    let AyasPage = ayas.filter(a => a.PageNr === Number(pageNumer));
     this.PageBodyWordAnalysis = "";
 
     AyasPage.forEach((xx, index) => {
       const isLast = index === AyasPage.length - 1;
 
-      const sura = xx.sura.toString();
-      const aya = xx.aya.toString();
+      const sura = xx.SuraNr.toString();
+      const aya = xx.AyaNr.toString();
 
       let data = quranicWords.find(a => a.sura === sura && a.aya === aya);
 
@@ -193,7 +192,7 @@ export class QuranPageComponent {
 
       this.PageBodyWordAnalysis += `
       <Span class="LineClass">
-        <span>${xx?.text_uthmani}</span>
+        <span>${xx?.Text_Uthmani}</span>
         <span class="qword">﴿${aya}﴾</span>
       </Span>`;
 
@@ -214,8 +213,8 @@ export class QuranPageComponent {
   }
 
   //Go to the Next Page
-  GoToNextPage(pageNumer: String) {
-    let newValue = Number(pageNumer) + 1;
+  GoToNextPage(pageNumer: number) {
+    let newValue = pageNumer + 1;
     if (newValue == 605) {
       newValue = 1;
     }
@@ -226,8 +225,8 @@ export class QuranPageComponent {
   }
 
   //Go to the Previous Page
-  GoToPriviousePage(pageNumer: String) {
-    let newValue = Number(pageNumer) - 1;
+  GoToPriviousePage(pageNumer: number) {
+    let newValue = pageNumer - 1;
     if (newValue == 0) {
       newValue = 604;
     }
@@ -254,8 +253,8 @@ export class QuranPageComponent {
   }
 
   //Add Style to selected Aya by id on Click
-  AddActiveCSSClass(val: string): void {
-    let item = document.getElementById(val);
+  AddActiveCSSClass(val: number): void {
+    let item = document.getElementById(val.toString());
 
     // Add 'active' class to the clicked item
     if (item != null) {
@@ -280,22 +279,22 @@ export class QuranPageComponent {
   }
 
   //Copy Aya by Clicking
-  CopyAya(sura: String, aya: String): void {
-    let AyaInfo: Aya | undefined;
+  CopyAya(sura: number, aya: number): void {
+    let AyaInfo: AyahModel | undefined;
 
-    AyaInfo = this.quranPage.Ayas.find(a => a.sura === sura && a.aya === aya);
+    AyaInfo = this.AyahsList_UI.find(a => a.SuraNr === sura && a.AyaNr === aya);
     if (AyaInfo != undefined) {
       //string interpolation in TypeScript (like C#’s $"..." syntax).
       let textToCopy = `
-      ${AyaInfo.text_uthmani}
+      ${AyaInfo.Text_Uthmani}
       
-      ${AyaInfo.simple}  
+      ${AyaInfo.Text_Simple}  
           
-      ${UrlResource.OnlineQuran_Url}/quran/${AyaInfo.page}`;
+      ${UrlResource.OnlineQuran_Url}/quran/${AyaInfo.PageNr}`;
 
       this.clipboard.copy(textToCopy);
 
-      this.toastr.success(TextService.FormatMessage(StringResource.QuranPage_CopyMessage, AyaInfo.aya, AyaInfo.surah_Infos.name));
+      this.toastr.success(TextService.FormatMessage(StringResource.QuranPage_CopyMessage, AyaInfo.AyaNr, AyaInfo.surah_Infos.name));
     }
   }
 

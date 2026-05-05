@@ -5,20 +5,20 @@
             placeholder={{Strings.SearchPage_PlaceHolder_SearchBox}} #titleInput (keyup)="search(titleInput.value)">
     </div>
 
-    <div *ngFor="let e of ayasList" class="Block">
-        <div (click)="gotoQuranPageByPage(e.page)" class="LineClass">
+    <div *ngFor="let e of SearchResult" class="Block">
+        <div (click)="gotoQuranPageByPage(e.PageNr)" class="LineClass">
             <div>
                 <Span>
-                    <span>{{e?.text_uthmani}}</span>
-                    <span class="qword">{{e?.aya}}</span>
+                    <span>{{e?.Text_Uthmani}}</span>
+                    <span class="qword">{{e?.AyaNr}}</span>
                 </Span>
             </div>
 
             <div>
                 <Span>
-                    <span class="qword">{{Strings.MainPage_Page}} {{e?.page}}</span>
+                    <span class="qword">{{Strings.MainPage_Page}} {{e?.PageNr}}</span>
                     <span> &nbsp; </span>
-                    <span class="qword">{{Strings.SearchPage_Surah}} {{e?.surah_Infos?.name}}</span>
+                    <span class="qword">{{Strings.SearchPage_Surah}} {{e?.SurahName}}</span>
                 </Span>
             </div>
         </div>

@@ -1,5 +1,3 @@
-import AyaListData from '../Mid/AyaList.json';
-import { Aya } from '../Models/QuranPageModle';
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
@@ -7,6 +5,8 @@ import { TextService } from '../Services/Text.Service';
 import { StringResource } from '../Resources/StringResource';
 import { SurahModel } from '../Models/SurahModel';
 import { DataService } from '../Services/Data.Service';
+import { AyahModel } from '../Models/AyahModel';
+import { SearchResultModel } from '../Models/SearchResultModel';
 
 @Component({
   selector: 'app-search-page',
@@ -19,13 +19,15 @@ import { DataService } from '../Services/Data.Service';
 export class SearchPageComponent {
   Strings = StringResource;
   SurahsList: SurahModel[] = [];
+  AyahsList: AyahModel[] = [];
+  SearchResult: SearchResultModel[] = [];
 
-  public ayasList: Aya[] = []
   constructor(private router: Router) { }
 
   //Run on Strat
   async ngOnInit() {
     this.SurahsList = await DataService.GetSurahsData();
+    this.AyahsList = await DataService.GetAyasData();
   }
 
   //Search about Aya
@@ -33,24 +35,24 @@ export class SearchPageComponent {
     const keyword = TextService.ReplaceAlef(searchText).toLowerCase().trim();
 
     if (keyword.length < 3) {
-      this.ayasList = [];
+      this.SearchResult = [];
       return;
     }
 
-    this.ayasList = (AyaListData as Aya[])
+    this.SearchResult = this.AyahsList
       .filter(a =>
-        TextService.ReplaceAlef(a.simple)
+        TextService.ReplaceAlef(a.Text_Simple)
           .toLowerCase()
           .includes(keyword)
       )
       .map(a => {
-        const surah =this.SurahsList.find(s => s.SurahIndex.toString() === a.sura);
+        const surah = this.SurahsList.find(s => s.SurahIndex === a.SuraNr);
 
         return {
-          ...a,
-          aya: TextService.bracketsReplacer(`﴿${a.aya}﴾`),
-          page: TextService.bracketsReplacer(`﴿${a.page}﴾`),
-          surah_Infos: surah ? { ...surah, name: TextService.bracketsReplacer(`﴿${surah.AName}﴾`) } : null
+          AyaNr: TextService.bracketsReplacer(`﴿${a.AyaNr}﴾`),
+          PageNr: TextService.bracketsReplacer(`﴿${a.PageNr}﴾`),
+          Text_Uthmani: a.Text_Uthmani,
+          SurahName: TextService.bracketsReplacer(`﴿${surah?.AName}﴾`)
         };
       });
   }

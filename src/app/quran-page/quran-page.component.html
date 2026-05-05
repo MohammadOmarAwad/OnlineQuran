@@ -42,9 +42,9 @@
           <div>
             <table>
               <tr style="white-space: nowrap; background-color: transparent;">
-                <td><span>{{quranPage.Ayas[0].juz}} {{Strings.MainPage_Juz}}</span></td>
+                <td><span>{{AyahsList_UI[0].Juz}} {{Strings.MainPage_Juz}}</span></td>
                 <td style="width:100%;"><span></span></td>
-                <td><span>{{quranPage.Ayas[0].surah_Infos?.name}} </span></td>
+                <td><span>{{AyahsList_UI[0].surah_Infos?.name}} </span></td>
               </tr>
             </table>
           </div>
@@ -72,8 +72,8 @@
       </div>
 
       <div [style.display]="IsDetails ? 'block' : 'none'" style="line-height:45px;">
-        @for (aya of quranPage.Ayas; track aya.aya) {
-        @if(aya.aya === '1')
+        @for (aya of AyahsList_UI; track aya.AyaNr) {
+        @if(aya.AyaNr === 1)
         {
         <div [innerHTML]="SurahHeaderBuilder(aya)"></div>
 
@@ -84,17 +84,17 @@
         <table style="width: 100%;">
           <tr>
             <td style="text-align-last:left;font-size: x-large;padding-right: 10px;vertical-align: top;">
-              <div class="qword" style="white-space:nowrap;">{{ aya.sura }}:{{ aya.aya }}</div>
+              <div class="qword" style="white-space:nowrap;">{{ aya.SuraNr }}:{{ aya.AyaNr }}</div>
               <div style="display: inline-grid;">
                 <button style="background-color: transparent;border-radius: 5px;margin-bottom:2px;"
                   (click)="Run_Audio(aya.verse_Id)"><i style='font-size:24px'>&#x27A4;</i></button>
                 <button style="background-color: transparent;border-radius: 5px;margin-bottom:2px;"
-                  (click)="CopyAya(aya.sura, aya.aya)"><i style='font-size:24px'>&#10697;</i></button>
+                  (click)="CopyAya(aya.SuraNr, aya.AyaNr)"><i style='font-size:24px'>&#10697;</i></button>
               </div>
             </td>
             <td>
               <div class="LineClass" style="text-align-last:right;">
-                <span [id]="aya.sura + aya.aya" class="AyaClass" (click)="AddActiveCSSClass(aya.sura + aya.aya)" [innerHTML]="AyaBuilder(aya)">
+                <span [id]="aya.SuraNr + aya.AyaNr" class="AyaClass" (click)="AddActiveCSSClass(aya.SuraNr + aya.AyaNr)" [innerHTML]="AyaBuilder(aya)">
                 </span>
               </div>
             </td>
@@ -110,12 +110,12 @@
       <!-- Navigation Btns -->
       <table style="margin-bottom: 20px;">
         <tr style="white-space: nowrap; background-color: transparent;">
-          <td><button class="Btn" (click)="GoToNextPage(quranPage.Ayas[0].page)">{{Strings.QuranPage_NextPage}}</button>
+          <td><button class="Btn" (click)="GoToNextPage(AyahsList_UI[0].PageNr)">{{Strings.QuranPage_NextPage}}</button>
           </td>
-          <td style="width:100%; text-align: center;"><span>{{Strings.MainPage_Page}} {{quranPage.Ayas[0].page}}</span>
+          <td style="width:100%; text-align: center;"><span>{{Strings.MainPage_Page}} {{AyahsList_UI[0].PageNr}}</span>
           </td>
           <td><button class="Btn"
-              (click)="GoToPriviousePage(quranPage.Ayas[0].page)">{{Strings.QuranPage_PreviousPage}}</button></td>
+              (click)="GoToPriviousePage(AyahsList_UI[0].PageNr)">{{Strings.QuranPage_PreviousPage}}</button></td>
         </tr>
       </table>
     </div>

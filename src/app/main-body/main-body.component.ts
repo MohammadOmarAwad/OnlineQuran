@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Aya } from '../Models/QuranPageModle';
 import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
-import AyaListData from '../Mid/AyaList.json';
 import { CommonModule } from '@angular/common';
 import { StringResource } from '../Resources/StringResource';
 import { DataService } from '../Services/Data.Service';
 import { SurahModel } from '../Models/SurahModel';
+import { AyahModel } from '../Models/AyahModel';
 
 @Component({
   selector: 'app-main-body',
@@ -17,7 +16,7 @@ import { SurahModel } from '../Models/SurahModel';
 
 export class MainBodyComponent implements OnInit {
   Strings = StringResource;
-  AyasList: Aya[] = AyaListData as Aya[];
+  AyahsList: AyahModel[] =[];
   SurahsList: SurahModel[] = [];
 
   constructor(private router: Router) { }
@@ -25,11 +24,12 @@ export class MainBodyComponent implements OnInit {
   //Run on Strat
   async ngOnInit() {
     this.SurahsList = await DataService.GetSurahsData();
+    this.AyahsList = await DataService.GetAyasData();
   }
 
   //Go to Quran Page by Juz
   gotoQuranPageByJuz(JuzNumber: number): void {
-    let pageNr = Number(this.AyasList.filter(x => x.juz == String(JuzNumber))[0].page);
+    let pageNr = Number(this.AyahsList.filter(x => x.Juz == JuzNumber)[0].PageNr);
     this.router.navigate(['/quran', pageNr]);
   }
 
