@@ -12,6 +12,7 @@ export const UrlResource = {
     SurahsList_CSV_Url: "https://docs.google.com/spreadsheets/d/105BQT5v85n4ViKJ2ayJSGRaKfl9--WV8bQTS83jPRa0/export?format=csv",
     RecitersList_Url: "https://docs.google.com/spreadsheets/d/166qprcApaDtla8Aku8StEm5qONDCWfLs0i9kAKmvh78/export?format=csv",
     TafserAyahList_Url: "https://docs.google.com/spreadsheets/d/1Ji9LjJ2Z4syeWWxlORJg-pNzsKGIgcKRJ0dDv1U9zkQ/export?format=csv",
+    QuranicWordList_Url: "https://docs.google.com/spreadsheets/d/1QE-5NQ8quQrS2YqtF73-4LjHt9WsplGgsWbQM9xzIJ0/export?format=csv",
 
     PrayTime_Url: "https://api.aladhan.com/v1/hijriCalendar/",
     Recitors_Url: "https://everyayah.com/data/Ayman_Sowaid_64kbps/",

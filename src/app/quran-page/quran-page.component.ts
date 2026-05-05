@@ -1,7 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Params } from '@angular/router';
-import QuranicWordsData from '../Mid/QuranicWords.json';
-import { AyahExtention } from '../Models/AyahExtention';
 import { Component, ViewEncapsulation } from '@angular/core';
 import { ReciterModel } from '../Models/ReciterModel';
 import { Clipboard } from '@angular/cdk/clipboard';
@@ -13,6 +11,7 @@ import { DataService } from '../Services/Data.Service';
 import { SurahModel } from '../Models/SurahModel';
 import { AyahModel } from '../Models/AyahModel';
 import { TafserModel } from '../Models/TafserModel';
+import { QuranicWordModel } from '../Models/QuranicWordModel';
 
 @Component({
   selector: 'app-quran-page',
@@ -30,6 +29,7 @@ export class QuranPageComponent {
   SurahsList: SurahModel[] = [];
   RecitersList: ReciterModel[] = [];
   TafserAyahsList: TafserModel[] = [];
+  QuranicWordsList: QuranicWordModel[] = [];
 
   PageNumber: string;
   PageBodyQuranText: String = "";
@@ -51,6 +51,7 @@ export class QuranPageComponent {
     this.AyahsList = await DataService.GetAyasData();
     this.RecitersList = await DataService.GetRecitersData();
     this.TafserAyahsList = await DataService.GetTafsersData();
+    this.QuranicWordsList = await DataService.GetQuranicWordsData();
 
     this.activeRoute.params.subscribe((params: Params) => this.PageNumber = params['PageNumber']);
 
@@ -174,7 +175,6 @@ export class QuranPageComponent {
   //Get the WordAnalysis of Quran
   async getDataWordAnalysis(pageNumer: string): Promise<void> {
     let ayas: AyahModel[] = this.AyahsList;
-    let quranicWords: AyahExtention[] = QuranicWordsData as AyahExtention[];
 
     let AyasPage = ayas.filter(a => a.PageNr === Number(pageNumer));
     this.PageBodyWordAnalysis = "";
@@ -182,10 +182,10 @@ export class QuranPageComponent {
     AyasPage.forEach((xx, index) => {
       const isLast = index === AyasPage.length - 1;
 
-      const sura = xx.SuraNr.toString();
-      const aya = xx.AyaNr.toString();
+      const sura = xx.SuraNr;
+      const aya = xx.AyaNr;
 
-      let data = quranicWords.find(a => a.sura === sura && a.aya === aya);
+      let data = this.QuranicWordsList.find(a => a.SuraNr === sura && a.AyaNr === aya);
 
       this.PageBodyWordAnalysis += this.AddSurahTitle(xx);
 
@@ -195,7 +195,7 @@ export class QuranPageComponent {
         <span class="qword">﴿${aya}﴾</span>
       </Span>`;
 
-      let piecesofData = data?.data.split('\n');
+      let piecesofData = data?.DataValue.split('\n');
       let piecesofDataresult = '';
       piecesofData?.forEach((pp) => {
         piecesofDataresult += `<li>${pp.replace('•', '').replace(/﴿(.*?)﴾/g, `<span class="qword">﴿$1﴾</span>`)}</li>`;

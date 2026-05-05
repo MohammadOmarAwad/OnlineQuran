@@ -20,5 +20,6 @@ export class AppComponent {
     await DataService.GetSurahsData(); // preload
     await DataService.GetRecitersData(); // preload
     await DataService.GetTafsersData(); // preload
+    await DataService.GetQuranicWordsData(); // preload
   }
 }

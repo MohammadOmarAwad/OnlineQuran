@@ -4,6 +4,7 @@ import { SurahModel } from "../Models/SurahModel";
 import { AyahModel } from "../Models/AyahModel";
 import { ReciterModel } from "../Models/ReciterModel";
 import { TafserModel } from "../Models/TafserModel";
+import { QuranicWordModel } from "../Models/QuranicWordModel";
 
 export class DataService {
 
@@ -11,6 +12,7 @@ export class DataService {
     private static ayahsCache: AyahModel[] | null = null;
     private static RecitersCache: ReciterModel[] | null = null;
     private static tafsersCache: TafserModel[] | null = null;
+    private static QuranicWordsCache: QuranicWordModel[] | null = null;
 
     //Get List of SurahList
     static async GetSurahsData(): Promise<SurahModel[]> {
@@ -54,6 +56,17 @@ export class DataService {
 
         this.tafsersCache = parsed.data;
         return this.tafsersCache;
+    }
+
+    //Get List of QuranicWord
+    static async GetQuranicWordsData(): Promise<QuranicWordModel[]> {
+        if (this.QuranicWordsCache) return this.QuranicWordsCache;
+
+        const csv = await this.GetData(UrlResource.QuranicWordList_Url);
+        const parsed = this.parseCsv<QuranicWordModel>(csv);
+
+        this.QuranicWordsCache = parsed.data;
+        return this.QuranicWordsCache;
     }
 
     //Parse the CSV Rows
