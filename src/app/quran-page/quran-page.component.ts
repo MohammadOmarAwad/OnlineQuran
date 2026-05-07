@@ -36,7 +36,6 @@ export class QuranPageComponent {
   PageBodyTafser: String = "";
   PageBodyWordAnalysis: String = "";
   IsDetails: boolean = false;
-  Running_URL: String = "none";
   Reciter_URL: String = UrlResource.Recitors_Url;
 
   constructor(
@@ -142,7 +141,7 @@ export class QuranPageComponent {
   //Get the Tafser of Quran
   async getDataTafser(pageNumer: string): Promise<void> {
     let ayas: AyahModel[] = this.AyahsList;
-    
+
     let AyasPage = ayas.filter(a => a.PageNr === Number(pageNumer));
     this.PageBodyTafser = "";
 
@@ -240,15 +239,21 @@ export class QuranPageComponent {
     this.RemoveActiveCSSClass()
 
     this.IsDetails = isShowen;
-
-    if (!this.IsDetails) {
-      this.Running_URL = "none";
-    }
+    
+    const audio = document.getElementById("quranAudioPlayer") as HTMLAudioElement;
+    audio.src = "";
   }
 
   //Set the Audio URL to Audio Player
   Run_Audio(url: any): void {
-    this.Running_URL = this.Reciter_URL + url;
+    const audio = document.getElementById("quranAudioPlayer") as HTMLAudioElement;
+
+    if (audio) {
+      audio.pause();
+      audio.src = this.Reciter_URL + url;
+      audio.currentTime = 0;
+      audio.play();
+    }
   }
 
   //Add Style to selected Aya by id on Click

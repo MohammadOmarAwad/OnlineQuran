@@ -1,6 +1,6 @@
 <div [style.display]="IsDetails ? 'block' : 'none'" style="text-align: justify;">
   <div [style.display]="IsDetails ? 'flex' : 'none'">
-    <audio controls autoplay src="{{Running_URL}}" style="width: 100%;background-color: lightgrey;"></audio>
+    <audio id="quranAudioPlayer" controls autoplay style="width: 100%;background-color: lightgrey;"></audio>
     <button style="background-color: chocolate;padding: 12px 24px;border: none;cursor: pointer;color: white;"
       (click)="GoToAya_Details(false)">X</button>
   </div>
