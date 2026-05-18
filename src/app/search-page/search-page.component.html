@@ -1,6 +1,9 @@
 <div class="MainBody">
 
     <div class="searchBox">
+
+        <span class="Btn" style="cursor: default;">{{ SearchResult.length }}</span>
+
         <input type="text" class="Btn" style="text-align: center;width: 75%;" id="searchinput"
             placeholder={{Strings.SearchPage_PlaceHolder_SearchBox}} #titleInput (keyup)="search(titleInput.value)">
     </div>
