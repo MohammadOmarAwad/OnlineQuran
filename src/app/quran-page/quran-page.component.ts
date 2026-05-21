@@ -32,7 +32,6 @@ export class QuranPageComponent {
   QuranicWordsList: QuranicWordModel[] = [];
 
   PageNumber: string;
-  PageBodyQuranText: String = "";
   PageBodyTafser: String = "";
   PageBodyWordAnalysis: String = "";
   IsDetails: boolean = false;
@@ -63,6 +62,8 @@ export class QuranPageComponent {
 
   //Get the Quran Text
   async getData(pageNumer: string): Promise<void> {
+    const container = document.getElementById('nav-Quran') as HTMLDivElement;
+    container.innerHTML = '';
 
     let AyasPage = this.AyahsList.filter(a => a.PageNr === Number(pageNumer));
     AyasPage.forEach(xx => xx.surah_Infos = this.SurahsList.find(a => a.SurahIndex === xx.SuraNr));
@@ -74,26 +75,46 @@ export class QuranPageComponent {
 
     this.AyahsList_UI = AyasPage;
 
-    this.PageBodyQuranText = "";
     let placeHolder: string = "";
 
     AyasPage.forEach(aya => {
       if (aya.AyaNr == 1) {
 
         if (placeHolder != "") {
-          this.PageBodyQuranText += `<div class="LineClass">${placeHolder}</div>`
+          this.AddElementsToBlock(placeHolder, container, true);
           placeHolder = "";
         }
 
-        this.PageBodyQuranText += this.AddSurahTitle(aya);
+        this.AddElementsToBlock(this.AddSurahTitle(aya), container, false);
       }
 
       placeHolder += this.AyaBuilder(aya);
     });
 
     if (placeHolder != "") {
-      this.PageBodyQuranText += `<div class="LineClass">${placeHolder}</div>`
+      this.AddElementsToBlock(placeHolder, container, true);
     }
+  }
+
+  //Add Elements to Block With Click Action
+  private AddElementsToBlock(placeHolder: string, container: HTMLDivElement, withClick: boolean) {
+
+    if (!container) {
+      return;
+    }
+
+    const element = document.createElement('div');
+
+    element.className = 'LineClass';
+    element.innerHTML = placeHolder;
+
+    if (withClick) {
+      element.addEventListener('click', () => {
+        this.GoToAya_Details(true);
+      });
+    }
+
+    container.appendChild(element);
   }
 
   //Build the Surah Title 
@@ -239,7 +260,7 @@ export class QuranPageComponent {
     this.RemoveActiveCSSClass()
 
     this.IsDetails = isShowen;
-    
+
     const audio = document.getElementById("quranAudioPlayer") as HTMLAudioElement;
     audio.src = "";
   }
