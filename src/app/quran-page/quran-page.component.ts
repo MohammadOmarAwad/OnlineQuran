@@ -301,6 +301,10 @@ export class QuranPageComponent {
     if (selectedReciterURL != undefined) {
       this.Reciter_URL = selectedReciterURL;
     }
+
+    // Reset the AudioPlayer
+    this.Run_Audio("");
+    
   }
 
   //Copy Aya by Clicking
