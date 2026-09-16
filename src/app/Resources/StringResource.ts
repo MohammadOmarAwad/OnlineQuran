@@ -65,4 +65,5 @@ export const StringResource = {
   QuranEgypt_Radio_Name: "القرآن مصر",
 
   Copy:"نسخ",
+  RunSound:"تشغيل الأية",
 };

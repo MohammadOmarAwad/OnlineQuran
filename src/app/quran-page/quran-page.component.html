@@ -1,13 +1,13 @@
-<div [style.display]="IsDetails ? 'block' : 'none'" style="text-align: justify;">
-  <div [style.display]="IsDetails ? 'flex' : 'none'">
+<div id="SoundPlayerId" style="text-align: justify;display: none;">
+  <div style="display: flex;">
     <audio id="quranAudioPlayer" controls autoplay style="width: 100%;background-color: lightgrey;"></audio>
     <button style="background-color: chocolate;padding: 12px 24px;border: none;cursor: pointer;color: white;"
-      (click)="GoToAya_Details(false)">X</button>
+      (click)="CloseAudioPlayer()">X</button>
   </div>
 
   <div class="dropdown-content">
     <select id="reciter" (change)="onReciterChange($event)">
-      <option *ngFor="let reciter of RecitersList" [value]="reciter.ReciterId">
+      <option *ngFor="let reciter of RecitersList" [value]="reciter.Reciter_URL">
         {{reciter.ArabicName}}
       </option>
     </select>
@@ -16,7 +16,7 @@
 
 <div class="MainBody">
 
-  <nav [style.display]="IsDetails ? 'none' : 'block'" style="margin-top: 5px;">
+  <nav style="margin-top: 5px;">
     <div class="nav nav-tabs" id="nav-tab" role="tablist">
       <button class="nav-link active BtnNav" id="nav-Quran-tab" data-bs-toggle="tab" data-bs-target="#nav-Quran"
         type="button" role="tab" aria-controls="nav-Quran" aria-selected="true">{{Strings.QuranPage_Tab_Quran}}</button>
@@ -30,28 +30,27 @@
   </nav>
 
   <div>
-
     <div class="DivBox">
 
+      <!--Surah Infos-->
+      <div>
+        <table>
+          <tr style="white-space: nowrap; background-color: transparent;">
+            <td><span>{{AyahsList_UI[0].Juz}} {{Strings.MainPage_Juz}}</span></td>
+            <td style="width:100%;"><span></span></td>
+            <td><span>{{AyahsList_UI[0].surah_Infos?.AName}} </span></td>
+          </tr>
+        </table>
+      </div>
+
       <!--Surah Text-->
-      <div #ayasContainer [style.display]="IsDetails ? 'none' : 'block'">
+      <div #ayasContainer>
 
         <div class="tab-content" id="nav-tabContent">
 
-          <!--Surah Infos-->
-          <div>
-            <table>
-              <tr style="white-space: nowrap; background-color: transparent;">
-                <td><span>{{AyahsList_UI[0].Juz}} {{Strings.MainPage_Juz}}</span></td>
-                <td style="width:100%;"><span></span></td>
-                <td><span>{{AyahsList_UI[0].surah_Infos?.AName}} </span></td>
-              </tr>
-            </table>
-          </div>
-
           <!-- Quran Text -->
-          <div class="tab-pane fade show active"style="line-height:45px;background-color:transparent;"
-           id="nav-Quran" role="tabpanel" aria-labelledby="nav-Quran-tab">
+          <div class="tab-pane fade show active" style="line-height:45px;background-color:transparent;" id="nav-Quran"
+            role="tabpanel" aria-labelledby="nav-Quran-tab">
 
           </div>
 
@@ -70,54 +69,18 @@
         </div>
       </div>
 
-      <!-- SoundPage(ToRemove) -->
-      <div [style.display]="IsDetails ? 'block' : 'none'" style="line-height:45px;">
-        @for (aya of AyahsList_UI; track aya.AyaNr) {
-        @if(aya.AyaNr === 1)
-        {
-        <div [innerHTML]="SurahHeaderBuilder(aya)"></div>
-
-        <div> {{Strings.QuranPage_Basmale}}</div>
-        <br>
-        }
-
-        <table style="width: 100%;">
-          <tr>
-            <td style="text-align-last:left;font-size: x-large;padding-right: 10px;vertical-align: top;">
-              <div class="qword" style="white-space:nowrap;">{{ aya.SuraNr }}:{{ aya.AyaNr }}</div>
-              <div style="display: inline-grid;">
-                <button style="background-color: transparent;border-radius: 5px;margin-bottom:2px;"
-                  (click)="Run_Audio(aya.verse_Id)"><i style='font-size:24px'>&#x27A4;</i></button>
-                <button style="background-color: transparent;border-radius: 5px;margin-bottom:2px;">
-                  <i style='font-size:24px'>&#10697;</i>
-                </button>
-              </div>
-            </td>
-            <td>
-              <div class="LineClass" style="text-align-last:right;">
-                <span [id]="aya.SuraNr + aya.AyaNr" class="AyaClass" (click)="AddActiveCSSClass(aya.SuraNr + aya.AyaNr)" [innerHTML]="">
-                </span>
-              </div>
-            </td>
-          </tr>
-        </table>
-        <br>
-        }
-      </div>
-
+      <!--Pages Number & Navigation Btns-->
       <hr>
-
-      <!--Pages Number-->
-      <!-- Navigation Btns -->
       <table style="margin-bottom: 20px;">
         <tr style="white-space: nowrap; background-color: transparent;">
           <td><button class="Btn" (click)="GoToNextPage(AyahsList_UI[0].PageNr)">{{Strings.QuranPage_NextPage}}</button>
           </td>
-          <td style="width:100%; text-align: center;"><span>{{Strings.MainPage_Page}} {{AyahsList_UI[0].PageNr}}</span>
+          <td style="width:100%; text-align: center;"><span>{{AyahsList_UI[0].PageNr}}</span>
           </td>
           <td><button class="Btn"
               (click)="GoToPriviousePage(AyahsList_UI[0].PageNr)">{{Strings.QuranPage_PreviousPage}}</button></td>
         </tr>
       </table>
+
     </div>
   </div>

@@ -35,13 +35,9 @@ export class QuranPageComponent {
   PageNumber: string;
   PageBodyTafser: String = "";
   PageBodyWordAnalysis: String = "";
-  IsDetails: boolean = false;
-  Reciter_URL: String = UrlResource.Recitors_Url;
 
   constructor(
     private activeRoute: ActivatedRoute,
-    private clipboard: Clipboard,
-    private toastr: ToastrService,
     private utilities: UtiltitiesService
   ) { }
 
@@ -69,12 +65,6 @@ export class QuranPageComponent {
 
     let AyasPage = this.AyahsList.filter(a => a.PageNr === Number(pageNumer));
     AyasPage.forEach(xx => xx.surah_Infos = this.SurahsList.find(a => a.SurahIndex === xx.SuraNr));
-    AyasPage.forEach(xx => {
-      const sura = xx.SuraNr.toString().padStart(3, '0');
-      const aya = xx.AyaNr.toString().padStart(3, '0');
-      xx.verse_Id = `${sura}${aya}.mp3`;
-    });
-
     this.AyahsList_UI = AyasPage;
 
     let spansList: HTMLSpanElement[] = [];
@@ -137,8 +127,8 @@ export class QuranPageComponent {
     element.dataset['ayaId'] = aya.AyaNr.toString();
     element.dataset['surahId'] = aya.SuraNr.toString();
 
-    const text = `<span>${aya?.Text_Uthmani}</span>
-        <span class="qword">﴿${aya?.AyaNr}﴾</span>`;
+    const text = `<span> ${aya?.Text_Uthmani}</span>
+                  <span class="qword">﴿${aya?.AyaNr}﴾</span>`;
 
     const output = TextService.bracketsReplacer(text).toString();
     element.innerHTML = output;
@@ -164,9 +154,9 @@ export class QuranPageComponent {
     const element = document.createElement('div');
     const output = `<table Class="SurhaHeader TableClass">
                               <tr>
-                                <td class="textalign_right"><span class="qword AyaClass">﴿ ${aya?.SuraNr} ${StringResource.QuranPage_SurahOrder} ﴾</span></td>
-                                <td class="textalign_center"><span Class="AyaClass">﴿ ${aya?.surah_Infos?.AName} ﴾</span></td>
-                                <td class="textalign_Left"><span class="qword AyaClass">﴿ ${aya?.surah_Infos?.AyasCount} ${StringResource.QuranPage_AyaCount} ﴾</span></td>
+                                <td class="textalign_right"><span class="qword TitleClass">﴿ ${aya?.SuraNr} ${StringResource.QuranPage_SurahOrder} ﴾</span></td>
+                                <td class="textalign_center"><span Class="TitleClass">﴿ ${aya?.surah_Infos?.AName} ﴾</span></td>
+                                <td class="textalign_Left"><span class="qword TitleClass">﴿ ${aya?.surah_Infos?.AyasCount} ${StringResource.QuranPage_AyaCount} ﴾</span></td>
                               </tr>
                       </table>`;
 
@@ -274,55 +264,17 @@ export class QuranPageComponent {
   }
 
   //Toggle the view of Quran
-  GoToAya_Details(isShowen: boolean): void {
-    this.RemoveActiveCSSClass()
+  CloseAudioPlayer(): void {
+    const divElement = document.getElementById('SoundPlayerId') as HTMLDivElement;
+    divElement.style.display = "none";
 
-    this.IsDetails = isShowen;
-
-    const audio = document.getElementById("quranAudioPlayer") as HTMLAudioElement;
-    audio.src = "";
-  }
-
-  //Set the Audio URL to Audio Player
-  Run_Audio(url: any): void {
-    const audio = document.getElementById("quranAudioPlayer") as HTMLAudioElement;
-
-    if (audio) {
-      audio.pause();
-      audio.src = this.Reciter_URL + url;
-      audio.currentTime = 0;
-      audio.play();
-    }
-  }
-
-  //Add Style to selected Aya by id on Click
-  AddActiveCSSClass(val: number): void {
-    let item = document.getElementById(val.toString());
-
-    // Add 'active' class to the clicked item
-    if (item != null) {
-      this.RemoveActiveCSSClass()
-      item.classList.add('active');
-    }
-  }
-
-  //Add Style to selected Aya on Click
-  RemoveActiveCSSClass(): void {
-    document.querySelectorAll('.AyaClass.active').forEach(el => el.classList.remove('active'));
+    this.utilities.Run_Audio(0, 0);
   }
 
   //Get the Reciter on dropdown
   onReciterChange(event: Event) {
-    const selectedId = Number((event.target as HTMLSelectElement).value);
-    let selectedReciterURL = this.RecitersList.find(r => r.ReciterId === selectedId)?.Reciter_URL;
-
-    if (selectedReciterURL != undefined) {
-      this.Reciter_URL = selectedReciterURL;
-    }
-
-    // Reset the AudioPlayer
-    this.Run_Audio("");
-
+     // Reset the AudioPlayer
+    this.utilities.Run_Audio(0, 0);
   }
 
   //Applay Brackets

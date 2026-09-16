@@ -36,8 +36,7 @@ export class UtiltitiesService {
 
         const options = [
             StringResource.Copy,
-            'xxxx',
-            'xxxx'
+            StringResource.RunSound
         ];
 
         options.forEach((optionText) => {
@@ -75,6 +74,9 @@ export class UtiltitiesService {
             case StringResource.Copy:
                 this.CopyAya(Number(clickedSurahId), Number(clickedAyaId));
                 break;
+            case StringResource.RunSound:
+                this.Run_Audio(Number(clickedSurahId), Number(clickedAyaId));
+                break;
         }
     }
 
@@ -97,4 +99,33 @@ export class UtiltitiesService {
             this.toastr.success(TextService.FormatMessage(StringResource.QuranPage_CopyMessage, AyaInfo.AyaNr, AyaInfo.surah_Infos.AName));
         }
     }
+
+
+    // Run Ayah Sound
+    public async Run_Audio(sura: number, aya: number): Promise<void> {
+
+        const audio = document.getElementById("quranAudioPlayer") as HTMLAudioElement;
+        audio.src = "";
+
+        if (sura == 0 && aya == 0)
+            return;
+
+        const _sura = sura.toString().padStart(3, '0');
+        const _aya = aya.toString().padStart(3, '0');
+        const verse_Id = `${_sura}${_aya}.mp3`;
+
+        const selectElement = document.getElementById('reciter') as HTMLSelectElement;
+        const selectedRecitor = selectElement.value;
+
+        const divElement = document.getElementById('SoundPlayerId') as HTMLDivElement;
+        divElement.style.display = "block";
+
+        if (audio) {
+            audio.pause();
+            audio.src = selectedRecitor + verse_Id;
+            audio.currentTime = 0;
+            audio.play();
+        }
+    }
+
 }
