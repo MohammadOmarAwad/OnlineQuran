@@ -63,4 +63,6 @@ export const StringResource = {
   Sharjah_Radio_Name: "الشارقة",
   ZuwaraLibya_Radio_Name: "زوارة ليبيا",
   QuranEgypt_Radio_Name: "القرآن مصر",
+
+  Copy:"نسخ",
 };

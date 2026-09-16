@@ -8,6 +8,7 @@ import { TextService } from '../Services/Text.Service';
 import { UrlResource } from '../Resources/UrlResource';
 import { StringResource } from '../Resources/StringResource';
 import { DataService } from '../Services/Data.Service';
+import { UtiltitiesService } from '../Services/Utiltities.Service';
 import { SurahModel } from '../Models/SurahModel';
 import { AyahModel } from '../Models/AyahModel';
 import { TafserModel } from '../Models/TafserModel';
@@ -40,7 +41,8 @@ export class QuranPageComponent {
   constructor(
     private activeRoute: ActivatedRoute,
     private clipboard: Clipboard,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private utilities: UtiltitiesService
   ) { }
 
   //Run on Start
@@ -75,88 +77,104 @@ export class QuranPageComponent {
 
     this.AyahsList_UI = AyasPage;
 
-    let placeHolder: string = "";
+    let spansList: HTMLSpanElement[] = [];
 
     AyasPage.forEach(aya => {
       if (aya.AyaNr == 1) {
 
-        if (placeHolder != "") {
-          this.AddElementsToBlock(placeHolder, container, true);
-          placeHolder = "";
+        if (spansList.length > 0) {
+          this.AddElementsToBlock(spansList, container);
+          spansList = [];
         }
 
-        this.AddElementsToBlock(this.AddSurahTitle(aya), container, false);
+        this.AddElementsToBlock(this.AddSurahTitle(aya), container);
       }
 
-      placeHolder += this.AyaBuilder(aya);
+      spansList.push(this.AyaBuilder(aya));
     });
 
-    if (placeHolder != "") {
-      this.AddElementsToBlock(placeHolder, container, true);
+    if (spansList.length > 0) {
+      this.AddElementsToBlock(spansList, container);
     }
   }
 
   //Add Elements to Block With Click Action
-  private AddElementsToBlock(placeHolder: string, container: HTMLDivElement, withClick: boolean) {
-
-    if (!container) {
-      return;
-    }
+  private AddElementsToBlock(htmlList: HTMLElement[], container: HTMLDivElement) {
 
     const element = document.createElement('div');
 
     element.className = 'LineClass';
-    element.innerHTML = placeHolder;
-
-    if (withClick) {
-      element.addEventListener('click', () => {
-        this.GoToAya_Details(true);
-      });
-    }
+    // Loop through the NodeList and append each span individualy
+    htmlList.forEach((span) => {
+      element.appendChild(span);
+    });
 
     container.appendChild(element);
   }
 
   //Build the Surah Title 
-  private AddSurahTitle(xx: AyahModel): string {
-
-    let result = "";
+  private AddSurahTitle(xx: AyahModel) {
+    const divsList: HTMLDivElement[] = [];
 
     if (xx.AyaNr == 1) {
-      result += this.SurahHeaderBuilder(xx);
+      divsList.push(this.SurahHeaderBuilder(xx));
 
       if (xx.PageNr != 187 && xx.PageNr != 1) {
-        result += `<div>${StringResource.QuranPage_Basmale}</div>`;
+        const element = document.createElement('div');
+        element.innerHTML = StringResource.QuranPage_Basmale;
+
+        divsList.push(element);
       }
     }
 
-    return result;
+    return divsList;
   }
 
   //Build Aya Part
-  AyaBuilder(aya: AyahModel): string {
-    const output = `<Span class="AyaClass">
-                            <span>${aya?.Text_Uthmani}</span>
-                            <span class="qword">﴿${aya?.AyaNr}﴾</span>
-                          </Span>`;
+  private AyaBuilder(aya: AyahModel) {
+    const element = document.createElement('span');
+    element.className = 'AyaClass';
+    element.dataset['ayaId'] = aya.AyaNr.toString();
+    element.dataset['surahId'] = aya.SuraNr.toString();
 
-    return TextService.bracketsReplacer(output).toString();
+    const text = `<span>${aya?.Text_Uthmani}</span>
+        <span class="qword">﴿${aya?.AyaNr}﴾</span>`;
+
+    const output = TextService.bracketsReplacer(text).toString();
+    element.innerHTML = output;
+
+    // Listen for the right-click event
+    element.addEventListener('contextmenu', (event: MouseEvent) => {
+      // 1. Stop the browser's default standard right-click menu from showing up
+      event.preventDefault();
+
+      // 2. Prevent the event from bubbling up to other elements
+      event.stopPropagation();
+
+      // 3. Show your custom menu at the mouse coordinates
+      this.utilities.ShowMenuList(event.clientX, event.clientY, element);
+    });
+
+    return element;
   }
 
   //Build SurahHeader Part
-  SurahHeaderBuilder(aya: AyahModel): string {
-    const output = `<br/>
-                          <div> 
-                            <table Class="SurhaHeader TableClass">
+  SurahHeaderBuilder(aya: AyahModel) {
+
+    const element = document.createElement('div');
+    const output = `<table Class="SurhaHeader TableClass">
                               <tr>
                                 <td class="textalign_right"><span class="qword AyaClass">﴿ ${aya?.SuraNr} ${StringResource.QuranPage_SurahOrder} ﴾</span></td>
                                 <td class="textalign_center"><span Class="AyaClass">﴿ ${aya?.surah_Infos?.AName} ﴾</span></td>
                                 <td class="textalign_Left"><span class="qword AyaClass">﴿ ${aya?.surah_Infos?.AyasCount} ${StringResource.QuranPage_AyaCount} ﴾</span></td>
                               </tr>
-                            </table>
-                          </div>`;
+                      </table>`;
 
-    return TextService.bracketsReplacer(output).toString();
+    const text = TextService.bracketsReplacer(output).toString();
+
+    element.innerHTML = text;
+
+    return element;
   }
 
   //Get the Tafser of Quran
@@ -174,7 +192,7 @@ export class QuranPageComponent {
 
       let data = this.TafserAyahsList.find(a => a.SuraNr === sura && a.AyaNr === aya);
 
-      this.PageBodyTafser += this.AddSurahTitle(xx);
+      // this.PageBodyTafser += this.AddSurahTitle(xx);
 
       this.PageBodyTafser += `
       <Span class="LineClass">
@@ -207,7 +225,7 @@ export class QuranPageComponent {
 
       let data = this.QuranicWordsList.find(a => a.SuraNr === sura && a.AyaNr === aya);
 
-      this.PageBodyWordAnalysis += this.AddSurahTitle(xx);
+      // this.PageBodyWordAnalysis += this.AddSurahTitle(xx);
 
       this.PageBodyWordAnalysis += `
       <Span class="LineClass">
@@ -304,27 +322,7 @@ export class QuranPageComponent {
 
     // Reset the AudioPlayer
     this.Run_Audio("");
-    
-  }
 
-  //Copy Aya by Clicking
-  CopyAya(sura: number, aya: number): void {
-    let AyaInfo: AyahModel | undefined;
-
-    AyaInfo = this.AyahsList_UI.find(a => a.SuraNr === sura && a.AyaNr === aya);
-    if (AyaInfo != undefined) {
-      //string interpolation in TypeScript (like C#’s $"..." syntax).
-      let textToCopy = `
-      ${AyaInfo.Text_Uthmani}
-      
-      ${AyaInfo.Text_Simple}  
-          
-      ${UrlResource.OnlineQuran_Url}/quran/${AyaInfo.PageNr}`;
-
-      this.clipboard.copy(textToCopy);
-
-      this.toastr.success(TextService.FormatMessage(StringResource.QuranPage_CopyMessage, AyaInfo.AyaNr, AyaInfo.surah_Infos.name));
-    }
   }
 
   //Applay Brackets
