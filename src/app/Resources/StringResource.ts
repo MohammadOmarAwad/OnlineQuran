@@ -1,5 +1,3 @@
-import { StreamsPageComponent } from "../streams-page/streams-page.component";
-
 export const StringResource = {
 
   App_Title: "Online Quran",
@@ -66,4 +64,6 @@ export const StringResource = {
 
   Copy:"نسخ",
   RunSound:"تشغيل الأية",
+
+  Stories:"مواضيع الآيات"
 };
