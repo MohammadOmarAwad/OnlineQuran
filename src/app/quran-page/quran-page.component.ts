@@ -2,10 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Component, ViewEncapsulation } from '@angular/core';
 import { ReciterModel } from '../Models/ReciterModel';
-import { Clipboard } from '@angular/cdk/clipboard';
-import { ToastrService } from 'ngx-toastr';
 import { TextService } from '../Services/Text.Service';
-import { UrlResource } from '../Resources/UrlResource';
 import { StringResource } from '../Resources/StringResource';
 import { DataService } from '../Services/Data.Service';
 import { UtiltitiesService } from '../Services/Utiltities.Service';
@@ -13,6 +10,7 @@ import { SurahModel } from '../Models/SurahModel';
 import { AyahModel } from '../Models/AyahModel';
 import { TafserModel } from '../Models/TafserModel';
 import { QuranicWordModel } from '../Models/QuranicWordModel';
+import { SurahStoriesModel } from '../Models/SurahStoriesModel';
 
 @Component({
   selector: 'app-quran-page',
@@ -31,6 +29,7 @@ export class QuranPageComponent {
   RecitersList: ReciterModel[] = [];
   TafserAyahsList: TafserModel[] = [];
   QuranicWordsList: QuranicWordModel[] = [];
+  SurahStoriesList: SurahStoriesModel[] = [];
 
   PageNumber: string;
   PageBodyTafser: String = "";
@@ -48,22 +47,21 @@ export class QuranPageComponent {
     this.RecitersList = await DataService.GetRecitersData();
     this.TafserAyahsList = await DataService.GetTafsersData();
     this.QuranicWordsList = await DataService.GetQuranicWordsData();
+    this.SurahStoriesList = await DataService.GetSurahStoriesData();
 
     this.activeRoute.params.subscribe((params: Params) => this.PageNumber = params['PageNumber']);
 
     await Promise.all([
-      this.getData(this.PageNumber),
-      this.getDataTafser(this.PageNumber),
-      this.getDataWordAnalysis(this.PageNumber)
+      this.UpdateQuranPage(Number(this.PageNumber))
     ]);
   }
 
   //Get the Quran Text
-  async getData(pageNumer: string): Promise<void> {
+  async getData(pageNumer: Number): Promise<void> {
     const container = document.getElementById('nav-Quran') as HTMLDivElement;
     container.innerHTML = '';
 
-    let AyasPage = this.AyahsList.filter(a => a.PageNr === Number(pageNumer));
+    let AyasPage = this.AyahsList.filter(a => a.PageNr === pageNumer);
     AyasPage.forEach(xx => xx.surah_Infos = this.SurahsList.find(a => a.SurahIndex === xx.SuraNr));
     this.AyahsList_UI = AyasPage;
 
@@ -149,7 +147,7 @@ export class QuranPageComponent {
   }
 
   //Build SurahHeader Part
-  SurahHeaderBuilder(aya: AyahModel) {
+  private SurahHeaderBuilder(aya: AyahModel) {
 
     const element = document.createElement('div');
     const output = `<table Class="SurhaHeader TableClass">
@@ -168,14 +166,11 @@ export class QuranPageComponent {
   }
 
   //Get the Tafser of Quran
-  async getDataTafser(pageNumer: string): Promise<void> {
-    let ayas: AyahModel[] = this.AyahsList;
-
-    let AyasPage = ayas.filter(a => a.PageNr === Number(pageNumer));
+  async getDataTafser(): Promise<void> {
     this.PageBodyTafser = "";
 
-    AyasPage.forEach((xx, index) => {
-      const isLast = index === AyasPage.length - 1;
+    this.AyahsList_UI.forEach((xx, index) => {
+      const isLast = index === this.AyahsList_UI.length - 1;
 
       const sura = xx.SuraNr;
       const aya = xx.AyaNr;
@@ -201,14 +196,11 @@ export class QuranPageComponent {
   }
 
   //Get the WordAnalysis of Quran
-  async getDataWordAnalysis(pageNumer: string): Promise<void> {
-    let ayas: AyahModel[] = this.AyahsList;
-
-    let AyasPage = ayas.filter(a => a.PageNr === Number(pageNumer));
+  async getDataWordAnalysis(): Promise<void> {
     this.PageBodyWordAnalysis = "";
 
-    AyasPage.forEach((xx, index) => {
-      const isLast = index === AyasPage.length - 1;
+    this.AyahsList_UI.forEach((xx, index) => {
+      const isLast = index === this.AyahsList_UI.length - 1;
 
       const sura = xx.SuraNr;
       const aya = xx.AyaNr;
@@ -239,6 +231,36 @@ export class QuranPageComponent {
     this.PageBodyWordAnalysis = TextService.bracketsReplacer(this.PageBodyWordAnalysis);
   }
 
+  //Get the SurahStories of Quran
+  async getDataSurahStories(): Promise<void> {
+    let stories: SurahStoriesModel[] = [];
+    let tableRows: string = '';
+
+    this.AyahsList_UI.forEach(element => {
+
+      const surahStories = this.SurahStoriesList.filter(s => s.SurahIndex === element.SuraNr);
+      let currentStory = surahStories.find(ss => element.AyaNr >= ss.StartStory && element.AyaNr <= ss.EndStory);
+
+      // Add to the array if a matching story was found
+      if (currentStory && !stories.find(ss => element.AyaNr >= ss.StartStory && element.AyaNr <= ss.EndStory)) {
+        stories.push(currentStory);
+        const spanHtml = document.createElement('span');
+        spanHtml.innerHTML =this.BracketsReplacer(`${currentStory.EndStory}-${currentStory.StartStory}`).toString() ;
+        spanHtml.style.whiteSpace = "nowrap";
+
+        tableRows += `<tr>
+                  <td style="vertical-align: top; text-align-last: end; background-color: ${currentStory.Color};">
+                     ${spanHtml.outerHTML}
+                  </td>
+                  <td style="line-height: 22px; text-align-last: start;padding-right: 5px;">${currentStory.Story}</td>
+                </tr>`;
+      }
+    });
+
+    const divElement = document.getElementById('SurahStoriesId') as HTMLDivElement;
+    divElement.innerHTML = `<div><table>${tableRows}</table></div>`;;
+  }
+
   //Go to the Next Page
   GoToNextPage(pageNumer: number) {
     let newValue = pageNumer + 1;
@@ -246,9 +268,7 @@ export class QuranPageComponent {
       newValue = 1;
     }
 
-    this.getData(String(newValue));
-    this.getDataTafser(String(newValue));
-    this.getDataWordAnalysis(String(newValue));
+    this.UpdateQuranPage(newValue);
   }
 
   //Go to the Previous Page
@@ -258,9 +278,15 @@ export class QuranPageComponent {
       newValue = 604;
     }
 
-    this.getData(String(newValue));
-    this.getDataTafser(String(newValue));
-    this.getDataWordAnalysis(String(newValue));
+    this.UpdateQuranPage(newValue);
+  }
+
+  //Many Action To LoadPage
+  private UpdateQuranPage(pageNumer: number) {
+    this.getData(pageNumer);
+    this.getDataTafser();
+    this.getDataWordAnalysis();
+    this.getDataSurahStories();
   }
 
   //Toggle the view of Quran
@@ -273,7 +299,7 @@ export class QuranPageComponent {
 
   //Get the Reciter on dropdown
   onReciterChange(event: Event) {
-     // Reset the AudioPlayer
+    // Reset the AudioPlayer
     this.utilities.Run_Audio(0, 0);
   }
 
