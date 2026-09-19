@@ -1,7 +1,7 @@
 export const StringResource = {
 
   App_Title: "Online Quran",
-  
+
   About_VisionTitle: "الرؤية",
   About_Title: 'معلومات',
   About_Information: "موقع إسلامي دعوي، ينتهج منهج أهل السنة والجماعة في المعتقد والعمل" +
@@ -34,11 +34,25 @@ export const StringResource = {
 
   PrayTime_Tab_WholeMonth: "كامل الشهر",
   PrayTime_Error: "لم يتم العثور على بيانات صلاة اليوم.",
+  PrayTime_Imsak: "الإمساك",
   PrayTime_Fajr: "الفجر",
+  PrayTime_Sunrise: "الشروق",
   PrayTime_Dhuhr: "الظهر",
   PrayTime_Asr: "العصر",
   PrayTime_Magrib: "المغرب",
+  PrayTime_SunSet: "الغروب",
   PrayTime_Isha: "العشاء",
+  PrayTime_Midnight: "منتصف الليل",
+  PrayTime_Firstthird: "الثلث الأول",
+  PrayTime_Lastthird: "الثلث الأخير",
+
+  PrayTimeSettingMethods: "طرق ضبط أوقات الصلاة",
+  PrayTimeSettingSchools: "مدرسة فقهية",
+  PrayTimeSettingMethode99: "إعدادات الطريقة (طريقة مخصصة 99):",
+  PrayTimeSettingFajrAngle: "زاوية الفجر",
+  PrayTimeSettingMaghribAngleOrMinsAfterSunset: "زاوية المغرب أو الدقائق بعد الغروب",
+  PrayTimeSettingIshaAngleOrMinsAfterMaghrib: "وقت صلاة العشاء (الزاوية أو الدقائق بعد المغرب)",
+  PrayTimeSettingTune: "ضبط (تعديل الدقائق)",
 
   QuranPage_CopyMessage: `تم نسخ الأية {0} من سورة {1}.`,
   QuranPage_NextPage: "الصفحة التالية",
@@ -62,8 +76,10 @@ export const StringResource = {
   ZuwaraLibya_Radio_Name: "زوارة ليبيا",
   QuranEgypt_Radio_Name: "القرآن مصر",
 
-  Copy:"نسخ",
-  RunSound:"تشغيل الأية",
+  Copy: "نسخ",
+  RunSound: "تشغيل الأية",
 
-  Stories:"مواضيع الآيات"
+  Stories: "مواضيع الآيات",
+  PrayTimeSetting: "إعدادات أوقات الصلاة",
+  GetPrayTime: "تحديث أوقات الصلاة"
 };

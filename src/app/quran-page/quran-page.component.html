@@ -6,7 +6,7 @@
   </div>
 
   <div class="dropdown-content">
-    <select id="reciter" (change)="onReciterChange($event)">
+    <select id="reciter" class="form-select" (change)="onReciterChange($event)">
       <option *ngFor="let reciter of RecitersList" [value]="reciter.Reciter_URL">
         {{reciter.ArabicName}}
       </option>

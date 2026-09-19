@@ -216,22 +216,6 @@
   transform: scale(1.05);
 }
 
-select,
-::picker(select) {
-  appearance: base-select;
-  font-weight: bold;
-}
-
-::picker(select) {
-  border: none;
-  background: #c8c8c8;
-  margin: .4rem 0;
-}
-
-option :checked {
-  background: #c8c8c8;
-}
-
 .dropdown-content {
   position: absolute;
   background-color: lightgrey;

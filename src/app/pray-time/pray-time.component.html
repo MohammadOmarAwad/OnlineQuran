@@ -1,139 +1,266 @@
 <div class="MainBody">
 
-    <div>
+    <div class="SurhaHeader" style="padding: 5px;">
+        <details>
+            <summary style="direction: ltr;">{{Strings.PrayTimeSetting}}</summary>
 
-        <nav style="margin-top: 5px;">
-            <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                <button class="nav-link active BtnNav" id="nav-PrayTime-tab" data-bs-toggle="tab"
-                    data-bs-target="#nav-PrayTime" type="button" role="tab" aria-controls="nav-PrayTime"
-                    aria-selected="true">{{Strings.Header_PrayTimePage}}</button>
-                <button class="nav-link BtnNav" id="nav-PrayTimeWholeMonth-tab" data-bs-toggle="tab"
-                    data-bs-target="#nav-PrayTimeWholeMonth" type="button" role="tab"
-                    aria-controls="nav-PrayTimeWholeMonth"
-                    aria-selected="false">{{Strings.PrayTime_Tab_WholeMonth}}</button>
-            </div>
-        </nav>
-
-        <div class="tab-content" id="nav-tabContent" style="line-height:45px;">
-
-            <br />
-
-            <!-- PrayTime -->
-            <div class="tab-pane DivBox fade show active" id="nav-PrayTime" role="tabpanel"
-                aria-labelledby="nav-PrayTime-tab">
-
-                <div class="table-responsive-sm">
-
-                    <div> {{CityName}}</div>
-                    <div style="text-align: -webkit-center;">
-                        <div>
-                            <span class="qword"> ({{PrayTimeToday?.date?.hijri?.weekday?.ar}})</span>
-                            <br />
-                            {{PrayTimeToday?.date?.gregorian?.date}} <span class="qword">
-                                ({{PrayTimeToday?.date?.hijri?.date}})</span>
-                        </div>
-
-                        <table class="table table-hover" style="width: 70%;">
-                            <tr>
-                                <td style="text-align: left;">{{PrayTimeToday?.timings?.Fajr}}</td>
-                                <td style="text-align: right;">
-                                    <span class="qword" style="white-space: nowrap;">{{Strings.PrayTime_Fajr}} </span>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td style="text-align: left;">{{PrayTimeToday?.timings?. Dhuhr }}</td>
-                                <td style="text-align: right;">
-                                    <span class="qword" style="white-space: nowrap;">{{Strings.PrayTime_Dhuhr}} </span>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td style="text-align: left;">{{PrayTimeToday?.timings?. Asr }}</td>
-                                <td style="text-align: right;">
-                                    <span class="qword" style="white-space: nowrap;">{{Strings.PrayTime_Asr}} </span>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td style="text-align: left;">{{PrayTimeToday?.timings?. Maghrib }}</td>
-                                <td style="text-align: right;">
-                                    <span class="qword" style="white-space: nowrap;">{{Strings.PrayTime_Magrib}} </span>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td style="text-align: left;">{{PrayTimeToday?.timings?. Isha }}</td>
-                                <td style="text-align: right;">
-                                    <span class="qword" style="white-space: nowrap;">{{Strings.PrayTime_Isha}} </span>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
+            <div class="row g-3">
+                <!-- Methods and Schools -->
+                <div class="col-md-6">
+                    <label for="prayTimeMethode" class="form-label">{{Strings.PrayTimeSettingMethods}}</label>
+                    <select id="prayTimeMethode" class="form-select">
+                        <option *ngFor="let item of Methods" [value]="item.id">
+                            {{item.name}}
+                        </option>
+                    </select>
                 </div>
-            </div>
-
-            <!-- Whole Month PrayTime -->
-            <div class="tab-pane DivBox fade" id="nav-PrayTimeWholeMonth" role="tabpanel"
-                aria-labelledby="nav-PrayTimeWholeMonth-tab">
-
-                <div class="tab-pane fade show active" id="nav-PrayTime" role="tabpanel"
-                    aria-labelledby="nav-PrayTime-tab">
-
-                    <div> {{CityName}}</div>
-                    <div style="text-align: -webkit-center;" *ngFor="let data of prayTimeModle?.data">
-                        <div>
-                            <span class="qword"> ({{data?.date?.hijri?.weekday?.ar}})</span>
-                            <br />
-                            {{data?.date?.gregorian?.date}} <span class="qword">
-                                ({{data?.date?.hijri?.date}})</span>
-                        </div>
-
-                        <table class="table table-hover" style="width: 70%;">
-                            <tr>
-                                <td style="text-align: left;">{{data?.timings?.Fajr}}</td>
-                                <td style="text-align: right;">
-                                    <span class="qword" style="white-space: nowrap;">الفجر </span>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td style="text-align: left;">{{data?.timings?. Dhuhr }}</td>
-                                <td style="text-align: right;">
-                                    <span class="qword" style="white-space: nowrap;">الظهر </span>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td style="text-align: left;">{{data?.timings?. Asr }}</td>
-                                <td style="text-align: right;">
-                                    <span class="qword" style="white-space: nowrap;">العصر </span>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td style="text-align: left;">{{data?.timings?. Maghrib }}</td>
-                                <td style="text-align: right;">
-                                    <span class="qword" style="white-space: nowrap;">المغرب </span>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td style="text-align: left;">{{data?.timings?. Isha }}</td>
-                                <td style="text-align: right;">
-                                    <span class="qword" style="white-space: nowrap;">العشاء </span>
-                                </td>
-                            </tr>
-                        </table>
-
-                        <hr>
-
-                    </div>
+                <div class="col-md-6">
+                    <label for="prayTimeSchool" class="form-label">{{Strings.PrayTimeSettingSchools}}</label>
+                    <select id="prayTimeSchool" class="form-select">
+                        <option *ngFor="let item of Schools" [value]="item.id">
+                            {{item.name}}
+                        </option>
+                    </select>
                 </div>
 
+                <!-- Methode 99 -->
+                <div class="col-12">
+                    <label>{{Strings.PrayTimeSettingMethode99}}</label>
+                </div>
+
+                <div class="col-md-4">
+                    <input type="text" class="form-control" id="FajrAngleId" 
+                    placeholder="{{Strings.PrayTimeSettingFajrAngle}}">
+                </div>
+
+                <div class="col-md-4">
+                    <input type="text" class="form-control" id="MaghribAngleOrMinsAfterSunsetId"
+                        placeholder="{{Strings.PrayTimeSettingMaghribAngleOrMinsAfterSunset}}">
+                </div>
+
+                <div class="col-md-4">
+                    <input type="text" class="form-control" id="IshaAngleOrMinsAfterMaghribId"
+                        placeholder="{{Strings.PrayTimeSettingIshaAngleOrMinsAfterMaghrib}}">
+                </div>
+
+                <!-- tune -->
+                <div class="col-12">
+                    <label>{{Strings.PrayTimeSettingTune}}</label>
+                </div>
+
+                <div class="col-md-4">
+                    <input type="text" class="form-control" id="ImsakTuneId" placeholder="{{Strings.PrayTime_Imsak}}">
+                </div>
+
+                <div class="col-md-4">
+                    <input type="text" class="form-control" id="FajrTuneId" placeholder="{{Strings.PrayTime_Fajr}}">
+                </div>
+
+                <div class="col-md-4">
+                    <input type="text" class="form-control" id="SunriseTuneId" placeholder="{{Strings.PrayTime_Sunrise}}">
+                </div>
+
+                <div class="col-md-4">
+                    <input type="text" class="form-control" id="DhuhrTuneId" placeholder="{{Strings.PrayTime_Dhuhr}}">
+                </div>
+
+                <div class="col-md-4">
+                    <input type="text" class="form-control" id="AsrTuneId" placeholder="{{Strings.PrayTime_Asr}}">
+                </div>
+
+                <div class="col-md-4">
+                    <input type="text" class="form-control" id="MaghribTuneId" placeholder="{{Strings.PrayTime_Magrib}}">
+                </div>
+
+                <div class="col-md-4">
+                    <input type="text" class="form-control" id="SunsetTuneId" placeholder="{{Strings.PrayTime_SunSet}}">
+                </div>
+
+                <div class="col-md-4">
+                    <input type="text" class="form-control" id="IshaTuneId" placeholder="{{Strings.PrayTime_Isha}}">
+                </div>
+
+                <div class="col-md-4">
+                    <input type="text" class="form-control" id="MidnightTuneId" placeholder="{{Strings.PrayTime_Midnight}}">
+                </div>
+
+                <!-- Submit -->
+                <div class="col-12">
+                    <button class="Btn" (click)="UpdatePrayTime()">{{Strings.GetPrayTime}}</button>
+                </div>
+
+            </div>
+
+
+
+
+
+
+        </details>
+    </div>
+
+    <nav style="margin-top: 5px;">
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <button class="nav-link active BtnNav" id="nav-PrayTime-tab" data-bs-toggle="tab"
+                data-bs-target="#nav-PrayTime" type="button" role="tab" aria-controls="nav-PrayTime"
+                aria-selected="true">{{Strings.Header_PrayTimePage}}</button>
+            <button class="nav-link BtnNav" id="nav-PrayTimeWholeMonth-tab" data-bs-toggle="tab"
+                data-bs-target="#nav-PrayTimeWholeMonth" type="button" role="tab" aria-controls="nav-PrayTimeWholeMonth"
+                aria-selected="false">{{Strings.PrayTime_Tab_WholeMonth}}</button>
+        </div>
+    </nav>
+
+    <div class="tab-content" id="nav-tabContent" style="line-height:45px;">
+
+        <br />
+
+        <!-- PrayTime -->
+        <div class="tab-pane DivBox fade show active" id="nav-PrayTime" role="tabpanel"
+            aria-labelledby="nav-PrayTime-tab">
+
+            <div class="table-responsive-sm">
+
+                <div> {{CityName}}</div>
+                <div style="text-align: -webkit-center;">
+                    <div>
+                        <span class="qword"> ({{PrayTimeToday?.date?.hijri?.weekday?.ar}})</span>
+                        <br />
+                        {{PrayTimeToday?.date?.gregorian?.date}} <span class="qword">
+                            ({{PrayTimeToday?.date?.hijri?.date}})</span>
+                    </div>
+
+                    <table class="table table-hover" style="width: 70%;">
+                        <tr>
+                            <td style="text-align: left;">{{PrayTimeToday?.timings?.Imsak}}</td>
+                            <td style="text-align: right;">
+                                <span class="qword" style="white-space: nowrap;">{{Strings.PrayTime_Imsak}} </span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td style="text-align: left;">{{PrayTimeToday?.timings?.Fajr}}</td>
+                            <td style="text-align: right;">
+                                <span class="qword" style="white-space: nowrap;">{{Strings.PrayTime_Fajr}} </span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td style="text-align: left;">{{PrayTimeToday?.timings?.Sunrise}}</td>
+                            <td style="text-align: right;">
+                                <span class="qword" style="white-space: nowrap;">{{Strings.PrayTime_Sunrise}} </span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td style="text-align: left;">{{PrayTimeToday?.timings?. Dhuhr }}</td>
+                            <td style="text-align: right;">
+                                <span class="qword" style="white-space: nowrap;">{{Strings.PrayTime_Dhuhr}} </span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td style="text-align: left;">{{PrayTimeToday?.timings?. Asr }}</td>
+                            <td style="text-align: right;">
+                                <span class="qword" style="white-space: nowrap;">{{Strings.PrayTime_Asr}} </span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td style="text-align: left;">{{PrayTimeToday?.timings?. Maghrib }}</td>
+                            <td style="text-align: right;">
+                                <span class="qword" style="white-space: nowrap;">{{Strings.PrayTime_Magrib}} </span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td style="text-align: left;">{{PrayTimeToday?.timings?. Isha }}</td>
+                            <td style="text-align: right;">
+                                <span class="qword" style="white-space: nowrap;">{{Strings.PrayTime_Isha}} </span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td style="text-align: left;">{{PrayTimeToday?.timings?. Midnight }}</td>
+                            <td style="text-align: right;">
+                                <span class="qword" style="white-space: nowrap;">{{Strings.PrayTime_Midnight}} </span>
+                            </td>
+
+                        <tr>
+                            <td style="text-align: left;">{{PrayTimeToday?.timings?. Firstthird }}</td>
+                            <td style="text-align: right;">
+                                <span class="qword" style="white-space: nowrap;">{{Strings.PrayTime_Firstthird}} </span>
+                            </td>
+
+                        <tr>
+                            <td style="text-align: left;">{{PrayTimeToday?.timings?. Lastthird }}</td>
+                            <td style="text-align: right;">
+                                <span class="qword" style="white-space: nowrap;">{{Strings.PrayTime_Lastthird}} </span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Whole Month PrayTime -->
+        <div class="tab-pane DivBox fade" id="nav-PrayTimeWholeMonth" role="tabpanel"
+            aria-labelledby="nav-PrayTimeWholeMonth-tab">
+
+            <div class="tab-pane fade show active" id="nav-PrayTime" role="tabpanel" aria-labelledby="nav-PrayTime-tab">
+
+                <div> {{CityName}}</div>
+                <div style="text-align: -webkit-center;" *ngFor="let data of prayTimeModle?.data">
+                    <div>
+                        <span class="qword"> ({{data?.date?.hijri?.weekday?.ar}})</span>
+                        <br />
+                        {{data?.date?.gregorian?.date}} <span class="qword">
+                            ({{data?.date?.hijri?.date}})</span>
+                    </div>
+
+                    <table class="table table-hover" style="width: 70%;">
+                        <tr>
+                            <td style="text-align: left;">{{data?.timings?.Fajr}}</td>
+                            <td style="text-align: right;">
+                                <span class="qword" style="white-space: nowrap;">الفجر </span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td style="text-align: left;">{{data?.timings?. Dhuhr }}</td>
+                            <td style="text-align: right;">
+                                <span class="qword" style="white-space: nowrap;">الظهر </span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td style="text-align: left;">{{data?.timings?. Asr }}</td>
+                            <td style="text-align: right;">
+                                <span class="qword" style="white-space: nowrap;">العصر </span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td style="text-align: left;">{{data?.timings?. Maghrib }}</td>
+                            <td style="text-align: right;">
+                                <span class="qword" style="white-space: nowrap;">المغرب </span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td style="text-align: left;">{{data?.timings?. Isha }}</td>
+                            <td style="text-align: right;">
+                                <span class="qword" style="white-space: nowrap;">العشاء </span>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <hr>
+
+                </div>
             </div>
 
         </div>
+
     </div>
 
 </div>
