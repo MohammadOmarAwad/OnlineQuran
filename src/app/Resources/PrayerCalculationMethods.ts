@@ -9,16 +9,16 @@ export class PrayerCalculationMethods {
     ];
 
     public static readonly latitudeAdjustmentMethod: CalculationMethod[] = [
-        { id: 1, name: "Middle of the Night" },
-        { id: 2, name: "One Seventh" },
-        { id: 3, name: "Angle Based" },
+        { id: 1, name: "منتصف الليل" },
+        { id: 2, name: "سبع الليل" },
+        { id: 3, name: "على أساس الزاوية" }
     ];
 
     public static readonly method: CalculationMethod[] = [
+        { id: 3, name: "رابطة العالم الإسلامي" },
         { id: 0, name: "جعفري / شيعة إثنا عشرية" },
         { id: 1, name: "جامعة العلوم الإسلامية بكراتشي" },
         { id: 2, name: "الجمعية الإسلامية لأمريكا الشمالية (ISNA)" },
-        { id: 3, name: "رابطة العالم الإسلامي" },
         { id: 4, name: "جامعة أم القرى، مكة المكرمة" },
         { id: 5, name: "الهيئة المصرية العامة للمساحة" },
         { id: 7, name: "معهد الجيوفيزياء بجامعة طهران" },

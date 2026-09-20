@@ -15,7 +15,7 @@ export const UrlResource = {
     QuranicWordList_Url: "https://docs.google.com/spreadsheets/d/1QE-5NQ8quQrS2YqtF73-4LjHt9WsplGgsWbQM9xzIJ0/export?format=csv",
     SurahStoriesList_Url: "https://docs.google.com/spreadsheets/d/1AtBCbxp-ngEuBj-cjBtjLhi_khkTse95XgygspOf3cU/export?format=csv",
 
-    PrayTime_Url: "https://api.aladhan.com/v1/hijriCalendar/",
+    PrayTime_Url: "https://api.aladhan.com/v1/calendarByAddress/",
     Recitors_Url: "https://everyayah.com/data/Ayman_Sowaid_64kbps/",
 
     OnlineQuran_Url: "https://mohammadomarawad.github.io/OnlineQuran",

@@ -48,6 +48,7 @@ export const StringResource = {
 
   PrayTimeSettingMethods: "طرق ضبط أوقات الصلاة",
   PrayTimeSettingSchools: "مدرسة فقهية",
+  PrayTimeLatitudeAdjustment:"تعديل خط العرض",
   PrayTimeSettingMethode99: "إعدادات الطريقة (طريقة مخصصة 99):",
   PrayTimeSettingFajrAngle: "زاوية الفجر",
   PrayTimeSettingMaghribAngleOrMinsAfterSunset: "زاوية المغرب أو الدقائق بعد الغروب",

@@ -23,7 +23,7 @@ export class PrayTimeComponent {
   public CityName: String;
   Methods = PrayerCalculationMethods.method;
   Schools = PrayerCalculationMethods.school;
-
+  LatitudeAdjustment = PrayerCalculationMethods.latitudeAdjustmentMethod;
 
   constructor(
     private http: HttpClient
@@ -35,7 +35,7 @@ export class PrayTimeComponent {
   }
 
   //Call the ParyTime Athan
-  callAladhanApi(Longitude: String, Latitude: String) {
+  callAladhanApi(address: string) {
 
     const selectedMethode = this.GetSelectedValue('prayTimeMethode')
     const methode = `&method=${selectedMethode}`;
@@ -50,6 +50,7 @@ export class PrayTimeComponent {
     }
 
     const school = `&school=${this.GetSelectedValue('prayTimeSchool')}`;
+    const LatitudeAdjustmentVlaue = `&latitudeAdjustmentMethod=${this.GetSelectedValue('LatitudeAdjustmentId')}`;
 
     // tune  Imsak,Fajr,Sunrise,Dhuhr,Asr,Maghrib,Sunset,Isha,Midnight (in Minute)
     const tune = `&tune=${this.GetValue("ImsakTuneId")},`
@@ -62,10 +63,13 @@ export class PrayTimeComponent {
       + `${this.GetValue("IshaTuneId")},`
       + `${this.GetValue("MidnightTuneId")}`;
 
-    const year = DateService.GetHijriDateYear();
-    const monthe = DateService.GetHijriDateMonth();
+    const d = new Date();
+    let year = d.getFullYear();
+    let monthe = d.getMonth() + 1;
 
-    const url = `${UrlResource.PrayTime_Url}${year}/${monthe}?longitude=${Longitude}&latitude=${Latitude}${methode}${methodSettings}${school}${tune}`
+    const addressValue = `?address=${address}`;
+
+    let url = `${UrlResource.PrayTime_Url}${year}/${monthe}${addressValue}${methode}${methodSettings}${school}${LatitudeAdjustmentVlaue}${tune}`;
     this.http.get<PrayTimeModle>(url).subscribe(data => {
 
       this.prayTimeModle = data
@@ -102,7 +106,9 @@ export class PrayTimeComponent {
 
   // Get the PrayTime Value
   UpdatePrayTime() {
-    GeolocationService.getLocation().then((loc) => { this.callAladhanApi(loc[0], loc[1]); });
-    GeolocationService.getCityName().then(output => { this.CityName = output; });
+    GeolocationService.getCityName().then(output => {
+      this.callAladhanApi(output);
+      this.CityName = output;
+    });
   }
 }

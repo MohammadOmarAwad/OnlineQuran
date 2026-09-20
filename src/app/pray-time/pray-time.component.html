@@ -5,8 +5,8 @@
             <summary style="direction: ltr;">{{Strings.PrayTimeSetting}}</summary>
 
             <div class="row g-3">
-                <!-- Methods and Schools -->
-                <div class="col-md-6">
+                <!-- Methods, Schools and Latitude Adjustment -->
+                <div class="col-md-4">
                     <label for="prayTimeMethode" class="form-label">{{Strings.PrayTimeSettingMethods}}</label>
                     <select id="prayTimeMethode" class="form-select">
                         <option *ngFor="let item of Methods" [value]="item.id">
@@ -14,10 +14,20 @@
                         </option>
                     </select>
                 </div>
-                <div class="col-md-6">
+
+                <div class="col-md-4">
                     <label for="prayTimeSchool" class="form-label">{{Strings.PrayTimeSettingSchools}}</label>
                     <select id="prayTimeSchool" class="form-select">
                         <option *ngFor="let item of Schools" [value]="item.id">
+                            {{item.name}}
+                        </option>
+                    </select>
+                </div>
+
+                <div class="col-md-4">
+                    <label for="prayTimeSchool" class="form-label">{{Strings.PrayTimeLatitudeAdjustment}}</label>
+                    <select id="LatitudeAdjustmentId" class="form-select">
+                        <option *ngFor="let item of LatitudeAdjustment" [value]="item.id">
                             {{item.name}}
                         </option>
                     </select>
@@ -29,8 +39,8 @@
                 </div>
 
                 <div class="col-md-4">
-                    <input type="text" class="form-control" id="FajrAngleId" 
-                    placeholder="{{Strings.PrayTimeSettingFajrAngle}}">
+                    <input type="text" class="form-control" id="FajrAngleId"
+                        placeholder="{{Strings.PrayTimeSettingFajrAngle}}">
                 </div>
 
                 <div class="col-md-4">
@@ -57,7 +67,8 @@
                 </div>
 
                 <div class="col-md-4">
-                    <input type="text" class="form-control" id="SunriseTuneId" placeholder="{{Strings.PrayTime_Sunrise}}">
+                    <input type="text" class="form-control" id="SunriseTuneId"
+                        placeholder="{{Strings.PrayTime_Sunrise}}">
                 </div>
 
                 <div class="col-md-4">
@@ -69,7 +80,8 @@
                 </div>
 
                 <div class="col-md-4">
-                    <input type="text" class="form-control" id="MaghribTuneId" placeholder="{{Strings.PrayTime_Magrib}}">
+                    <input type="text" class="form-control" id="MaghribTuneId"
+                        placeholder="{{Strings.PrayTime_Magrib}}">
                 </div>
 
                 <div class="col-md-4">
@@ -81,7 +93,8 @@
                 </div>
 
                 <div class="col-md-4">
-                    <input type="text" class="form-control" id="MidnightTuneId" placeholder="{{Strings.PrayTime_Midnight}}">
+                    <input type="text" class="form-control" id="MidnightTuneId"
+                        placeholder="{{Strings.PrayTime_Midnight}}">
                 </div>
 
                 <!-- Submit -->

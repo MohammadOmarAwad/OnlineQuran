@@ -21,7 +21,7 @@ export class GeolocationService {
             );
         });
     }
-        
+
     //Get City Name by geolocation
     static async getCityName(): Promise<string> {
         const [lat, lng] = await this.getLocation();
@@ -35,12 +35,10 @@ export class GeolocationService {
         });
 
         const data = await res.json();
-
-        return (
-            data.address.city ||
-            data.address.town ||
-            data.address.village ||
-            data.address.state
-        );
+        const city = data.address.city || data.address.town || data.address.village || data.address.state;
+        const country = data.address.country;
+        const output=`${city}, ${country}`;
+        
+        return  output;
     }
 }
