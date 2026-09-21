@@ -30,7 +30,8 @@ export class GeolocationService {
 
         const res = await fetch(url, {
             headers: {
-                'User-Agent': 'Angular-App'
+                'User-Agent': 'Angular-App',
+                'accept-language': 'en-US,en;q=0.9,ar-JO;q=0.8,ar;q=0.7,en-GB;q=0.6,tr-TR;q=0.5,tr;q=0.4,de-DE;q=0.3,de;q=0.2'
             }
         });
 
