@@ -242,10 +242,16 @@ export class QuranPageComponent {
       let currentStory = surahStories.find(ss => element.AyaNr >= ss.StartStory && element.AyaNr <= ss.EndStory);
 
       // Add to the array if a matching story was found
-      if (currentStory && !stories.find(ss => element.AyaNr >= ss.StartStory && element.AyaNr <= ss.EndStory)) {
+      const itemDoesNotExist = !stories.some(ss =>
+        ss.SurahIndex === element.SuraNr &&
+        element.AyaNr >= ss.StartStory &&
+        element.AyaNr <= ss.EndStory
+      );
+
+      if (currentStory && itemDoesNotExist) {
         stories.push(currentStory);
         const spanHtml = document.createElement('span');
-        spanHtml.innerHTML =this.BracketsReplacer(`${currentStory.EndStory}-${currentStory.StartStory}`).toString() ;
+        spanHtml.innerHTML = this.BracketsReplacer(`${currentStory.EndStory}-${currentStory.StartStory}`).toString();
         spanHtml.style.whiteSpace = "nowrap";
 
         tableRows += `<tr>
