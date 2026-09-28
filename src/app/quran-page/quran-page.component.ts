@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Params } from '@angular/router';
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, OnDestroy } from '@angular/core';
 import { ReciterModel } from '../Models/ReciterModel';
 import { TextService } from '../Services/Text.Service';
 import { StringResource } from '../Resources/StringResource';
@@ -21,7 +21,7 @@ import { SurahStoriesModel } from '../Models/SurahStoriesModel';
   encapsulation: ViewEncapsulation.None
 })
 
-export class QuranPageComponent {
+export class QuranPageComponent implements OnDestroy {
   Strings = StringResource;
   AyahsList: AyahModel[] = [];
   AyahsList_UI: AyahModel[] = [];
@@ -54,7 +54,41 @@ export class QuranPageComponent {
     await Promise.all([
       this.UpdateQuranPage(Number(this.PageNumber))
     ]);
+
+    this.InitialPage();
   }
+
+  //Add Actions to Page
+  private async InitialPage(): Promise<void> {
+    document.addEventListener('keydown', this.arrowKeyHandler);
+  }
+
+  //Do things when leave the page (Implements OnDestroy)
+  ngOnDestroy(): void {
+    console.log('Component destroyed. Cleaning up arrow key listener.');
+
+    document.removeEventListener('keydown', this.arrowKeyHandler);
+  }
+
+  //Add Navigation to arrow Keys
+  private arrowKeyHandler = (event: KeyboardEvent): void => {
+    switch (event.key) {
+      case 'ArrowLeft':
+        event.preventDefault();
+        console.log('Left arrow pressed.!');
+        this.GoToNextPage();
+        break;
+
+      case 'ArrowRight':
+        event.preventDefault();
+        console.log('Right arrow pressed.!');
+        this.GoToPriviousePage();
+        break;
+
+      default:
+        return;
+    }
+  };
 
   //Get the Quran Text
   async getData(pageNumer: Number): Promise<void> {
@@ -268,7 +302,9 @@ export class QuranPageComponent {
   }
 
   //Go to the Next Page
-  GoToNextPage(pageNumer: number) {
+  GoToNextPage() {
+    const pageNumer = this.AyahsList_UI[0].PageNr;
+
     let newValue = pageNumer + 1;
     if (newValue == 605) {
       newValue = 1;
@@ -278,7 +314,9 @@ export class QuranPageComponent {
   }
 
   //Go to the Previous Page
-  GoToPriviousePage(pageNumer: number) {
+  GoToPriviousePage() {
+    const pageNumer = this.AyahsList_UI[0].PageNr;
+
     let newValue = pageNumer - 1;
     if (newValue == 0) {
       newValue = 604;

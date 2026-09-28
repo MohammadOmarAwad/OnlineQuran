@@ -84,12 +84,12 @@
       <hr>
       <table style="margin-bottom: 20px;">
         <tr style="white-space: nowrap; background-color: transparent;">
-          <td><button class="Btn" (click)="GoToNextPage(AyahsList_UI[0].PageNr)">{{Strings.QuranPage_NextPage}}</button>
+          <td><button class="Btn" (click)="GoToNextPage()">{{Strings.QuranPage_NextPage}}</button>
           </td>
           <td style="width:100%; text-align: center;"><span>{{AyahsList_UI[0]?.PageNr}}</span>
           </td>
           <td><button class="Btn"
-              (click)="GoToPriviousePage(AyahsList_UI[0].PageNr)">{{Strings.QuranPage_PreviousPage}}</button></td>
+              (click)="GoToPriviousePage()">{{Strings.QuranPage_PreviousPage}}</button></td>
         </tr>
       </table>
 
