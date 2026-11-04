@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { StringResource } from '../Resources/StringResource';
 import { UrlResource } from '../Resources/UrlResource';
 import { PrayerCalculationMethods } from '../Resources/PrayerCalculationMethods';
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-pray-time',
@@ -24,14 +25,23 @@ export class PrayTimeComponent {
   Methods = PrayerCalculationMethods.method;
   Schools = PrayerCalculationMethods.school;
   LatitudeAdjustment = PrayerCalculationMethods.latitudeAdjustmentMethod;
+  deviceType: string;
 
   constructor(
-    private http: HttpClient
-  ) { }
+    private http: HttpClient,
+    private activeRoute: ActivatedRoute,
+      ) { }
 
   //Run on Strat
   ngOnInit() {
     this.UpdatePrayTime();
+
+        this.activeRoute.params.subscribe((params: Params) => this.deviceType = params['DeviceType']);
+    
+        if (this.deviceType == "WLog") {
+          const divElement = document.getElementById('headerId') as HTMLDivElement;
+          divElement.style.display = "none";
+        }
   }
 
   //Call the ParyTime Athan
