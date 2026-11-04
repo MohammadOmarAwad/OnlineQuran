@@ -4,6 +4,7 @@ import { StringResource } from './Resources/StringResource';
 //loadComponent: Lazzy Load
 export const routes: Routes = [
   { path: '', loadComponent: () => import('../app/main-body/main-body.component').then((c) => c.MainBodyComponent), title: StringResource.Header_MainPage },
+  { path: ':DeviceType', loadComponent: () => import('../app/main-body/main-body.component').then((c) => c.MainBodyComponent), title: StringResource.Header_MainPage },
   { path: 'quran/:PageNumber', loadComponent: () => import('../app/quran-page/quran-page.component').then((c) => c.QuranPageComponent), title: StringResource.Header_QuranPage },
   { path: 'streams', loadComponent: () => import('../app/streams-page/streams-page.component').then((c) => c.StreamsPageComponent), title: StringResource.Header_StreamsPage },
   { path: 'about', loadComponent: () => import('../app/about/about.component').then((c) => c.AboutComponent), title: StringResource.Header_AboutPage },

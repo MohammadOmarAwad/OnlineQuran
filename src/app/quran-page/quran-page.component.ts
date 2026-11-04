@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Component, ViewEncapsulation, OnDestroy } from '@angular/core';
 import { ReciterModel } from '../Models/ReciterModel';
 import { TextService } from '../Services/Text.Service';
@@ -34,10 +34,12 @@ export class QuranPageComponent implements OnDestroy {
   PageNumber: string;
   PageBodyTafser: String = "";
   PageBodyWordAnalysis: String = "";
+  deviceType: string;
 
   constructor(
     private activeRoute: ActivatedRoute,
-    private utilities: UtiltitiesService
+    private utilities: UtiltitiesService,
+    private router: Router
   ) { }
 
   //Run on Start
@@ -61,6 +63,16 @@ export class QuranPageComponent implements OnDestroy {
   //Add Actions to Page
   private async InitialPage(): Promise<void> {
     document.addEventListener('keydown', this.arrowKeyHandler);
+
+    if (sessionStorage.getItem('deviceType') == "WLog") {
+      const divElement = document.getElementById('btndiviceId') as HTMLDivElement;
+      divElement.style.display = "";
+    }
+  }
+
+  //Go to Link
+  gotoPage(page: String): void {
+    this.router.navigate([page]);
   }
 
   //Do things when leave the page (Implements OnDestroy)

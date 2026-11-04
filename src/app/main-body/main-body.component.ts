@@ -5,6 +5,7 @@ import { StringResource } from '../Resources/StringResource';
 import { DataService } from '../Services/Data.Service';
 import { SurahModel } from '../Models/SurahModel';
 import { AyahModel } from '../Models/AyahModel';
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-main-body',
@@ -16,13 +17,25 @@ import { AyahModel } from '../Models/AyahModel';
 
 export class MainBodyComponent implements OnInit {
   Strings = StringResource;
-  AyahsList: AyahModel[] =[];
+  AyahsList: AyahModel[] = [];
   SurahsList: SurahModel[] = [];
+  deviceType: string;
 
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    private activeRoute: ActivatedRoute,
+  ) { }
 
   //Run on Strat
   async ngOnInit() {
+    this.activeRoute.params.subscribe((params: Params) => this.deviceType = params['DeviceType']);
+    sessionStorage.setItem('deviceType', this.deviceType);
+
+    if (sessionStorage.getItem('deviceType') == "WLog") {
+      const divElement = document.getElementById('headerId') as HTMLDivElement;
+      divElement.style.display = "none";
+    }
+
     this.SurahsList = await DataService.GetSurahsData();
     this.AyahsList = await DataService.GetAyasData();
   }

@@ -16,6 +16,11 @@
 
 <div class="MainBody">
 
+<div>
+  <button id="btndiviceId" class="Btn" style="display: none;"
+    (click)="gotoPage('')">{{Strings.Header_MainPage}}</button>
+</div>
+
   <nav style="margin-top: 5px;">
     <div class="nav nav-tabs" id="nav-tab" role="tablist">
       <button class="nav-link active BtnNav" id="nav-Quran-tab" data-bs-toggle="tab" data-bs-target="#nav-Quran"
@@ -88,10 +93,10 @@
           </td>
           <td style="width:100%; text-align: center;"><span>{{AyahsList_UI[0]?.PageNr}}</span>
           </td>
-          <td><button class="Btn"
-              (click)="GoToPriviousePage()">{{Strings.QuranPage_PreviousPage}}</button></td>
+          <td><button class="Btn" (click)="GoToPriviousePage()">{{Strings.QuranPage_PreviousPage}}</button></td>
         </tr>
       </table>
 
     </div>
+
   </div>
