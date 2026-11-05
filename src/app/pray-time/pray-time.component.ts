@@ -30,18 +30,22 @@ export class PrayTimeComponent {
   constructor(
     private http: HttpClient,
     private activeRoute: ActivatedRoute,
-      ) { }
+  ) { }
 
   //Run on Strat
   ngOnInit() {
     this.UpdatePrayTime();
 
-        this.activeRoute.params.subscribe((params: Params) => this.deviceType = params['DeviceType']);
-    
-        if (this.deviceType == "WLog") {
-          const divElement = document.getElementById('headerId') as HTMLDivElement;
-          divElement.style.display = "none";
-        }
+    this.activeRoute.params.subscribe((params: Params) => this.deviceType = params['DeviceType']);
+
+    if (this.deviceType == "WLog") {
+      const divElementmainDiv = document.getElementById('mainDivPrayTime') as HTMLDivElement;
+      const divElementheaderId = document.getElementById('headerId') as HTMLDivElement;
+      const divElementfooterId = document.getElementById('footerId') as HTMLDivElement;
+      divElementmainDiv.style.minHeight = "100vh";
+      divElementheaderId.style.display = "none";
+      divElementfooterId.style.display = "none";
+    }
   }
 
   //Call the ParyTime Athan

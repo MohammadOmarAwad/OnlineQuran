@@ -32,8 +32,12 @@ export class MainBodyComponent implements OnInit {
     sessionStorage.setItem('deviceType', this.deviceType);
 
     if (sessionStorage.getItem('deviceType') == "WLog") {
-      const divElement = document.getElementById('headerId') as HTMLDivElement;
-      divElement.style.display = "none";
+      const divElementmainDiv = document.getElementById('mainDivMainBody') as HTMLDivElement;
+      const divElementheaderId = document.getElementById('headerId') as HTMLDivElement;
+      const divElementfooterId = document.getElementById('footerId') as HTMLDivElement;
+      divElementmainDiv.style.minHeight = "100vh";
+      divElementheaderId.style.display = "none";
+      divElementfooterId.style.display = "none";
     }
 
     this.SurahsList = await DataService.GetSurahsData();
