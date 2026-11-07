@@ -119,9 +119,13 @@ export class PrayTimeComponent {
 
   // Get the PrayTime Value
   UpdatePrayTime() {
+    this.utilities.SetElementStyle('spinnerLoadId', 'display', "");
+
     GeolocationService.getCityName().then(output => {
       this.callAladhanApi(output);
       this.CityName = output;
+
+      this.utilities.SetElementStyle('spinnerLoadId', 'display', "none");
     });
   }
 }

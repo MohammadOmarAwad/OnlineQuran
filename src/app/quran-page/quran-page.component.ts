@@ -44,6 +44,8 @@ export class QuranPageComponent implements OnDestroy {
 
   //Run on Start
   async ngOnInit() {
+    this.utilities.SetElementStyle('spinnerLoadId', 'display', "");
+
     this.SurahsList = await DataService.GetSurahsData();
     this.AyahsList = await DataService.GetAyasData();
     this.RecitersList = await DataService.GetRecitersData();
@@ -54,7 +56,8 @@ export class QuranPageComponent implements OnDestroy {
     this.activeRoute.params.subscribe((params: Params) => this.PageNumber = params['PageNumber']);
 
     await Promise.all([
-      this.UpdateQuranPage(Number(this.PageNumber))
+      this.UpdateQuranPage(Number(this.PageNumber)),
+      this.utilities.SetElementStyle('spinnerLoadId', 'display', "none")
     ]);
 
     this.InitialPage();

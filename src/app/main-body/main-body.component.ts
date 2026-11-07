@@ -41,6 +41,8 @@ export class MainBodyComponent implements OnInit {
 
     this.SurahsList = await DataService.GetSurahsData();
     this.AyahsList = await DataService.GetAyasData();
+
+    this.utilities.SetElementStyle('spinnerLoadId', 'display', "none");
   }
 
   //Go to Quran Page by Juz
