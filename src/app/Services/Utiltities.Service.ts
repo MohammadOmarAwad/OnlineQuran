@@ -128,4 +128,12 @@ export class UtiltitiesService {
         }
     }
 
+    //Set CssStyle to Element
+    public async SetElementStyle(id: string, property: keyof CSSStyleDeclaration, value: string): Promise<void> {
+        const element = document.getElementById(id);
+        if (element) {
+            (element.style as any)[property] = value;
+        }
+    }
+
 }

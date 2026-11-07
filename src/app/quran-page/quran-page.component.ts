@@ -65,10 +65,8 @@ export class QuranPageComponent implements OnDestroy {
     document.addEventListener('keydown', this.arrowKeyHandler);
 
     if (sessionStorage.getItem('deviceType') == "WLog") {
-      const divElement = document.getElementById('btndiviceId') as HTMLDivElement;
-      const divElementmainDiv = document.getElementById('mainDivQuranPage') as HTMLDivElement;
-      divElement.style.display = "";
-      divElementmainDiv.style.minHeight = "100vh";
+      this.utilities.SetElementStyle('btndiviceId', 'display', "");
+      this.utilities.SetElementStyle('mainDivQuranPage', 'minHeight', "100vh");
     }
   }
 

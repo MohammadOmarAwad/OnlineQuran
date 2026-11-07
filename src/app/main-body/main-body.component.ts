@@ -6,6 +6,7 @@ import { DataService } from '../Services/Data.Service';
 import { SurahModel } from '../Models/SurahModel';
 import { AyahModel } from '../Models/AyahModel';
 import { ActivatedRoute, Params } from '@angular/router';
+import { UtiltitiesService } from '../Services/Utiltities.Service';
 
 @Component({
   selector: 'app-main-body',
@@ -24,6 +25,7 @@ export class MainBodyComponent implements OnInit {
   constructor(
     private router: Router,
     private activeRoute: ActivatedRoute,
+    private utilities: UtiltitiesService
   ) { }
 
   //Run on Strat
@@ -32,12 +34,9 @@ export class MainBodyComponent implements OnInit {
     sessionStorage.setItem('deviceType', this.deviceType);
 
     if (sessionStorage.getItem('deviceType') == "WLog") {
-      const divElementmainDiv = document.getElementById('mainDivMainBody') as HTMLDivElement;
-      const divElementheaderId = document.getElementById('headerId') as HTMLDivElement;
-      const divElementfooterId = document.getElementById('footerId') as HTMLDivElement;
-      divElementmainDiv.style.minHeight = "100vh";
-      divElementheaderId.style.display = "none";
-      divElementfooterId.style.display = "none";
+      this.utilities.SetElementStyle('headerId', 'display', "none");
+      this.utilities.SetElementStyle('footerId', 'display', "none");
+      this.utilities.SetElementStyle('mainDivMainBody', 'minHeight', "100vh");
     }
 
     this.SurahsList = await DataService.GetSurahsData();

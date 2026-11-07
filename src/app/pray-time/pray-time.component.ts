@@ -8,6 +8,7 @@ import { StringResource } from '../Resources/StringResource';
 import { UrlResource } from '../Resources/UrlResource';
 import { PrayerCalculationMethods } from '../Resources/PrayerCalculationMethods';
 import { ActivatedRoute, Params } from '@angular/router';
+import { UtiltitiesService } from '../Services/Utiltities.Service';
 
 @Component({
   selector: 'app-pray-time',
@@ -30,6 +31,7 @@ export class PrayTimeComponent {
   constructor(
     private http: HttpClient,
     private activeRoute: ActivatedRoute,
+    private utilities: UtiltitiesService
   ) { }
 
   //Run on Strat
@@ -39,12 +41,9 @@ export class PrayTimeComponent {
     this.activeRoute.params.subscribe((params: Params) => this.deviceType = params['DeviceType']);
 
     if (this.deviceType == "WLog") {
-      const divElementmainDiv = document.getElementById('mainDivPrayTime') as HTMLDivElement;
-      const divElementheaderId = document.getElementById('headerId') as HTMLDivElement;
-      const divElementfooterId = document.getElementById('footerId') as HTMLDivElement;
-      divElementmainDiv.style.minHeight = "100vh";
-      divElementheaderId.style.display = "none";
-      divElementfooterId.style.display = "none";
+      this.utilities.SetElementStyle('headerId', 'display', "none");
+      this.utilities.SetElementStyle('footerId', 'display', "none");
+      this.utilities.SetElementStyle('mainDivPrayTime', 'minHeight', "100vh");
     }
   }
 
