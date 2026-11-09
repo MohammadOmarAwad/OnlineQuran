@@ -1,11 +1,12 @@
 import Papa from "papaparse";
-import { UrlResource } from "../Resources/UrlResource";
-import { SurahModel } from "../Models/SurahModel";
-import { AyahModel } from "../Models/AyahModel";
-import { ReciterModel } from "../Models/ReciterModel";
-import { TafserModel } from "../Models/TafserModel";
-import { QuranicWordModel } from "../Models/QuranicWordModel";
-import { SurahStoriesModel } from "../Models/SurahStoriesModel";
+import { SurahModel } from "../models/SurahModel";
+import { AyahModel } from "../models/AyahModel";
+import { ReciterModel } from "../models/ReciterModel";
+import { TafserModel } from "../models/TafserModel";
+import { QuranicWordModel } from "../models/QuranicWordModel";
+import { SurahStoriesModel } from "../models/SurahStoriesModel";
+import { UrlResource } from "../resources/UrlResource";
+
 
 export class DataService {
 

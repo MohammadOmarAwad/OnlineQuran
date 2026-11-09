@@ -1,15 +1,15 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
-import { DateService } from '../Services/Date.Service';
-import { StringResource } from '../Resources/StringResource';
+import { StringResource } from '../../core/resources/StringResource';
+import { DateService } from '../../core/services/Date.Service';
 
 @Component({
   selector: 'app-header',
   standalone: true,
   imports: [CommonModule, RouterOutlet],
   templateUrl: './header.component.html',
-  styleUrls: ['../app.component.scss', './header.component.scss']
+  styleUrls: ['../../app.component.scss', './header.component.scss']
 })
 
 export class HeaderComponent implements OnInit {

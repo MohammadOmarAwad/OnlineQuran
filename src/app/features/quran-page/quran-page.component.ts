@@ -1,23 +1,23 @@
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Component, ViewEncapsulation, OnDestroy } from '@angular/core';
-import { ReciterModel } from '../Models/ReciterModel';
-import { TextService } from '../Services/Text.Service';
-import { StringResource } from '../Resources/StringResource';
-import { DataService } from '../Services/Data.Service';
-import { UtiltitiesService } from '../Services/Utiltities.Service';
-import { SurahModel } from '../Models/SurahModel';
-import { AyahModel } from '../Models/AyahModel';
-import { TafserModel } from '../Models/TafserModel';
-import { QuranicWordModel } from '../Models/QuranicWordModel';
-import { SurahStoriesModel } from '../Models/SurahStoriesModel';
+import { ReciterModel } from '../../core/models/ReciterModel';
+import { SurahModel } from '../../core/models/SurahModel';
+import { AyahModel } from '../../core/models/AyahModel';
+import { TafserModel } from '../../core/models/TafserModel';
+import { QuranicWordModel } from '../../core/models/QuranicWordModel';
+import { SurahStoriesModel } from '../../core/models/SurahStoriesModel';
+import { StringResource } from '../../core/resources/StringResource';
+import { UtiltitiesService } from '../../core/services/Utiltities.Service';
+import { DataService } from '../../core/services/Data.Service';
+import { TextService } from '../../core/services/Text.Service';
 
 @Component({
   selector: 'app-quran-page',
   imports: [CommonModule],
   standalone: true,
   templateUrl: './quran-page.component.html',
-  styleUrls: ['../app.component.scss', './quran-page.component.scss'],
+  styleUrls: ['../../app.component.scss', './quran-page.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
 

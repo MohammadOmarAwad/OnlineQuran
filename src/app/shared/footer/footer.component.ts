@@ -1,15 +1,16 @@
 import { Component } from '@angular/core';
-import { RoutingService } from '../Services/Routing.Service';
-import { UrlResource } from '../Resources/UrlResource';
-import { StringResource } from '../Resources/StringResource';
+import { StringResource } from '../../core/resources/StringResource';
+import { RoutingService } from '../../core/services/Routing.Service';
+import { UrlResource } from '../../core/resources/UrlResource';
 
 @Component({
   selector: 'app-footer',
   standalone: true,
   imports: [],
   templateUrl: './footer.component.html',
-  styleUrls: ['../app.component.scss', './footer.component.scss']
+  styleUrls: ['../../app.component.scss', './footer.component.scss']
 })
+
 export class FooterComponent {
 
   URLS = UrlResource;

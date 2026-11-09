@@ -1,18 +1,18 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { MasjidAddress, MasjidLocation, MasjidResponse } from '../Models/MasjidResponse';
+import { MasjidAddress, MasjidLocation, MasjidResponse } from '../../core/models/MasjidResponse';
 import { CommonModule } from '@angular/common';
-import { GeolocationService } from '../Services/Geolocation.Service';
-import { RoutingService } from '../Services/Routing.Service';
-import { StringResource } from '../Resources/StringResource';
-import { UrlResource } from '../Resources/UrlResource';
+import { StringResource } from '../../core/resources/StringResource';
+import { GeolocationService } from '../../core/services/Geolocation.Service';
+import { UrlResource } from '../../core/resources/UrlResource';
+import { RoutingService } from '../../core/services/Routing.Service';
 
 @Component({
   selector: 'app-masjids',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './masjids.component.html',
-  styleUrls: ['../app.component.scss', './masjids.component.scss']
+  styleUrls: ['../../app.component.scss', './masjids.component.scss']
 })
 
 export class MasjidsComponent {

@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
-import { MainBodyComponent } from './main-body/main-body.component';
-import { DataService } from './Services/Data.Service';
+import { HeaderComponent } from './shared/header/header.component';
+import { FooterComponent } from './shared/footer/footer.component';
+import { MainBodyComponent } from './features/main-body/main-body.component';
+import { DataService } from './core/services/Data.Service';
 
 @Component({
   selector: 'app-root',

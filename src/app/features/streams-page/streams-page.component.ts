@@ -1,13 +1,13 @@
 import { Component, ViewEncapsulation, inject } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { StringResource } from '../Resources/StringResource';
-import { UrlResource } from '../Resources/UrlResource';
+import { StringResource } from '../../core/resources/StringResource';
+import { UrlResource } from '../../core/resources/UrlResource';
 
 @Component({
   selector: 'app-streams-page',
   standalone: true,
   templateUrl: './streams-page.component.html',
-  styleUrls: ['../app.component.scss', './streams-page.component.scss'],
+  styleUrls: ['../../app.component.scss', './streams-page.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
 

@@ -1,11 +1,11 @@
 import { Injectable } from "@angular/core";
-import { StringResource } from "../Resources/StringResource";
-import { AyahModel } from "../Models/AyahModel";
-import { UrlResource } from "../Resources/UrlResource";
+import { StringResource } from "../resources/StringResource";
+import { UrlResource } from "../resources/UrlResource";
 import { TextService } from "./Text.Service";
 import { ToastrService } from "ngx-toastr";
 import { Clipboard } from '@angular/cdk/clipboard';
 import { DataService } from "./Data.Service";
+import { AyahModel } from "../models/AyahModel";
 
 @Injectable({
     providedIn: 'root'

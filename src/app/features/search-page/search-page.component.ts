@@ -1,19 +1,19 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { TextService } from '../Services/Text.Service';
-import { StringResource } from '../Resources/StringResource';
-import { SurahModel } from '../Models/SurahModel';
-import { DataService } from '../Services/Data.Service';
-import { AyahModel } from '../Models/AyahModel';
-import { SearchResultModel } from '../Models/SearchResultModel';
+import { SurahModel } from '../../core/models/SurahModel';
+import { AyahModel } from '../../core/models/AyahModel';
+import { SearchResultModel } from '../../core/models/SearchResultModel';
+import { StringResource } from '../../core/resources/StringResource';
+import { DataService } from '../../core/services/Data.Service';
+import { TextService } from '../../core/services/Text.Service';
 
 @Component({
   selector: 'app-search-page',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './search-page.component.html',
-  styleUrls: ['../app.component.scss', './search-page.component.scss']
+  styleUrls: ['../../app.component.scss', './search-page.component.scss']
 })
 
 export class SearchPageComponent {

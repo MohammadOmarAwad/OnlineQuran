@@ -1,4 +1,4 @@
-import { CalculationMethod } from "../Models/CalculationMethodModel";
+import { CalculationMethod } from "../models/CalculationMethodModel";
 
 export class PrayerCalculationMethods {
 

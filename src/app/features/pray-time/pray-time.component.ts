@@ -1,21 +1,21 @@
 import { Component } from '@angular/core';
-import { GeolocationService } from '../Services/Geolocation.Service';
-import { DateService } from '../Services/Date.Service';
 import { HttpClient } from '@angular/common/http';
-import { PrayTimeModle, Daum } from '../Models/PrayTimeModle';
+import { PrayTimeModle, Daum } from '../../core/models/PrayTimeModle';
 import { CommonModule } from '@angular/common';
-import { StringResource } from '../Resources/StringResource';
-import { UrlResource } from '../Resources/UrlResource';
-import { PrayerCalculationMethods } from '../Resources/PrayerCalculationMethods';
 import { ActivatedRoute, Params } from '@angular/router';
-import { UtiltitiesService } from '../Services/Utiltities.Service';
+import { StringResource } from '../../core/resources/StringResource';
+import { PrayerCalculationMethods } from '../../core/resources/PrayerCalculationMethods';
+import { UtiltitiesService } from '../../core/services/Utiltities.Service';
+import { DateService } from '../../core/services/Date.Service';
+import { UrlResource } from '../../core/resources/UrlResource';
+import { GeolocationService } from '../../core/services/Geolocation.Service';
 
 @Component({
   selector: 'app-pray-time',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './pray-time.component.html',
-  styleUrls: ['../app.component.scss', './pray-time.component.scss'],
+  styleUrls: ['../../app.component.scss', './pray-time.component.scss'],
 })
 
 export class PrayTimeComponent {

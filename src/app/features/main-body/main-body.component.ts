@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { StringResource } from '../Resources/StringResource';
-import { DataService } from '../Services/Data.Service';
-import { SurahModel } from '../Models/SurahModel';
-import { AyahModel } from '../Models/AyahModel';
+import { SurahModel } from '../../core/models/SurahModel';
+import { AyahModel } from '../../core/models/AyahModel';
 import { ActivatedRoute, Params } from '@angular/router';
-import { UtiltitiesService } from '../Services/Utiltities.Service';
+import { StringResource } from '../../core/resources/StringResource';
+import { UtiltitiesService } from '../../core/services/Utiltities.Service';
+import { DataService } from '../../core/services/Data.Service';
 
 @Component({
   selector: 'app-main-body',
   standalone: true,
   imports: [CommonModule, RouterOutlet, RouterLink, RouterLinkActive],
   templateUrl: './main-body.component.html',
-  styleUrls: ['../app.component.scss', './main-body.component.scss']
+  styleUrls: ['../../app.component.scss', './main-body.component.scss']
 })
 
 export class MainBodyComponent implements OnInit {

@@ -1,4 +1,4 @@
-import { UrlResource } from "../Resources/UrlResource";
+import { UrlResource } from "../resources/UrlResource";
 
 export class GeolocationService {
 

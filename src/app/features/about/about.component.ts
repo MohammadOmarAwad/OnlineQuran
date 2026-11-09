@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { StringResource } from '../Resources/StringResource';
+import { StringResource } from '../../core/resources/StringResource';
 
 @Component({
   selector: 'app-about',
   standalone: true,
   templateUrl: './about.component.html',
-  styleUrls: ['../app.component.scss', './about.component.scss']
+  styleUrls: ['../../app.component.scss', './about.component.scss']
 })
 export class AboutComponent {
   AboutTitle: String = StringResource.About_Title;
