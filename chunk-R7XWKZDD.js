@@ -1,4 +1,4 @@
-import{d as x}from"./chunk-M23UMG75.js";import{p as u}from"./chunk-QFYMCP6P.js";import{Aa as g,Ba as v,Da as t,Ea as _,Sa as b,Wa as n,Xa as i,Y as f,Ya as c,bb as r,db as h,fb as a,gb as p,hb as s,kb as k,ub as S}from"./chunk-AV7EZBGX.js";var I=(()=>{class m{constructor(d){this.sanitizer=d,this.Strings=S,this.Urls=u,this.Running_URL="None",this.Run_Video(u.MakkaLive1,this.IsMakka),this.Run_Video(u.MadineLive1,this.IsMadina)}Run_Video(d,l){let e=`
+import{c as x}from"./chunk-VD554FVQ.js";import{p as u}from"./chunk-EJFRP2WH.js";import{$a as h,Ba as t,Ca as _,Oa as b,Sa as n,Ta as i,Ua as c,X as f,Za as r,bb as a,cb as p,db as s,gb as k,qb as S,ya as g,za as v}from"./chunk-HW3R3HTQ.js";var I=(()=>{class m{constructor(d){this.sanitizer=d,this.Strings=S,this.Urls=u,this.Running_URL="None",this.Run_Video(u.MakkaLive1,this.IsMakka),this.Run_Video(u.MadineLive1,this.IsMadina)}Run_Video(d,l){let e=`
       <iframe width="95%" height="315"
         src='${d}'
         frameborder="0"
