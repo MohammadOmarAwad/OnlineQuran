@@ -1,21 +1,50 @@
 <div class="MainBody">
 
-    <div class="Block" style="display: block;">
-        <h1 style="font-weight: bold;">{{AboutTitle}}</h1>
+    <div class="SurhaHeader">
+        <h1 style="font-weight: bold;">{{Strings.About_Title}}</h1>
         <div>
-            {{Information}}
+            {{Strings.About_Information}}
         </div>
     </div>
 
-    <div class="Block" style="display: block;">
-        <h1 style="font-weight: bold;">{{AboutVisionTitle}}</h1>
+    <div class="SurhaHeader">
+        <h1 style="font-weight: bold;">{{Strings.About_VisionTitle}}</h1>
         <div>
-            {{Vision}}
+            {{Strings.About_Vision}}
         </div>
     </div>
 
-    <div class="Block">
-        <a href="mailto:mohammad.omar.awad@gmail.com" style="cursor: pointer;"> البريد الإلكتروني </a>
+    <div class="SurhaHeader">
+        <a href="mailto:{{Strings.E_mailAddress}}" style="cursor: pointer;"> {{Strings.E_mail}}
+        </a>
+    </div>
+
+    <div class="SurhaHeader">
+        <details>
+            <summary style="direction: ltr;">{{Strings.QuranHistory}}</summary>
+
+            <div dir="rtl">
+                @for (node of QuranChain; track $index) {
+                <div class="node-card" [class.special]="node.isSpecial">
+
+                    <h3>
+                        @if (node.Order !== null) {
+                        <span>{{ node.Order }}</span>-
+                        }
+                        {{ node.name }}
+                    </h3>
+                    <p>{{ node.discreption }}</p>
+
+                    @if (node.deadDate > 0) {
+                    <small>توفي سنة: {{ node.deadDate }} هـ</small>
+                    }
+                </div>
+                } @empty {
+                <p>لا توجد بيانات للعرض</p>
+                }
+            </div>
+
+        </details>
     </div>
 
 </div>

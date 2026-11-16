@@ -1,6 +1,5 @@
-
 export interface QuranicWordModel {
-AyaNr: number;
+  AyaNr: number;
   SuraNr: number;
   DataValue: string;
 }

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { StringResource } from '../../core/resources/StringResource';
+import { QuranHistory } from '../../core/resources/QuranHistory';
+import { UtiltitiesService } from '../../core/services/Utiltities.Service';
 
 @Component({
   selector: 'app-about',
@@ -8,8 +10,15 @@ import { StringResource } from '../../core/resources/StringResource';
   styleUrls: ['../../app.component.scss', './about.component.scss']
 })
 export class AboutComponent {
-  AboutTitle: String = StringResource.About_Title;
-  AboutVisionTitle: String = StringResource.About_VisionTitle;
-  Information: String = StringResource.About_Information;
-  Vision: String = StringResource.About_Vision;
+  Strings = StringResource;
+  QuranChain = QuranHistory.aymanSuwaydQuranChain;
+
+  constructor(
+    private utilities: UtiltitiesService
+  ) { }
+
+  //Run on Strat
+  ngOnInit() {
+    this.utilities.SetElementStyle('spinnerLoadId', 'display', "none");
+  }
 }

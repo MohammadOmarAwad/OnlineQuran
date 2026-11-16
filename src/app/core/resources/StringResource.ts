@@ -10,7 +10,9 @@ export const StringResource = {
     " الاهتمام بدعوة غير المسلمين بالطريقة الصحيحة، وفق المنهج القويم." +
     " جمع كلمة المسلمين.",
   About_Vision: "موقع القرآن مبادرة متواضعة بهدف خدمة الكتاب العزيز و السنة المطهرة و تيسير العلوم الشرعية على منهاج الكتاب و السنة , وإننا سعيدون بدعمكم لنا و نقدّر حرصكم على استمرارنا و نسأل الله تعالى أن يتقبل منا و يجعل أعمالنا خالصة لوجهه الكريم .",
-
+  QuranHistory: "سلسلة القرآن الكريم - أيمن سويد",
+  E_mail: "البريد الإلكتروني ",
+  E_mailAddress: "mohammad.omar.awad@gmail.com",
 
   Header_MainPage: "الصفحة الرئيسية",
   Header_SearchPage: "البحث",
@@ -48,7 +50,7 @@ export const StringResource = {
 
   PrayTimeSettingMethods: "طرق ضبط أوقات الصلاة",
   PrayTimeSettingSchools: "مدرسة فقهية",
-  PrayTimeLatitudeAdjustment:"تعديل خط العرض",
+  PrayTimeLatitudeAdjustment: "تعديل خط العرض",
   PrayTimeSettingMethode99: "إعدادات الطريقة (طريقة مخصصة 99):",
   PrayTimeSettingFajrAngle: "زاوية الفجر",
   PrayTimeSettingMaghribAngleOrMinsAfterSunset: "زاوية المغرب أو الدقائق بعد الغروب",
