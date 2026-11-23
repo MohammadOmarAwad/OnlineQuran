@@ -16,10 +16,12 @@ import { DataService } from './core/services/Data.Service';
 export class AppComponent {
 
   async ngOnInit() {
-    await DataService.GetAyasData(); // preload
-    await DataService.GetSurahsData(); // preload
-    await DataService.GetRecitersData(); // preload
-    await DataService.GetTafsersData(); // preload
-    await DataService.GetQuranicWordsData(); // preload
+    await Promise.all([
+      DataService.GetAyasData(),
+      DataService.GetSurahsData(),
+      DataService.GetRecitersData(),
+      DataService.GetTafsersData(),
+      DataService.GetQuranicWordsData()
+    ]);
   }
 }
