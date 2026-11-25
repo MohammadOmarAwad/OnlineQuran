@@ -4,3 +4,21 @@
 body {
   background-color: #EBF0F0!important;
 }
+
+//Custome Css for Toastr (it sees the css just in Styles.scss)
+.custom-ayah-toast {
+  background-color: whitesmoke !important; /* Custom background color */
+  color:black !important;            /* Custom text color */
+  background-image: none !important;    /* Ensures no icon appears */
+  padding: 16px 20px !important;        /* Removes extra left icon padding */
+  width: 450px !important;              /* Optional: wider box for Quranic text */
+  direction: rtl;
+  text-align: justify;
+  text-align-last: center;
+  font-weight: 100;
+  font-size: 16px;
+}
+
+.cls{
+  white-space: nowrap;
+}

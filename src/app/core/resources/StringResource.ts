@@ -81,6 +81,7 @@ export const StringResource = {
 
   Copy: "نسخ",
   RunSound: "تشغيل الأية",
+  Text_to_Letters:"تحويل إلى أحرف",
 
   Stories: "مواضيع الآيات",
   PrayTimeSetting: "إعدادات أوقات الصلاة",

@@ -36,7 +36,8 @@ export class UtiltitiesService {
 
         const options = [
             StringResource.Copy,
-            StringResource.RunSound
+            StringResource.RunSound,
+            StringResource.Text_to_Letters
         ];
 
         options.forEach((optionText) => {
@@ -77,6 +78,9 @@ export class UtiltitiesService {
             case StringResource.RunSound:
                 this.Run_Audio(Number(clickedSurahId), Number(clickedAyaId));
                 break;
+            case StringResource.Text_to_Letters:
+                this.Text_To_Letter(Number(clickedSurahId), Number(clickedAyaId));
+                break;
         }
     }
 
@@ -99,7 +103,6 @@ export class UtiltitiesService {
             this.toastr.success(TextService.FormatMessage(StringResource.QuranPage_CopyMessage, AyaInfo.AyaNr, AyaInfo.surah_Infos.AName));
         }
     }
-
 
     // Run Ayah Sound
     public async Run_Audio(sura: number, aya: number): Promise<void> {
@@ -126,6 +129,44 @@ export class UtiltitiesService {
             audio.currentTime = 0;
             audio.play();
         }
+    }
+
+    // Show text as letters
+    public async Text_To_Letter(sura: number, aya: number): Promise<void> {
+        let AyaInfo: AyahModel | undefined;
+
+        this.AyahsList = await DataService.GetAyasData();
+
+        AyaInfo = this.AyahsList.find(a => a.SuraNr === sura && a.AyaNr === aya);
+
+        if (AyaInfo?.Text_Uthmani == null) return;
+        const segmenter = new Intl.Segmenter('ar', { granularity: 'grapheme' });
+        const graphemes = Array.from(segmenter.segment(AyaInfo?.Text_Uthmani), s => s.segment);
+
+        let result = '';
+
+        let span = "<span class='cls'>";
+        for (const grapheme of graphemes) {
+            if (grapheme === ' ') {
+                span += "</span>";
+                result += span;
+                result += ' \u00A0\u00A0\u00A0\u00A0 ';
+                span = "<span class='cls'>";
+            }
+            span += ' ' + grapheme;
+
+            await new Promise(resolve => setTimeout(resolve));
+        }
+
+        result += ` <span class='cls'> (${aya})</span>`;
+        console.log(result);
+
+        this.toastr.show(result, '', {
+            enableHtml: true,
+            toastClass: 'ngx-toastr custom-ayah-toast',
+            positionClass: 'toast-top-center',
+            timeOut: 80000
+        });
     }
 
     //Set CssStyle to Element
