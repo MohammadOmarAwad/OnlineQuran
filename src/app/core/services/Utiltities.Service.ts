@@ -30,9 +30,24 @@ export class UtiltitiesService {
         menu.className = 'custom-menu-list';
 
         menu.style.position = 'fixed';
-        menu.style.top = `${y}px`;
-        menu.style.left = `${x}px`;
         menu.style.zIndex = '1000';
+
+        document.body.appendChild(menu);
+
+        // Get menu dimensions and viewport boundaries
+        const rect = menu.getBoundingClientRect();
+        const viewportWidth = window.innerWidth;
+        const padding = 8; // Small margin from screen edge
+
+        let adjustedX = x;
+
+        // Flip/shift left if overflowing the right edge
+        if (x + rect.width > viewportWidth) {
+            adjustedX = Math.max(padding, x - rect.width);
+        }
+
+        menu.style.left = `${adjustedX}px`;
+        menu.style.top = `${y - 15}px`;
 
         const options = [
             StringResource.Copy,
