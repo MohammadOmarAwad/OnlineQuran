@@ -157,6 +157,7 @@ export class UtiltitiesService {
 
             await new Promise(resolve => setTimeout(resolve));
         }
+        result += span;
 
         result += ` <span class='cls'> (${aya})</span>`;
         console.log(result);
